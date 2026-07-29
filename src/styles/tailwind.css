@@ -85,11 +85,11 @@ a {
   }
 
   .section-shell {
-    @apply px-4 py-14 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-28;
+    @apply px-4 py-12 sm:px-6 sm:py-14 md:py-20 lg:px-8 lg:py-24;
   }
 
   .section-shell-tight {
-    @apply px-4 py-12 sm:px-6 sm:py-14 md:py-20 lg:px-8;
+    @apply px-4 py-10 sm:px-6 sm:py-12 md:py-16 lg:px-8;
   }
 
   .surface-cream {
@@ -117,19 +117,19 @@ a {
   }
 
   .display-xl {
-    @apply font-serif text-4xl font-semibold leading-[1.02] text-balance sm:text-5xl md:text-6xl lg:text-7xl;
+    @apply font-serif text-[clamp(2.4rem,5vw,4.6rem)] font-semibold leading-[1.04] text-balance;
   }
 
   .display-lg {
-    @apply font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl lg:text-5xl;
+    @apply font-serif text-[clamp(2rem,3.8vw,3.15rem)] font-semibold leading-[1.08] text-balance;
   }
 
   .heading-md {
-    @apply font-serif text-2xl font-semibold leading-snug lg:text-3xl;
+    @apply font-serif text-[clamp(1.55rem,2.5vw,2rem)] font-semibold leading-snug;
   }
 
   .body-lg {
-    @apply text-base leading-7 md:text-lg md:leading-8;
+    @apply text-[clamp(1rem,1.6vw,1.08rem)] leading-7 md:leading-8;
   }
 
   .body-sm {
@@ -137,7 +137,7 @@ a {
   }
 
   .btn {
-    @apply inline-flex min-h-12 max-w-full items-center justify-center gap-2 whitespace-normal rounded-md px-4 text-center text-xs font-bold uppercase leading-5 tracking-[0.1em] transition duration-300 sm:px-5 sm:text-sm sm:tracking-[0.12em];
+    @apply inline-flex min-h-12 max-w-full items-center justify-center gap-2 whitespace-normal rounded-full px-5 text-center text-sm font-semibold normal-case leading-5 tracking-normal transition duration-300 sm:px-6;
   }
 
   .btn-primary {

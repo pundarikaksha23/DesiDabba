@@ -52,18 +52,20 @@ function HomeServiceIcon({ type }: { type: (typeof serviceCards)[number]['icon']
 export default function Home() {
   return (
     <div className="reference-home overflow-x-hidden bg-[#F6EFE2] font-sans text-[#3B2A21]">
-      <section className="mx-auto grid max-w-[1220px] items-center gap-[clamp(28px,4vw,60px)] px-7 pb-[clamp(40px,7vw,88px)] pt-[clamp(28px,6vw,72px)] lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="mx-auto grid max-w-[1220px] items-center gap-[clamp(24px,4vw,58px)] px-7 pb-[clamp(38px,6vw,70px)] pt-[clamp(56px,7vw,92px)] md:grid-cols-[1.02fr_0.98fr]">
         <div>
           <div className="mb-5 flex items-center gap-3 text-[12.5px] font-semibold uppercase tracking-[0.22em] text-[#5C6B47]">
             <span className="h-px w-6 bg-[#CE9A3A]" />
             <span>Simple · Sustainable · Soulful</span>
           </div>
-          <h1 className="m-0 font-serif text-[clamp(40px,6vw,74px)] font-semibold leading-[1.02] tracking-[-0.01em] text-[#5C1A2B]">
-            South Asian warmth,
+          <h1 className="m-0 max-w-[11ch] font-serif text-[clamp(38px,5vw,58px)] font-semibold leading-[1.04] tracking-normal text-[#5C1A2B]">
+            South Asian
+            <br />
+            warmth,
             <br />
             <span className="italic text-[#3B2A21]">Estonian soul.</span>
           </h1>
-          <p className="mb-8 mt-5 max-w-[440px] text-[17px] leading-[1.65] text-[#3B2A21]/70">
+          <p className="mb-8 mt-6 max-w-[430px] text-[17px] leading-[1.65] text-[#3B2A21]/70">
             Slow-cooked Indian and South Asian food for weekly meals, gatherings, and quiet celebrations — cooked with
             care in Tallinn, and shared like family.
           </p>
@@ -81,16 +83,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative min-h-[min(640px,70vh)]">
+        <div className="relative min-h-[420px] md:min-h-[456px] lg:min-h-[520px]">
           <div className="absolute -right-10 top-0 hidden h-[220px] w-[220px] rounded-full border border-[#CE9A3A]/40 md:block" />
-          <figure className="relative h-full min-h-[520px] overflow-hidden rounded-t-[220px] rounded-b-[22px] bg-[#EFE6D3] shadow-[0_34px_80px_-48px_rgba(59,42,33,0.55)]">
+          <figure className="relative h-full min-h-[420px] overflow-hidden rounded-t-[170px] rounded-b-[22px] bg-[#EFE6D3] shadow-[0_34px_80px_-48px_rgba(59,42,33,0.55)] md:min-h-[456px] md:rounded-t-[210px] lg:min-h-[520px]">
             <img
               src={pageHeroImages.home}
               alt="Desi Dabba hero thali and appetizer presentation"
               width="1200"
               height="1800"
-              className="h-full min-h-[520px] w-full object-cover object-[50%_54%]"
-              sizes="(min-width: 1024px) 48vw, 100vw"
+              className="h-full min-h-[420px] w-full object-cover object-[50%_54%] md:min-h-[456px] lg:min-h-[520px]"
+              sizes="(min-width: 768px) 48vw, 100vw"
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -137,7 +139,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#5C1A2B] text-[#F3E7D4]">
-        <div className="mx-auto grid max-w-[1220px] items-center gap-[clamp(28px,5vw,72px)] px-7 py-[clamp(48px,7vw,96px)] lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mx-auto grid max-w-[1220px] items-center gap-[clamp(28px,5vw,72px)] px-7 py-[clamp(48px,7vw,96px)] md:grid-cols-[0.9fr_1.1fr]">
           <div className="relative">
             <figure className="aspect-[4/4.7] overflow-hidden rounded-t-[20px] rounded-b-[160px] bg-[#642333] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)]">
               <img
@@ -205,7 +207,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto mb-2 max-w-[1220px] px-7">
-        <div className="relative grid items-center gap-9 overflow-hidden rounded-[28px] bg-[#5C6B47] p-[clamp(40px,6vw,72px)] text-[#F6EFE2] lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="relative grid items-center gap-9 overflow-hidden rounded-[28px] bg-[#5C6B47] p-[clamp(40px,6vw,72px)] text-[#F6EFE2] md:grid-cols-[1.2fr_0.8fr]">
           <div className="absolute -right-[60px] -top-[60px] h-[220px] w-[220px] rounded-full border border-[#F6EFE2]/30" />
           <div className="relative z-[1]">
             <h2 className="m-0 mb-4 font-serif text-[clamp(30px,4.4vw,52px)] font-semibold leading-[1.06]">

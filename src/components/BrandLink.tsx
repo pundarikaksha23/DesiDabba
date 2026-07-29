@@ -8,8 +8,8 @@ type BrandLinkProps = {
 const variants = {
   header: {
     link: 'inline-flex min-w-0 items-start gap-2 text-left',
-    title: 'block truncate font-serif text-[26px] font-bold leading-none tracking-[0.01em] text-[#5C1A2B]',
-    tagline: 'mt-1 hidden text-[8.5px] font-semibold uppercase tracking-[0.22em] text-[#CE9A3A] sm:block',
+    title: 'block truncate font-serif text-[30px] font-bold leading-none tracking-[0.01em] text-[#5C1A2B]',
+    tagline: 'mt-1 hidden text-[9px] font-semibold uppercase tracking-[0.23em] text-[#CE9A3A] sm:block',
   },
   footer: {
     link: 'inline-flex flex-col items-start',

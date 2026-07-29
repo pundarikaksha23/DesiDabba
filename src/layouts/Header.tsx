@@ -35,7 +35,7 @@ function HeaderBrand({ reduceMotion }: MotionPreference) {
 
 function DesktopNavigation({ reduceMotion }: MotionPreference) {
   return (
-    <div className="hidden items-center gap-7 text-[13px] font-semibold uppercase tracking-[0.11em] text-[#3B2A21]/75 md:flex">
+    <div className="hidden items-center gap-7 text-[16px] font-semibold tracking-normal text-[#3B2A21]/82 min-[720px]:flex">
       {navigationLinks.map((link) => (
         <NavLink
           key={link.href}
@@ -59,6 +59,21 @@ function DesktopNavigation({ reduceMotion }: MotionPreference) {
         </NavLink>
       ))}
     </div>
+  )
+}
+
+function HeaderLanguageButton({ reduceMotion }: MotionPreference) {
+  return (
+    <motion.button
+      type="button"
+      className="inline-flex size-12 items-center justify-center rounded-full border border-[#3B2A21]/15 bg-transparent text-[13px] font-semibold text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B]"
+      aria-label="Current language: Estonian"
+      whileHover={reduceMotion ? undefined : { y: -1, scale: 1.02 }}
+      whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+      transition={{ duration: reduceMotion ? 0 : 0.2, ease: premiumEase }}
+    >
+      ET
+    </motion.button>
   )
 }
 
@@ -86,7 +101,7 @@ function MobileMenuButton({ open, reduceMotion, onClick }: MobileMenuButtonProps
   return (
     <motion.button
       type="button"
-      className="grid size-11 place-items-center rounded-full border border-[#3B2A21]/20 text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B] md:hidden"
+      className="grid size-[54px] place-items-center rounded-full border border-[#3B2A21]/15 text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B] min-[720px]:hidden"
       aria-label={open ? 'Close menu' : 'Open menu'}
       aria-controls="mobile-navigation"
       aria-expanded={open}
@@ -122,7 +137,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
         <>
           <motion.button
             type="button"
-            className="fixed inset-x-0 bottom-0 top-[73px] bg-[#3B2A21]/20 md:hidden"
+            className="fixed inset-x-0 bottom-0 top-[84px] bg-[#3B2A21]/20 min-[720px]:hidden"
             aria-label="Close menu overlay"
             variants={overlayVariants}
             initial="closed"
@@ -135,7 +150,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
             id="mobile-navigation"
             role="dialog"
             aria-modal="true"
-            className="fixed right-0 top-[73px] z-50 h-[calc(100svh-73px)] w-full max-w-sm border-l border-[#3B2A21]/10 bg-[#F6EFE2] px-5 py-6 shadow-[0_24px_70px_rgba(59,42,33,0.18)] md:hidden"
+            className="fixed right-0 top-[84px] z-50 h-[calc(100svh-84px)] w-full max-w-sm border-l border-[#3B2A21]/10 bg-[#F6EFE2] px-5 py-6 shadow-[0_24px_70px_rgba(59,42,33,0.18)] min-[720px]:hidden"
             variants={drawerVariants}
             initial="closed"
             animate="open"
@@ -216,11 +231,11 @@ export function Header() {
       initial={false}
       animate={{ y: 0 }}
     >
-      <nav className="mx-auto flex h-[73px] max-w-[1220px] items-center justify-between gap-5 px-7" aria-label="Primary navigation">
+      <nav className="mx-auto flex h-[84px] max-w-[1220px] items-center justify-between gap-5 px-7" aria-label="Primary navigation">
         <HeaderBrand reduceMotion={reduceMotion} />
         <DesktopNavigation reduceMotion={reduceMotion} />
-        <div className="hidden items-center gap-3 md:flex">
-          <HeaderWhatsappButton reduceMotion={reduceMotion} />
+        <div className="hidden items-center gap-3 min-[720px]:flex">
+          <HeaderLanguageButton reduceMotion={reduceMotion} />
         </div>
         <MobileMenuButton open={open} reduceMotion={reduceMotion} onClick={() => setOpen((value) => !value)} />
       </nav>
