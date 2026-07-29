@@ -51,7 +51,7 @@ function HomeServiceIcon({ type }: { type: (typeof serviceCards)[number]['icon']
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden bg-[#F6EFE2] font-sans text-[#3B2A21]">
+    <div className="reference-home overflow-x-hidden bg-[#F6EFE2] font-sans text-[#3B2A21]">
       <section className="mx-auto grid max-w-[1220px] items-center gap-[clamp(28px,4vw,60px)] px-7 pb-[clamp(40px,7vw,88px)] pt-[clamp(28px,6vw,72px)] lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <div className="mb-5 flex items-center gap-3 text-[12.5px] font-semibold uppercase tracking-[0.22em] text-[#5C6B47]">

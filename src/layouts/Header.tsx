@@ -35,7 +35,7 @@ function HeaderBrand({ reduceMotion }: MotionPreference) {
 
 function DesktopNavigation({ reduceMotion }: MotionPreference) {
   return (
-    <div className="hidden items-center gap-7 text-[14.5px] font-semibold text-[#3B2A21]/75 md:flex">
+    <div className="hidden items-center gap-7 text-[13px] font-semibold uppercase tracking-[0.11em] text-[#3B2A21]/75 md:flex">
       {navigationLinks.map((link) => (
         <NavLink
           key={link.href}
@@ -212,7 +212,7 @@ export function Header() {
 
   return (
     <motion.header
-      className="sticky inset-x-0 top-0 z-50 border-b border-[#3B2A21]/10 bg-[#F6EFE2]/85 text-[#3B2A21] shadow-none backdrop-blur-[14px] transition-colors duration-500"
+      className="sticky inset-x-0 top-0 z-50 border-b border-[#3B2A21]/10 bg-[#F6EFE2] text-[#3B2A21] shadow-none transition-colors duration-500"
       initial={false}
       animate={{ y: 0 }}
     >

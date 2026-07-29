@@ -11,7 +11,7 @@ export function SiteLayout() {
   const transition = { duration: reduceMotion ? 0 : 0.32, ease: premiumEase }
 
   return (
-    <div className="min-h-screen bg-cream-50">
+    <div className="min-h-screen bg-cream">
       <SEO />
       <Header />
       <AnimatePresence mode="wait">
