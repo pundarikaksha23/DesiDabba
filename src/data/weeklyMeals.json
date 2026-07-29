@@ -1,0 +1,102 @@
+{
+  "weekOf": "This Week's Dabba",
+  "intro": "A rotating set of meals built for real weekdays: enough comfort to feel grounded, enough balance to keep the rest of the day light.",
+  "meals": [
+    {
+      "name": "Royal Paneer Dabba",
+      "description": "Paneer tikka masala, jeera rice, tandoori roti, dal tadka, kachumber, and smoked chilli pickle.",
+      "price": "€18",
+      "tag": "Vegetarian",
+      "icon": "leaf"
+    },
+    {
+      "name": "Lucknowi Chicken Dabba",
+      "description": "Slow-cooked chicken korma, saffron pulao, roomali roti, cucumber raita, and onion laccha.",
+      "price": "€21",
+      "tag": "Signature",
+      "icon": "sparkles"
+    },
+    {
+      "name": "Coastal Coconut Dabba",
+      "description": "Coconut vegetable curry, lemon rice, pepper rasam, appalam, beetroot pachadi, and mango pickle.",
+      "price": "€19",
+      "tag": "Seasonal",
+      "icon": "flame"
+    },
+    {
+      "name": "Homestyle Dal Dabba",
+      "description": "Black dal, ghee rice, phulka, aloo gobi, carrot achar, and jaggery sesame bite.",
+      "price": "€16",
+      "tag": "Comfort",
+      "icon": "wheat"
+    },
+    {
+      "name": "Green Moong Khichdi Bowl",
+      "description": "Moong khichdi with cumin ghee, roasted vegetables, cucumber salad, papad crumble, and coriander chutney.",
+      "price": "€17",
+      "tag": "Light",
+      "icon": "leaf"
+    },
+    {
+      "name": "Malabar Egg Curry Dabba",
+      "description": "Coconut egg curry, tomato rice, flaky parotta, beetroot pachadi, lemon pickle, and a cardamom sweet.",
+      "price": "€20",
+      "tag": "Coastal",
+      "icon": "flame"
+    }
+  ],
+  "subscription": {
+    "title": "How the weekly plan works",
+    "description": "Choose your dabbas before the weekly cutoff, pause whenever travel or life gets busy, and let the menu change often enough that lunch still feels cared for.",
+    "steps": [
+      "Pick 3, 5, or 7 meals for the week.",
+      "Choose vegetarian, mixed, light, or family-style preferences.",
+      "Receive packed meals with reheating notes and fresh accompaniments."
+    ]
+  },
+  "delivery": {
+    "title": "Delivery information",
+    "description": "Weekly meals are prepared in small batches and delivered chilled so the textures hold well. Each dabba is labeled with the dish name, date, and simple reheating guidance.",
+    "details": [
+      "Delivery windows: Monday and Wednesday, 9 AM to 12 PM.",
+      "Order cutoff: Friday at 5 PM for the following week.",
+      "Local delivery available within our current service radius."
+    ]
+  },
+  "benefits": [
+    {
+      "title": "No menu fatigue",
+      "description": "Regional dishes rotate so the week feels varied without asking you to plan from scratch."
+    },
+    {
+      "title": "Balanced by default",
+      "description": "Each meal is composed with grain, protein, vegetable, freshness, and a small finishing note."
+    },
+    {
+      "title": "Built for reheating",
+      "description": "We choose dishes that hold their shape, aroma, and comfort after delivery."
+    },
+    {
+      "title": "Easy to pause",
+      "description": "Travel week, fasting week, unexpected week: subscriptions can be paused without fuss."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I choose vegetarian meals only?",
+      "answer": "Yes. You can choose a vegetarian preference for the week, and we will keep the menu balanced across dal, paneer, vegetables, rice, breads, and accompaniments."
+    },
+    {
+      "question": "Are meals delivered hot?",
+      "answer": "Weekly meals are delivered chilled for quality and food safety. Each dabba includes reheating guidance so the meal opens warm, fragrant, and composed."
+    },
+    {
+      "question": "Can I skip a week?",
+      "answer": "Yes. Weekly plans are designed around real schedules, so you can pause before the cutoff and resume when you are ready."
+    },
+    {
+      "question": "Do you handle dietary notes?",
+      "answer": "We can accommodate many common preferences when shared ahead of the cutoff. For severe allergies, contact us before subscribing so we can confirm what is possible."
+    }
+  ]
+}

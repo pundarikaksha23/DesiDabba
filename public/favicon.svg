@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Desi Dabba">
+  <rect width="48" height="48" rx="10" fill="#5A1F1B"/>
+  <circle cx="24" cy="24" r="15" fill="#FBF4E7"/>
+  <path d="M15 22h18v4H15z" fill="#C9943F"/>
+  <path d="M18 17h12v4H18z" fill="#52684A"/>
+  <path d="M18 27h12v4H18z" fill="#52684A"/>
+</svg>
