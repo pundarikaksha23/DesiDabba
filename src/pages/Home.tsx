@@ -1,4 +1,3 @@
-import { MessageCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import {
   homeInstagramImages,
@@ -8,8 +7,9 @@ import {
 } from '../assets/images/selected-images'
 import { routes } from '../config/routes'
 import { site } from '../config/site'
+import { WhatsappIcon } from '../components/WhatsappIcon'
 
-const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters', 'Tallinn · Estonia']
+const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Glazing Platters']
 
 const serviceCards = [
   {
@@ -31,9 +31,9 @@ const serviceCards = [
     icon: 'line-y',
   },
   {
-    title: 'Grazing Platters',
+    title: 'Glazing Platters',
     copy: 'Effortless hosting. Abundant platters of chaat, kebabs and sweets, styled and ready to share.',
-    href: routes.services,
+    href: `${routes.services}#platters`,
     icon: 'line-x',
   },
 ] as const
@@ -74,7 +74,7 @@ export default function Home() {
               href={site.whatsapp}
               className="inline-flex items-center gap-2.5 rounded-full bg-[#5C1A2B] px-[26px] py-[15px] text-[15px] font-semibold text-[#F6EFE2] no-underline"
             >
-              <MessageCircle className="size-[18px]" aria-hidden />
+              <WhatsappIcon className="size-[18px]" />
               Enquire on WhatsApp
             </a>
             <Link to={routes.weeklyMeals} className="font-semibold text-[#5C1A2B] no-underline">
@@ -125,7 +125,7 @@ export default function Home() {
           {serviceCards.map((service) => (
             <article
               key={service.title}
-              className="flex min-h-[290px] flex-col rounded-[18px] border border-[#3B2A21]/10 bg-[#FBF6EC] px-6 pb-[30px] pt-[26px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(59,42,33,0.10)]"
+              className="panel-card flex min-h-[290px] flex-col rounded-[18px] border border-[#3B2A21]/10 bg-[#FBF6EC] px-6 pb-[30px] pt-[26px]"
             >
               <HomeServiceIcon type={service.icon} />
               <h3 className="mb-2 mt-[26px] font-serif text-[25px] font-semibold text-[#5C1A2B]">{service.title}</h3>
@@ -167,7 +167,7 @@ export default function Home() {
               No shortcuts, no fuss. Just food with soul.
             </p>
             <div className="mt-[26px] flex flex-wrap items-center gap-4">
-              <div className="font-serif text-2xl italic text-[#CE9A3A]">Aisha & team</div>
+              <div className="font-serif text-2xl italic text-[#CE9A3A]">Priya and Team</div>
               <Link
                 to={routes.about}
                 className="rounded-full border border-[#F3E7D4]/40 px-5 py-3 text-sm font-semibold text-[#F6EFE2] no-underline"
@@ -185,7 +185,7 @@ export default function Home() {
             <div className="mb-3 text-[12.5px] font-semibold uppercase tracking-[0.22em] text-[#5C6B47]">From the kitchen</div>
             <h2 className="m-0 font-serif text-[clamp(28px,3.6vw,42px)] font-semibold text-[#3B2A21]">@desidabba</h2>
           </div>
-          <a href="https://instagram.com" className="rounded-full bg-[#EFE6D3] px-5 py-3 text-sm font-semibold text-[#5C1A2B] no-underline">
+          <a href={site.instagram} className="rounded-full bg-[#EFE6D3] px-5 py-3 text-sm font-semibold text-[#5C1A2B] no-underline">
             Follow on Instagram →
           </a>
         </div>
@@ -220,7 +220,7 @@ export default function Home() {
           </div>
           <div className="relative z-[1] flex flex-col gap-3.5">
             <a href={site.whatsapp} className="flex items-center justify-center gap-2.5 rounded-full bg-[#F6EFE2] px-6 py-4 text-[15.5px] font-semibold text-[#5C1A2B] no-underline">
-              <MessageCircle className="size-[18px]" aria-hidden />
+              <WhatsappIcon className="size-[18px]" />
               Message us on WhatsApp
             </a>
             <a href={`mailto:${site.email}`} className="rounded-full border border-[#F6EFE2]/50 px-6 py-4 text-center text-[15.5px] font-semibold text-[#F6EFE2] no-underline">
@@ -235,7 +235,7 @@ export default function Home() {
         aria-label="WhatsApp"
         className="fixed bottom-[22px] right-[22px] z-[80] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#5C6B47] text-[#F6EFE2] shadow-[0_14px_30px_-10px_rgba(59,42,33,0.55)]"
       >
-        <MessageCircle className="size-[30px]" aria-hidden />
+        <WhatsappIcon className="size-[30px]" />
       </a>
     </div>
   )

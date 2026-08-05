@@ -6,7 +6,7 @@ export function MealCard({ item }: { item: MenuItem }) {
   const Icon = item.icon
 
   return (
-    <Card className="h-full transition duration-300 hover:-translate-y-1 hover:shadow-card">
+    <Card className="panel-card h-full">
       <div className="flex items-start justify-between gap-4">
         <span className="icon-tile">
           <Icon className="size-5" aria-hidden />

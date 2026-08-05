@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CalendarCheck, CheckCircle2, MessageCircle, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
+import { CalendarCheck, CheckCircle2, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
@@ -7,6 +7,7 @@ import { Container } from '../components/Container'
 import { InputField, SelectField, TextareaField } from '../components/FormField'
 import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
+import { WhatsappIcon } from '../components/WhatsappIcon'
 import { FaqSection } from '../components/sections/FaqSection'
 import { ImageGalleryGrid } from '../components/sections/ImageGalleryGrid'
 import { SplitHero } from '../components/sections/SplitHero'
@@ -40,7 +41,7 @@ export default function Catering() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button to="#catering-form">Request a quote</Button>
               <Button to={site.whatsapp} variant="secondary">
-                <MessageCircle className="size-4" aria-hidden />
+                <WhatsappIcon className="size-4" />
                 WhatsApp
               </Button>
             </div>
@@ -167,7 +168,7 @@ export default function Catering() {
               suggesting a menu.
             </p>
             <a href={site.whatsapp} className="btn btn-ghost mt-8">
-              <MessageCircle className="size-4" aria-hidden />
+              <WhatsappIcon className="size-4" />
               Chat on WhatsApp
             </a>
           </div>

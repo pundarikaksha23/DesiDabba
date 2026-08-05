@@ -66,7 +66,7 @@ function HeaderLanguageButton({ reduceMotion }: MotionPreference) {
   return (
     <motion.button
       type="button"
-      className="inline-flex size-12 items-center justify-center rounded-full border border-[#3B2A21]/15 bg-transparent text-[13px] font-semibold text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B]"
+      className="pill-tab inline-flex size-12 items-center justify-center rounded-full border border-[#3B2A21]/15 bg-transparent text-[13px] font-semibold text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B]"
       aria-label="Current language: Estonian"
       whileHover={reduceMotion ? undefined : { y: -1, scale: 1.02 }}
       whileTap={reduceMotion ? undefined : { scale: 0.98 }}

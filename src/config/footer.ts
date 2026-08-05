@@ -5,7 +5,7 @@ export const footerServiceLinks = [
   { label: 'Corporate Catering', href: routes.catering },
   { label: 'Wedding Catering', href: routes.catering },
   { label: 'Private Chef', href: routes.privateChef },
-  { label: 'Premium Platters', href: routes.services },
+  { label: 'Glazing Platters', href: `${routes.services}#platters` },
 ]
 
 export const footerLegalLinks = Object.values(routeConfig)

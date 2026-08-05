@@ -1,12 +1,11 @@
-import { Mail, MapPin, MessageCircle, Phone, Send, Clock, HelpCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, Clock } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { Container } from '../components/Container'
 import { InputField, SelectField, TextareaField } from '../components/FormField'
 import { Section } from '../components/Section'
-import { FaqSection } from '../components/sections/FaqSection'
-import { contactFaq, openingHours } from '../data/contact'
+import { openingHours } from '../data/contact'
 import { useContactForm } from '../hooks/useContactForm'
 import { site } from '../config/site'
 
@@ -24,15 +23,6 @@ export default function Contact() {
               Weekly dabbas, corporate lunches, private chef evenings, wedding tables, or something still taking shape.
               Start with the details you have, and we will help shape the rest.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to={site.whatsapp}>
-                <MessageCircle className="size-4" aria-hidden />
-                WhatsApp
-              </Button>
-              <Button to={`mailto:${site.email}`} variant="secondary">
-                Email Us
-              </Button>
-            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -81,10 +71,17 @@ export default function Contact() {
           <div className="grid min-h-80 place-items-center rounded-lg border border-brown/10 bg-cream-50 p-6 text-center shadow-soft">
             <div>
               <MapPin className="mx-auto size-10 text-gold" aria-hidden />
-              <h2 className="heading-md mt-4 text-brown">Google Map Placeholder</h2>
+              <h2 className="heading-md mt-4 text-brown">Find us in Tallinn</h2>
               <p className="body-sm mx-auto mt-3 max-w-md text-brown/70">
-                Embedded map will appear here once the live Google Maps embed URL is connected.
+                {site.serviceArea}. If you are planning an event elsewhere in Estonia, send the date and guest count and
+                we will confirm what is possible.
               </p>
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <Button to={site.maps} variant="secondary">
+                  Open Map
+                </Button>
+                <Button to={site.whatsapp}>Ask About Your Area</Button>
+              </div>
             </div>
           </div>
         </Container>
@@ -151,7 +148,7 @@ export default function Contact() {
                 name="interest"
                 value={values.interest}
                 error={errors.interest}
-                options={['Weekly Meals', 'Corporate Catering', 'Wedding Catering', 'Private Chef', 'Premium Platters']}
+                options={['Weekly Meals', 'Corporate Catering', 'Wedding Catering', 'Private Chef', 'Glazing Platters']}
                 onChange={(event) => updateValue('interest', event.target.value)}
               />
             </div>
@@ -182,13 +179,6 @@ export default function Contact() {
           </form>
         </Container>
       </Section>
-
-      <FaqSection
-        eyebrow="FAQ"
-        title="Helpful answers before you reach out."
-        items={contactFaq}
-        icon={<HelpCircle className="size-8 text-gold" aria-hidden />}
-      />
 
       <Section tone="maroon">
         <Container className="text-center">
