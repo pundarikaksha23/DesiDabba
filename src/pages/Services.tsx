@@ -1,4 +1,4 @@
-import { Check, Mail, MessageCircle, Phone } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { useState } from 'react'
 import {
   cateringGalleryImages,
@@ -6,13 +6,14 @@ import {
   privateChefGalleryImages,
   serviceImages,
 } from '../assets/images/selected-images'
+import { WhatsappIcon } from '../components/WhatsappIcon'
 import { site } from '../config/site'
 
 const heroAnchors = [
   { label: 'Weekly Meals', href: '#weekly-meals' },
   { label: 'Event Catering', href: '#event-catering' },
   { label: 'Private Chef', href: '#private-chef' },
-  { label: 'Elegant Platters', href: '#platters' },
+  { label: 'Glazing Platters', href: '#platters' },
 ]
 
 type ServicePrice = {
@@ -21,6 +22,12 @@ type ServicePrice = {
   note?: string
   detail: string
   highlight?: boolean
+}
+
+type ServiceAction = {
+  label: string
+  href: string
+  variant?: 'primary' | 'secondary'
 }
 
 const services = [
@@ -48,8 +55,7 @@ const services = [
       detail: 'Includes 3 dinners per week for 2 people. Custom household plans are available on request.',
       highlight: true,
     },
-    cta: 'Subscribe via WhatsApp',
-    href: `${site.whatsapp}?text=Hi%20Desi%20Dabba%2C%20I'd%20like%20to%20subscribe%20to%20weekly%20meals`,
+    actions: [] as ServiceAction[],
     image: pageHeroImages.weeklyMeals,
     imageAlt: 'Weekly dinner dabba with rice, curry, bread, and fresh accompaniments',
     reverse: false,
@@ -69,10 +75,7 @@ const services = [
       { label: 'Starting from', value: '€22 per person', detail: 'Final pricing depends on guest count, menu selection, service format and delivery needs.' },
       { label: 'Guest range', value: '10–150+ guests', detail: 'Suitable for intimate gatherings, office catering and larger celebrations.' },
     ],
-    cta: 'Request a catering quote',
-    secondaryCta: 'Send an email enquiry',
-    href: `${site.whatsapp}?text=Hi%20Desi%20Dabba%2C%20I'd%20like%20a%20catering%20quote`,
-    secondaryHref: `mailto:${site.email}?subject=Catering%20enquiry`,
+    actions: [] as ServiceAction[],
     image: cateringGalleryImages[0],
     imageAlt: 'Catering spread event photo',
     reverse: true,
@@ -93,8 +96,7 @@ const services = [
       value: 'Custom quote',
       detail: 'Based on number of guests, menu complexity, preparation time, travel and service requirements.',
     },
-    cta: 'Book a private chef experience',
-    href: `${site.whatsapp}?text=Hi%20Desi%20Dabba%2C%20I'd%20like%20to%20book%20a%20private%20chef`,
+    actions: [] as ServiceAction[],
     image: privateChefGalleryImages[2],
     imageAlt: 'Chef at live counter photo',
     reverse: false,
@@ -102,11 +104,11 @@ const services = [
   {
     id: 'platters',
     number: '04',
-    eyebrow: 'Elegant Platters',
+    eyebrow: 'Glazing Platters',
     title: 'Beautiful platters. Made to be shared.',
     lead: 'Curated South Asian-inspired food platters for gatherings of any size — thoughtfully prepared, beautifully presented and full of flavour.',
     body: [
-      'Food shared is food remembered. Our elegant platters are designed for moments when presentation matters as much as taste — gatherings, celebrations, office events or simply an evening with people you love.',
+      'Food shared is food remembered. Our glazing platters are designed for moments when presentation matters as much as taste — gatherings, celebrations, office events or simply an evening with people you love.',
       'Each platter is carefully prepared using fresh ingredients, inspired by South Asian flavours and styled to look as beautiful as it tastes.',
     ],
     benefits: [
@@ -122,8 +124,7 @@ const services = [
       value: 'Customised by size and selection',
       detail: 'Depends on number of guests, items selected and dietary requirements. Contact us for a quote.',
     },
-    cta: 'Enquire about platters',
-    href: `${site.whatsapp}?text=Hi%20Desi%20Dabba%2C%20I'd%20like%20to%20enquire%20about%20platters`,
+    actions: [] as ServiceAction[],
     image: serviceImages.premiumPlatters,
     imageAlt: 'Styled South Asian sharing platter with colorful appetizers',
     reverse: true,
@@ -134,7 +135,7 @@ const faqs = [
   {
     question: 'Can I combine services for one event?',
     answer:
-      'Absolutely. Many of our clients combine catering with elegant platters, or add a private chef experience to a larger event. Get in touch and we will put together a package that works for you.',
+      'Absolutely. Many of our clients combine catering with glazing platters, or add a private chef experience to a larger event. Get in touch and we will put together a package that works for you.',
   },
   {
     question: 'Do you serve clients outside Tallinn?',
@@ -162,13 +163,14 @@ function Benefit({ children }: { children: string }) {
 function ServiceImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="flex min-w-0 flex-[1_1_360px] self-stretch">
-      <figure className="relative flex min-h-[480px] w-full items-center justify-center overflow-hidden rounded-2xl border border-[#1C0A00]/10 bg-[#efe6d7]">
+      <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(28,10,0,0.10)]">
         <img
           src={src}
           alt={alt}
           width="1200"
           height="1800"
-          className="h-full min-h-[480px] w-full object-cover object-[50%_52%]"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_52%]"
+          style={{ width: '100%', height: '100%' }}
           sizes="(min-width: 1024px) 42vw, 100vw"
           loading="lazy"
           decoding="async"
@@ -214,7 +216,7 @@ export default function Services() {
             <a
               key={anchor.href}
               href={anchor.href}
-              className="rounded-full border border-[#1C0A00]/15 bg-white px-[22px] py-[11px] text-sm font-semibold text-[#1C0A00] no-underline shadow-[0_1px_3px_rgba(28,10,0,0.05)]"
+              className="pill-tab rounded-full border border-[#1C0A00]/15 bg-white px-[22px] py-[11px] text-sm font-semibold text-[#1C0A00] no-underline shadow-[0_1px_3px_rgba(28,10,0,0.05)]"
             >
               {anchor.label}
             </a>
@@ -265,7 +267,7 @@ export default function Services() {
                   {'priceCards' in service && service.priceCards ? (
                     <div className="mb-[26px] flex flex-wrap gap-3.5">
                       {service.priceCards.map((card) => (
-                        <div key={card.label} className="flex-[1_1_220px] rounded-xl border border-[#1C0A00]/10 bg-white px-5 py-[18px]">
+                        <div key={card.label} className="panel-card flex-[1_1_220px] rounded-xl border border-[#1C0A00]/10 bg-white px-5 py-[18px]">
                           <div className="mb-1 text-xs font-bold uppercase tracking-[0.125em] text-[#6B1E2E]">{card.label}</div>
                           <div className="mb-1.5 font-serif text-[24px] font-bold text-[#1C0A00]">{card.value}</div>
                           <div className="text-[14px] leading-[1.55] text-[#1C0A00]/65">{card.detail}</div>
@@ -276,22 +278,23 @@ export default function Services() {
 
                   {'price' in service && service.price ? <PriceBox price={service.price} /> : null}
 
-                  <div className="flex flex-wrap gap-3.5">
-                    <a
-                      href={service.href}
-                      className="inline-block rounded-full bg-[#6B1E2E] px-7 py-3.5 text-[15px] font-semibold text-[#FAF7F2] no-underline shadow-[0_4px_14px_rgba(107,30,46,0.25)]"
-                    >
-                      {service.cta}
-                    </a>
-                    {'secondaryCta' in service && service.secondaryCta ? (
-                      <a
-                        href={service.secondaryHref}
-                        className="inline-block rounded-full border-[1.5px] border-[#6B1E2E] px-[27px] py-[13px] text-[15px] font-semibold text-[#6B1E2E] no-underline"
-                      >
-                        {service.secondaryCta}
-                      </a>
-                    ) : null}
-                  </div>
+                  {service.actions.length > 0 ? (
+                    <div className="flex flex-wrap gap-3.5">
+                      {service.actions.map((action) => (
+                        <a
+                          key={action.label}
+                          href={action.href}
+                          className={
+                            action.variant === 'secondary'
+                              ? 'inline-block rounded-full border-[1.5px] border-[#6B1E2E] px-[27px] py-[13px] text-[15px] font-semibold text-[#6B1E2E] no-underline'
+                              : 'inline-block rounded-full bg-[#6B1E2E] px-7 py-3.5 text-[15px] font-semibold text-[#FAF7F2] no-underline shadow-[0_4px_14px_rgba(107,30,46,0.25)]'
+                          }
+                        >
+                          {action.label}
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
                 <ServiceImage src={service.image} alt={service.imageAlt} />
               </div>
@@ -314,7 +317,7 @@ export default function Services() {
             const isOpen = openFaq === index
 
             return (
-              <div key={faq.question} className="overflow-hidden rounded-[14px] border border-[#1C0A00]/10 bg-white">
+              <div key={faq.question} className="panel-card overflow-hidden rounded-[14px] border border-[#1C0A00]/10 bg-white">
                 <button
                   type="button"
                   className="flex w-full cursor-pointer items-center justify-between gap-4 bg-transparent px-6 py-[22px] text-left font-serif text-[19px] font-semibold text-[#1C0A00]"
@@ -345,12 +348,8 @@ export default function Services() {
           </p>
           <div className="relative flex flex-wrap justify-center gap-3.5">
             <a href={site.whatsapp} className="inline-flex items-center gap-2.5 rounded-full bg-[#4A6741] px-[30px] py-[15px] text-[15.5px] font-semibold text-[#FAF7F2] no-underline shadow-[0_6px_18px_rgba(0,0,0,0.2)]">
-              <Phone className="size-5" aria-hidden />
+              <WhatsappIcon className="size-5" />
               Message on WhatsApp
-            </a>
-            <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2.5 rounded-full border-[1.5px] border-[#FAF7F2]/50 px-[29px] py-3.5 text-[15.5px] font-semibold text-[#FAF7F2] no-underline">
-              <Mail className="size-5" aria-hidden />
-              Send us an email
             </a>
           </div>
           <div className="relative mt-[26px] text-sm text-[#FAF7F2]/70">
@@ -364,7 +363,7 @@ export default function Services() {
         aria-label="Chat on WhatsApp"
         className="fixed bottom-[26px] right-[26px] z-[60] flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white no-underline shadow-[0_6px_20px_rgba(0,0,0,0.25)]"
       >
-        <MessageCircle className="size-8" aria-hidden />
+        <WhatsappIcon className="size-8" />
       </a>
     </div>
   )

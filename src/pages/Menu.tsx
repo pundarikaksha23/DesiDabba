@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CalendarCheck, Clock, MessageCircle, PackageCheck, RefreshCw, Truck } from 'lucide-react'
+import { CalendarCheck, PackageCheck, Truck } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
@@ -7,17 +7,12 @@ import { Container } from '../components/Container'
 import { MealCard } from '../components/MealCard'
 import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
+import { WhatsappIcon } from '../components/WhatsappIcon'
 import { FaqSection } from '../components/sections/FaqSection'
 import { weeklyMeals } from '../data/menu'
 import { fadeUp, stagger, viewportOnce } from '../utils/motion'
-import { site } from '../config/site'
 import { routes } from '../config/routes'
-
-const planHighlights = [
-  { label: 'Weekly cutoff', value: 'Friday 5 PM', icon: Clock },
-  { label: 'Delivery rhythm', value: 'Mon + Wed', icon: Truck },
-  { label: 'Plan control', value: 'Pause anytime', icon: RefreshCw },
-]
+import { site } from '../config/site'
 
 export default function Menu() {
   return (
@@ -31,28 +26,6 @@ export default function Menu() {
               Thoughtful dabbas built around comfort, balance, and the small pleasure of opening a meal that was planned
               with your day in mind.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to={routes.contact}>Start a plan</Button>
-              <Button to={site.whatsapp} variant="secondary">
-                <MessageCircle className="size-4" aria-hidden />
-                Ask a question
-              </Button>
-            </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {planHighlights.map((highlight) => {
-                const Icon = highlight.icon
-
-                return (
-                  <div key={highlight.label} className="rounded-lg border border-brown/10 bg-cream-50 p-4 shadow-soft">
-                    <Icon className="size-5 text-gold" aria-hidden />
-                    <p className="mt-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-brown/54">
-                      {highlight.label}
-                    </p>
-                    <p className="mt-1 font-serif text-2xl font-semibold text-green">{highlight.value}</p>
-                  </div>
-                )
-              })}
-            </div>
           </div>
 
           <Card padded={false} className="overflow-hidden bg-maroon text-cream-50">
@@ -179,7 +152,7 @@ export default function Menu() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button to={routes.contact}>Start weekly meals</Button>
             <Button to={site.whatsapp} variant="ghost">
-              <MessageCircle className="size-4" aria-hidden />
+              <WhatsappIcon className="size-4" />
               WhatsApp
             </Button>
           </div>

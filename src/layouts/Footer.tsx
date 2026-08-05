@@ -34,7 +34,7 @@ function HomeFooter() {
           links={[
             { label: 'WhatsApp', href: site.whatsapp },
             { label: site.email, href: `mailto:${site.email}` },
-            { label: 'Instagram', href: 'https://instagram.com' },
+            { label: 'Instagram', href: site.instagram },
           ]}
         />
         <div>
@@ -44,7 +44,7 @@ function HomeFooter() {
               <button
                 key={label}
                 type="button"
-                className="rounded-full border border-[#3B2A21]/20 px-3.5 py-2 text-[12.5px] font-semibold text-[#3B2A21]"
+                className="pill-tab rounded-full border border-[#3B2A21]/20 px-3.5 py-2 text-[12.5px] font-semibold text-[#3B2A21]"
               >
                 {label}
               </button>
@@ -110,7 +110,7 @@ function DarkFooter() {
           href: link.href,
         }))} />
         <FooterColumn tone="dark" title="Services" links={footerServiceLinks.slice(0, 4).map((link) => ({
-          label: link.label.replace('Corporate Catering', 'Event Catering').replace('Premium Platters', 'Elegant Platters'),
+          label: link.label.replace('Corporate Catering', 'Event Catering'),
           href: link.href,
         }))} />
         <FooterColumn
@@ -120,7 +120,7 @@ function DarkFooter() {
             { label: `WhatsApp ${separator} ${site.phone}`, href: site.whatsapp },
             { label: site.email, href: `mailto:${site.email}` },
             { label: site.address, href: routes.contact },
-            { label: `Instagram ${separator} Facebook`, href: 'https://instagram.com' },
+            { label: 'Instagram', href: site.instagram },
           ]}
         />
       </div>

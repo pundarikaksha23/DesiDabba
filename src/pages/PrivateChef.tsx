@@ -4,7 +4,6 @@ import {
   ChefHat,
   FlameKindling,
   Heart,
-  MessageCircle,
   Send,
 } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
@@ -13,6 +12,7 @@ import { Card } from '../components/Card'
 import { Container } from '../components/Container'
 import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
+import { WhatsappIcon } from '../components/WhatsappIcon'
 import { ImageGalleryGrid } from '../components/sections/ImageGalleryGrid'
 import { TimelineGrid } from '../components/sections/TimelineGrid'
 import {
@@ -61,12 +61,6 @@ export default function PrivateChef() {
               An intimate chef-led experience shaped around memory, pacing, and the quiet pleasure of being fully hosted
               in your own space.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to="#booking">Book a private chef</Button>
-              <Button to="#sample-menu" variant="ghost">
-                View sample menu
-              </Button>
-            </div>
           </motion.div>
         </Container>
       </section>
@@ -158,7 +152,7 @@ export default function PrivateChef() {
         title="Small details, quietly elevated."
         description="A private chef evening is made of pacing, plating, fragrance, and the feeling that someone is watching the whole table."
         items={privateChefGallery}
-        imageClassName="h-72 w-full object-cover transition duration-700 hover:scale-105"
+        imageClassName="block h-full w-full object-cover transition duration-700 hover:scale-105"
       />
 
       <Section tone="cream">
@@ -171,9 +165,6 @@ export default function PrivateChef() {
               Pricing depends on guest count, courses, menu direction, prep complexity, staffing, and travel. Share the
               shape of the evening and we will prepare a thoughtful estimate.
             </p>
-            <Button to="#booking" className="mt-7">
-              Request pricing
-            </Button>
           </Card>
 
           <Card className="h-full">
@@ -204,7 +195,7 @@ export default function PrivateChef() {
           <div className="flex flex-col gap-3 md:items-end">
             <Button to={routes.contact}>Book private chef</Button>
             <Button to={site.whatsapp} variant="ghost">
-              <MessageCircle className="size-4" aria-hidden />
+              <WhatsappIcon className="size-4" />
               WhatsApp
             </Button>
           </div>

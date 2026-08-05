@@ -75,7 +75,7 @@ export const services: Service[] = [
     imagePosition: '48% 50%',
   },
   {
-    title: 'Premium Platters',
+    title: 'Glazing Platters',
     label: 'Ready to host',
     description:
       'Beautifully arranged platters for gatherings that need instant abundance: snacks, kebabs, breads, chutneys, desserts, and festive finishing touches.',

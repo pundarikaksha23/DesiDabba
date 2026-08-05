@@ -27,7 +27,7 @@ export function FaqSection({ eyebrow, title, description, items, icon }: FaqSect
         </div>
         <div className="space-y-4">
           {items.map((item) => (
-            <details key={item.question} className="card group p-5 open:shadow-card md:p-6">
+            <details key={item.question} className="panel-card card group p-5 open:shadow-card md:p-6">
               <summary className="cursor-pointer list-none font-serif text-2xl font-semibold leading-snug text-brown">
                 {item.question}
               </summary>
