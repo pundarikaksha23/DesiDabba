@@ -9,6 +9,7 @@ export type RouteId =
   | 'weeklyMeals'
   | 'catering'
   | 'privateChef'
+  | 'glazingPlatters'
   | 'gallery'
   | 'contact'
   | 'privacyPolicy'
@@ -96,6 +97,15 @@ export const routeConfig = {
       'Book a premium Desi Dabba private chef experience for intimate Indian dinners, regional tasting menus, and elegant hosted evenings.',
     canonicalUrl: getCanonicalUrl('/private-chef'),
     navigationLabel: 'Private Chef',
+    footerVisibility: 'hidden',
+  },
+  glazingPlatters: {
+    path: '/glazing-platters',
+    pageTitle: 'Glazing Platters',
+    metaDescription:
+      'Explore Desi Dabba glazing platters for celebrations, office gatherings, host-ready sharing menus, and custom South Asian platter styling.',
+    canonicalUrl: getCanonicalUrl('/glazing-platters'),
+    navigationLabel: 'Glazing Platters',
     footerVisibility: 'hidden',
   },
   gallery: {

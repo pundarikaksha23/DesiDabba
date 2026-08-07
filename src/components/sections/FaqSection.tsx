@@ -7,7 +7,7 @@ type FaqSectionProps = {
   eyebrow: string
   title: string
   description?: string
-  items: FaqItem[]
+  items: readonly FaqItem[]
   icon?: ReactNode
 }
 

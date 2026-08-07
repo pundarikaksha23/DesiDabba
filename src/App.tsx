@@ -11,6 +11,7 @@ const About = lazy(() => import('./pages/About'))
 const Services = lazy(() => import('./pages/Services'))
 const Catering = lazy(() => import('./pages/Catering'))
 const PrivateChef = lazy(() => import('./pages/PrivateChef'))
+const GlazingPlatters = lazy(() => import('./pages/GlazingPlatters'))
 const Gallery = lazy(() => import('./pages/Gallery'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Legal = lazy(() => import('./pages/Legal'))
@@ -31,6 +32,7 @@ export default function App() {
             <Route path={routeSegments.weeklyMeals} element={<Menu />} />
             <Route path={routeSegments.catering} element={<Catering />} />
             <Route path={routeSegments.privateChef} element={<PrivateChef />} />
+            <Route path={routeSegments.glazingPlatters} element={<GlazingPlatters />} />
             <Route path={routeSegments.gallery} element={<Gallery />} />
             <Route path={routeSegments.contact} element={<Contact />} />
             <Route path={routeSegments.privacyPolicy} element={<Legal />} />

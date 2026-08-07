@@ -64,7 +64,7 @@ export default function Catering() {
           >
             {cateringOccasions.map((occasion) => (
               <motion.div key={occasion.name} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
-                <Card className="h-full transition duration-300 hover:-translate-y-1 hover:shadow-card">
+                <Card className="h-full">
                   <CalendarCheck className="size-8 text-gold" aria-hidden />
                   <h2 className="heading-md mt-5 text-brown">{occasion.name}</h2>
                   <p className="body-sm mt-3 text-brown/70">{occasion.detail}</p>

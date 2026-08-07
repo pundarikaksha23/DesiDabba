@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion'
 import {
-  CalendarCheck,
-  ChefHat,
-  FlameKindling,
   Heart,
   Send,
 } from 'lucide-react'
@@ -13,10 +10,13 @@ import { Container } from '../components/Container'
 import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { WhatsappIcon } from '../components/WhatsappIcon'
+import { FaqSection } from '../components/sections/FaqSection'
 import { ImageGalleryGrid } from '../components/sections/ImageGalleryGrid'
+import { SplitHero } from '../components/sections/SplitHero'
 import { TimelineGrid } from '../components/sections/TimelineGrid'
 import {
   experienceNotes,
+  privateChefFaq,
   privateChefGallery,
   privateChefOccasions,
   privateChefProcess,
@@ -29,41 +29,25 @@ import { routes } from '../config/routes'
 export default function PrivateChef() {
   return (
     <>
-      <section className="relative overflow-hidden bg-maroon-900 text-cream-50">
-        <div className="absolute inset-0">
-          <img
-            src={pageHeroImages.privateChef}
-            alt="Private chef Indian dinner table with elegant dishes and accompaniments"
-            width="1200"
-            height="1800"
-            className="h-full w-full object-cover object-[48%_56%] opacity-56"
-            sizes="100vw"
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(53,17,15,0.96),rgba(72,24,21,0.78)_48%,rgba(53,17,15,0.20))]" />
-        </div>
-
-        <Container className="relative flex min-h-[82svh] flex-col justify-center pb-16 pt-28 sm:min-h-[88svh]">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="max-w-2xl"
-          >
-            <p className="inline-flex max-w-full items-center gap-2 rounded-md border border-cream-50/20 bg-cream-50/10 px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-cream-50/90 backdrop-blur sm:rounded-full sm:px-4 sm:text-xs sm:tracking-[0.18em]">
-              <ChefHat className="size-4 text-gold" aria-hidden />
-              Private Chef
-            </p>
-            <h1 className="display-xl mt-7 text-cream-50">A soulful Indian table, cooked close to the people you love.</h1>
-            <p className="body-lg mt-6 max-w-xl text-cream-50/82">
-              An intimate chef-led experience shaped around memory, pacing, and the quiet pleasure of being fully hosted
-              in your own space.
-            </p>
-          </motion.div>
-        </Container>
-      </section>
+      <SplitHero
+        eyebrow="Private Chef"
+        title="A soulful Indian table, cooked close to the people you love."
+        description="An intimate chef-led experience shaped around memory, pacing, and the quiet pleasure of being fully hosted in your own space."
+        imageAlt="Private chef Indian dinner table with elegant dishes and accompaniments"
+        imagePosition="48% 56%"
+        imageSrc={pageHeroImages.privateChef}
+        imageHeightClass="h-80 w-full object-cover sm:h-[33rem]"
+        columnsClass="lg:grid-cols-[0.94fr_1.06fr]"
+        actions={
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button to="#booking">Begin booking</Button>
+            <Button to={site.whatsapp} variant="secondary">
+              <WhatsappIcon className="size-4" />
+              WhatsApp
+            </Button>
+          </div>
+        }
+      />
 
       <Section tone="cream">
         <Container>
@@ -84,7 +68,7 @@ export default function PrivateChef() {
 
               return (
                 <motion.div key={item.title} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
-                  <Card className="h-full transition duration-300 hover:-translate-y-1 hover:shadow-card">
+                  <Card className="h-full">
                     <Icon className="size-8 text-gold" aria-hidden />
                     <h2 className="heading-md mt-5 text-brown">{item.title}</h2>
                     <p className="body-sm mt-3 text-brown/70">{item.copy}</p>
@@ -123,10 +107,9 @@ export default function PrivateChef() {
         description="The planning is clear, the menu is personal, and the service is designed to feel quietly handled."
         items={privateChefProcess}
         tone="green"
-        variant="dark"
       />
 
-      <Section id="sample-menu" tone="cream">
+      <Section id="sample-menu">
         <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
             <p className="eyebrow">Sample Menu</p>
@@ -155,32 +138,12 @@ export default function PrivateChef() {
         imageClassName="block h-full w-full object-cover transition duration-700 hover:scale-105"
       />
 
-      <Section tone="cream">
-        <Container className="grid gap-5 md:grid-cols-2">
-          <Card className="h-full bg-maroon text-cream-50">
-            <FlameKindling className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-6">Pricing CTA</p>
-            <h2 className="heading-md mt-3 text-cream-50">Private chef evenings are quoted around the table.</h2>
-            <p className="body-sm mt-4 text-cream-50/72">
-              Pricing depends on guest count, courses, menu direction, prep complexity, staffing, and travel. Share the
-              shape of the evening and we will prepare a thoughtful estimate.
-            </p>
-          </Card>
-
-          <Card className="h-full">
-            <CalendarCheck className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-6">Booking CTA</p>
-            <h2 className="heading-md mt-3 text-brown">Start with the date, the guests, and the feeling.</h2>
-            <p className="body-sm mt-4 text-brown/70">
-              We will help translate that into menu flow, service style, and the practical details that make the night
-              feel relaxed.
-            </p>
-            <Button to="#booking" variant="secondary" className="mt-7">
-              Begin booking
-            </Button>
-          </Card>
-        </Container>
-      </Section>
+      <FaqSection
+        eyebrow="FAQ"
+        title="Useful details before you book the evening."
+        description="A few answers that help hosts understand fit, menu direction, and what the service needs from the room."
+        items={privateChefFaq}
+      />
 
       <Section id="booking" tone="maroon">
         <Container className="grid items-center gap-8 md:grid-cols-[1fr_auto]">

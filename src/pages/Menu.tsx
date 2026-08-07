@@ -9,7 +9,10 @@ import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { WhatsappIcon } from '../components/WhatsappIcon'
 import { FaqSection } from '../components/sections/FaqSection'
-import { weeklyMeals } from '../data/menu'
+import { ImageGalleryGrid } from '../components/sections/ImageGalleryGrid'
+import { SplitHero } from '../components/sections/SplitHero'
+import { TimelineGrid } from '../components/sections/TimelineGrid'
+import { weeklyMeals, weeklyMealsGallery, weeklyMealsProcess } from '../data/menu'
 import { fadeUp, stagger, viewportOnce } from '../utils/motion'
 import { routes } from '../config/routes'
 import { site } from '../config/site'
@@ -17,38 +20,55 @@ import { site } from '../config/site'
 export default function Menu() {
   return (
     <>
-      <Section className="page-offset" spacing="tight">
-        <Container className="grid items-end gap-10 lg:grid-cols-[1fr_0.74fr]">
-          <div>
-            <p className="eyebrow">Weekly Meals</p>
-            <h1 className="display-xl mt-3 text-brown">A rotating Indian lunch ritual for weeks that move fast.</h1>
-            <p className="body-lg mt-5 max-w-2xl text-brown/72">
-              Thoughtful dabbas built around comfort, balance, and the small pleasure of opening a meal that was planned
-              with your day in mind.
-            </p>
-          </div>
-
-          <Card padded={false} className="overflow-hidden bg-maroon text-cream-50">
-            <img
-              src={pageHeroImages.weeklyMeals}
-              alt="Plated Indian weekly meal with curry, rice, and fresh accompaniments"
-              width="1200"
-              height="1800"
-              className="h-64 w-full object-cover object-[48%_54%] opacity-88 sm:h-72"
-              sizes="(min-width: 1024px) 38vw, 100vw"
-              loading="eager"
-              decoding="async"
-            />
-            <div className="p-7">
-              <CalendarCheck className="size-8 text-gold" aria-hidden />
-              <p className="eyebrow mt-6">{weeklyMeals.weekOf}</p>
-              <p className="body-lg mt-4 text-cream-50/78">{weeklyMeals.intro}</p>
+      <SplitHero
+        eyebrow="Weekly Meals"
+        title="A rotating Indian lunch ritual for weeks that move fast."
+        description="Thoughtful dabbas built around comfort, balance, and the small pleasure of opening a meal that was planned with your day in mind."
+        imageAlt="Plated Indian weekly meal with curry, rice, and fresh accompaniments"
+        imagePosition="48% 54%"
+        imageSrc={pageHeroImages.weeklyMeals}
+        actions={
+          <div className="max-w-[27rem] rounded-[20px] border border-brown/10 bg-cream-50/78 px-6 py-5 shadow-[0_20px_40px_-30px_rgba(59,42,33,0.42)] backdrop-blur-sm">
+            <div className="flex items-start gap-4">
+              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-maroon text-gold">
+                <CalendarCheck className="size-5" aria-hidden />
+              </span>
+              <div>
+                <p className="eyebrow">{weeklyMeals.weekOf}</p>
+                <p className="mt-3 text-[15.5px] leading-[1.68] text-brown/74">{weeklyMeals.intro}</p>
+              </div>
             </div>
-          </Card>
+          </div>
+        }
+      />
+
+      <Section tone="cream">
+        <Container>
+          <SectionHeader
+            eyebrow="Why Weekly Meals"
+            title="The relief is practical. The feeling is personal."
+            description="Weekly meals are meant to remove decision fatigue without making food feel automated."
+          />
+          <motion.div
+            className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {weeklyMeals.benefits.map((benefit) => (
+              <motion.div key={benefit.title} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
+                <Card className="h-full">
+                  <h3 className="heading-md text-maroon">{benefit.title}</h3>
+                  <p className="body-sm mt-3 text-brown/70">{benefit.description}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </Container>
       </Section>
 
-      <Section tone="cream">
+      <Section>
         <Container>
           <SectionHeader
             eyebrow="Weekly Rotating Menu"
@@ -71,7 +91,7 @@ export default function Menu() {
         </Container>
       </Section>
 
-      <Section>
+      <Section tone="green">
         <Container className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
           <Card className="bg-green text-cream-50">
             <PackageCheck className="size-8 text-gold" aria-hidden />
@@ -106,31 +126,19 @@ export default function Menu() {
         </Container>
       </Section>
 
-      <Section tone="cream">
-        <Container>
-          <SectionHeader
-            eyebrow="Benefits"
-            title="The relief is practical. The feeling is personal."
-            description="Weekly meals are meant to remove decision fatigue without making food feel automated."
-          />
-          <motion.div
-            className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-          >
-            {weeklyMeals.benefits.map((benefit) => (
-              <motion.div key={benefit.title} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
-                <Card className="h-full transition duration-300 hover:-translate-y-1 hover:shadow-card">
-                  <h3 className="heading-md text-maroon">{benefit.title}</h3>
-                  <p className="body-sm mt-3 text-brown/70">{benefit.description}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
+      <ImageGalleryGrid
+        eyebrow="Gallery"
+        title="A glimpse of the kind of weekday comfort we mean."
+        description="Freshly packed dabbas, warm mains, and balanced plates designed to fit real household rhythm."
+        items={weeklyMealsGallery}
+      />
+
+      <TimelineGrid
+        eyebrow="How It Works"
+        title="A simple weekly rhythm from first message to dinner on the table."
+        description="The process stays straightforward so the meals can slide into your week without adding new friction."
+        items={weeklyMealsProcess}
+      />
 
       <FaqSection
         eyebrow="FAQ"

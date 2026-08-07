@@ -7,14 +7,14 @@ type BrandLinkProps = {
 
 const variants = {
   header: {
-    link: 'inline-flex min-w-0 items-start gap-2 text-left',
-    title: 'block truncate font-serif text-[30px] font-bold leading-none tracking-[0.01em] text-[#5C1A2B]',
-    tagline: 'mt-1 hidden text-[9px] font-semibold uppercase tracking-[0.23em] text-[#CE9A3A] sm:block',
+    link: 'inline-flex min-w-0 items-baseline gap-[9px] text-left leading-none',
+    title: 'brand-link-title block truncate text-[26px]',
+    tagline: 'hidden',
   },
   footer: {
     link: 'inline-flex flex-col items-start',
-    title: 'block font-serif text-2xl font-bold leading-none',
-    tagline: 'mt-1 text-[9.5px] font-semibold uppercase tracking-[0.25em] text-[#CE9A3A]',
+    title: 'brand-link-title block text-2xl text-cream-50',
+    tagline: 'brand-link-tagline mt-1 text-[9.5px] tracking-[0.25em]',
   },
 }
 
@@ -32,7 +32,7 @@ export function BrandLink({ variant = 'header' }: BrandLinkProps) {
         <span className={classes.tagline}>Simple Sustainable Soulful</span>
       </span>
       {variant === 'header' && (
-        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#CE9A3A]" aria-hidden />
+        <span className="brand-link-dot size-[6px] -translate-y-[3px]" aria-hidden />
       )}
     </Link>
   )

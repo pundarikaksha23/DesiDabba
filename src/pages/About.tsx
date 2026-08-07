@@ -22,7 +22,6 @@ export default function About() {
         imageSrc={pageHeroImages.about}
         imageWidth={1800}
         imageHeight={1200}
-        imageHeightClass="h-80 w-full object-cover sm:h-[29rem]"
       />
 
       <Section tone="cream">
@@ -135,7 +134,7 @@ export default function About() {
           >
             {whyDesiDabba.map((point) => (
               <motion.div key={point} variants={fadeUp}>
-                <Card className="transition duration-300 hover:-translate-y-1 hover:shadow-card">
+                <Card>
                   <p className="font-serif text-2xl font-semibold leading-snug text-maroon">{point}</p>
                 </Card>
               </motion.div>
@@ -190,7 +189,7 @@ export default function About() {
 
               return (
                 <motion.div key={value.title} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
-                  <Card className="h-full transition duration-300 hover:-translate-y-1 hover:shadow-card">
+                  <Card className="h-full">
                     <span className="icon-tile">
                       <Icon className="size-5" aria-hidden />
                     </span>

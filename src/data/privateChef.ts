@@ -1,7 +1,7 @@
 import { ChefHat, Clock, Sparkles } from 'lucide-react'
 import type { ComponentType } from 'react'
 import { privateChefGalleryImages } from '../assets/images/selected-images'
-import type { GalleryImage, TimelineItem } from '../types/content'
+import type { FaqItem, GalleryImage, TimelineItem } from '../types/content'
 
 type IconComponent = ComponentType<{ className?: string; 'aria-hidden'?: boolean }>
 
@@ -75,4 +75,27 @@ export const privateChefGallery: GalleryImage[] = [
   { title: 'Plated regional course', position: '56% center', imageSrc: privateChefGalleryImages[1] },
   { title: 'Private dinner details', position: '68% center', imageSrc: privateChefGalleryImages[2] },
   { title: 'Sweet finish and chai', position: '80% center', imageSrc: privateChefGalleryImages[3] },
+]
+
+export const privateChefFaq: FaqItem[] = [
+  {
+    question: 'How many guests is private chef service best for?',
+    answer:
+      'Most private chef evenings work beautifully for intimate groups, but the exact fit depends on the menu style, kitchen setup, and pacing you want for the night.',
+  },
+  {
+    question: 'Can the menu be built around one region or family preference?',
+    answer:
+      'Yes. Regional references, family favorites, spice comfort, and dietary boundaries are often what make the evening feel personal rather than generic.',
+  },
+  {
+    question: 'Do you cook everything on site?',
+    answer:
+      'Some preparation happens in advance so service can stay smooth, but the final cooking, plating, and table pacing are shaped around your space and the flow of the evening.',
+  },
+  {
+    question: 'What do you need from the host before booking?',
+    answer:
+      'The most useful starting details are the date, guest count, kitchen setup, dietary needs, and the mood or occasion you want the meal to carry.',
+  },
 ]

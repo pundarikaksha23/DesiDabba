@@ -1,11 +1,15 @@
-import { Mail, MapPin, Phone, Send, Clock } from 'lucide-react'
+import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
+import { Badge } from '../components/Badge'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { Container } from '../components/Container'
 import { InputField, SelectField, TextareaField } from '../components/FormField'
 import { Section } from '../components/Section'
-import { openingHours } from '../data/contact'
+import { WhatsappIcon } from '../components/WhatsappIcon'
+import { FaqSection } from '../components/sections/FaqSection'
+import { SplitHero } from '../components/sections/SplitHero'
+import { contactFaq, openingHours } from '../data/contact'
 import { useContactForm } from '../hooks/useContactForm'
 import { site } from '../config/site'
 
@@ -14,74 +18,95 @@ export default function Contact() {
 
   return (
     <>
-      <Section className="page-offset" spacing="tight">
-        <Container className="grid items-end gap-10 lg:grid-cols-[0.92fr_1.08fr]">
-          <div>
-            <p className="eyebrow">Contact</p>
-            <h1 className="display-xl mt-3 text-brown">Tell us what kind of meal you are imagining.</h1>
-            <p className="body-lg mt-5 max-w-2xl text-brown/72">
-              Weekly dabbas, corporate lunches, private chef evenings, wedding tables, or something still taking shape.
-              Start with the details you have, and we will help shape the rest.
-            </p>
-          </div>
+      <SplitHero
+        eyebrow="Contact"
+        title="Tell us what kind of meal you are imagining."
+        description="Weekly dabbas, corporate lunches, private chef evenings, wedding tables, or something still taking shape. Start with the details you have, and we will help shape the rest."
+        imageAlt="Guests gathered around a Desi Dabba event table"
+        imagePosition="54% center"
+        imageSrc={pageHeroImages.contact}
+      />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Card padded={false} className="overflow-hidden sm:col-span-2">
-              <img
-                src={pageHeroImages.contact}
-                alt="Guests gathered around a Desi Dabba event table"
-                width="1200"
-                height="1800"
-                className="h-56 w-full object-cover"
-                style={{ objectPosition: '54% center' }}
-                sizes="(min-width: 1024px) 48vw, 100vw"
-                loading="eager"
-                decoding="async"
-              />
-            </Card>
-            <Card>
-              <Mail className="size-7 text-gold" aria-hidden />
-              <h2 className="heading-md mt-4 text-brown">Email</h2>
-              <a className="body-sm mt-2 block text-brown/70 hover:text-gold" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-            </Card>
-            <Card>
-              <Phone className="size-7 text-gold" aria-hidden />
-              <h2 className="heading-md mt-4 text-brown">Phone</h2>
-              <a className="body-sm mt-2 block text-brown/70 hover:text-gold" href={`tel:${site.phone}`}>
-                {site.phone}
-              </a>
-            </Card>
+      <Section tone="cream">
+        <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <Badge>Start Here</Badge>
+            <h2 className="display-lg mt-5 text-brown">The first message does not need to be perfectly formed.</h2>
+          </div>
+          <div className="body-lg space-y-6 text-brown/72">
+            <p>
+              Some people arrive knowing the exact service they want. Others only know the date, the guest count, or
+              the feeling they want the meal to carry. Both are a good place to begin.
+            </p>
+            <p>
+              The work of the first conversation is simple: understand the occasion, the practical constraints, and the
+              personal details that will make the food feel considered rather than generic.
+            </p>
+            <p>
+              Share what you know now and we will help shape the next steps with care, whether that means weekly
+              delivery, a catered gathering, a private chef dinner, or a custom service direction.
+            </p>
           </div>
         </Container>
       </Section>
 
-      <Section tone="cream">
-        <Container className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
-          <Card className="bg-green text-cream-50">
-            <MapPin className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-6">Business Address</p>
-            <h2 className="heading-md mt-3 text-cream-50">{site.address}</h2>
-            <p className="body-sm mt-3 text-cream-50/72">
-              Visits and tastings are arranged by appointment so the kitchen can stay focused on prep, packing, and service.
+      <Section>
+        <Container className="grid gap-5 md:grid-cols-2">
+          <Card className="h-full bg-maroon text-cream-50">
+            <Mail className="size-8 text-gold" aria-hidden />
+            <p className="eyebrow mt-6">Email</p>
+            <h2 className="heading-md mt-3 text-cream-50">For menus, dates, and detailed enquiries.</h2>
+            <p className="body-sm mt-4 text-cream-50/72">
+              Best when you want to share event notes, dietary details, venue context, or a more considered brief.
             </p>
+            <a className="body-sm mt-6 block text-cream-50 hover:text-gold" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
           </Card>
 
-          <div className="grid min-h-80 place-items-center rounded-lg border border-brown/10 bg-cream-50 p-6 text-center shadow-soft">
-            <div>
-              <MapPin className="mx-auto size-10 text-gold" aria-hidden />
-              <h2 className="heading-md mt-4 text-brown">Find us in Tallinn</h2>
-              <p className="body-sm mx-auto mt-3 max-w-md text-brown/70">
-                {site.serviceArea}. If you are planning an event elsewhere in Estonia, send the date and guest count and
-                we will confirm what is possible.
-              </p>
-              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button to={site.maps} variant="secondary">
-                  Open Map
-                </Button>
-                <Button to={site.whatsapp}>Ask About Your Area</Button>
-              </div>
+          <Card className="h-full bg-green text-cream-50">
+            <Phone className="size-8 text-gold" aria-hidden />
+            <p className="eyebrow mt-6">Phone & WhatsApp</p>
+            <h2 className="heading-md mt-3 text-cream-50">For quick confirmations and faster back-and-forth.</h2>
+            <p className="body-sm mt-4 text-cream-50/72">
+              Best for weekly meal questions, availability checks, delivery clarifications, or urgent event timing.
+            </p>
+            <a className="body-sm mt-6 block text-cream-50 hover:text-gold" href={`tel:${site.phone}`}>
+              {site.phone}
+            </a>
+          </Card>
+        </Container>
+      </Section>
+
+      <Section tone="green">
+        <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p className="eyebrow">Where We Work</p>
+            <h2 className="display-lg mt-3 text-cream-50">Tallinn-based, with planning shaped around the table in front of us.</h2>
+            <p className="body-lg mt-5 text-cream-50/72">
+              Visits and tastings are arranged by appointment so the kitchen can stay focused on prep, packing, and
+              service. We primarily serve Tallinn and selected events across Estonia.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button to={site.maps}>Open map</Button>
+              <Button to={site.whatsapp} variant="ghost">
+                <WhatsappIcon className="size-4" />
+                Ask about your area
+              </Button>
+            </div>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-lg border border-cream-50/12 bg-cream-50/8 p-5 text-cream-50">
+              <MapPin className="size-5 text-gold" aria-hidden />
+              <p className="mt-4 font-serif text-2xl font-semibold leading-snug">{site.address}</p>
+            </div>
+            <div className="rounded-lg border border-cream-50/12 bg-cream-50/8 p-5 text-cream-50">
+              <Clock className="size-5 text-gold" aria-hidden />
+              <p className="mt-4 font-serif text-2xl font-semibold leading-snug">{site.serviceArea}</p>
+            </div>
+            <div className="rounded-lg border border-cream-50/12 bg-cream-50/8 p-5 text-cream-50 sm:col-span-2">
+              <Phone className="size-5 text-gold" aria-hidden />
+              <p className="mt-4 font-serif text-2xl font-semibold leading-snug">We confirm availability, address fit, and event flow before booking.</p>
             </div>
           </div>
         </Container>
@@ -90,9 +115,12 @@ export default function Contact() {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <Clock className="size-8 text-gold" aria-hidden />
+            <Send className="size-8 text-gold" aria-hidden />
             <p className="eyebrow mt-5">Opening Hours</p>
             <h2 className="display-lg mt-3 text-brown">Kitchen rhythm, reply windows, and planning time.</h2>
+            <p className="body-lg mt-5 text-brown/72">
+              We reply as quickly as we can, but we also protect the time needed to cook, pack, and prepare carefully.
+            </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {openingHours.map(([day, time]) => (
@@ -106,17 +134,16 @@ export default function Contact() {
       </Section>
 
       <Section tone="cream">
-        <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <Send className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-5">Contact Form</p>
+            <p className="eyebrow">Contact Form</p>
             <h2 className="display-lg mt-3 text-brown">Share the useful details.</h2>
             <p className="body-lg mt-5 text-brown/72">
               A few clear notes help us reply with the right menu direction, timing questions, and next steps.
             </p>
           </div>
 
-          <form className="card-padded bg-cream-50" onSubmit={handleSubmit} noValidate>
+          <form className="card-padded" onSubmit={handleSubmit} noValidate>
             <div className="grid gap-5 md:grid-cols-2">
               <InputField
                 label="Name"
@@ -180,6 +207,14 @@ export default function Contact() {
         </Container>
       </Section>
 
+      <FaqSection
+        eyebrow="FAQ"
+        title="A few useful answers before you write."
+        description="These are the practical things people often want to know before starting the conversation."
+        items={contactFaq}
+        icon={<Mail className="size-8 text-gold" aria-hidden />}
+      />
+
       <Section tone="maroon">
         <Container className="text-center">
           <p className="eyebrow">Large CTA</p>
@@ -190,7 +225,10 @@ export default function Contact() {
             Send what you know now. We will ask the right questions and help shape the rest with care.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button to={site.whatsapp}>WhatsApp Desi Dabba</Button>
+            <Button to={site.whatsapp}>
+              <WhatsappIcon className="size-4" />
+              WhatsApp Desi Dabba
+            </Button>
             <Button to={`mailto:${site.email}`} variant="ghost">
               Email {site.email}
             </Button>

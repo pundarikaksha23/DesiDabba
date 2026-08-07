@@ -1,9 +1,10 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { BrandLink } from '../components/BrandLink'
-import { navigationLinks } from '../config/navigation'
+import { WhatsappIcon } from '../components/WhatsappIcon'
+import { routes } from '../config/routes'
 import { site } from '../config/site'
 import { premiumEase } from '../utils/motion'
 
@@ -21,6 +22,14 @@ type MotionPreference = {
   reduceMotion: boolean | null
 }
 
+const headerNavigationLinks = [
+  { label: 'Home', href: routes.home },
+  { label: 'Our Story', href: routes.about },
+  { label: 'Services', href: routes.services },
+  { label: 'Menu', href: routes.weeklyMeals },
+  { label: 'Contact', href: routes.contact },
+]
+
 function HeaderBrand({ reduceMotion }: MotionPreference) {
   return (
     <motion.div
@@ -33,32 +42,20 @@ function HeaderBrand({ reduceMotion }: MotionPreference) {
   )
 }
 
-function DesktopNavigation({ reduceMotion }: MotionPreference) {
+function DesktopNavigation() {
   return (
-    <div className="hidden items-center gap-7 text-[16px] font-semibold tracking-normal text-[#3B2A21]/82 min-[720px]:flex">
-      {navigationLinks.map((link) => (
-        <NavLink
+    <nav className="hidden items-center gap-[30px] text-[14.5px] font-medium tracking-[0.01em] text-brown min-[720px]:flex" aria-label="Primary navigation">
+      {headerNavigationLinks.map((link) => (
+        <Link
           key={link.href}
           to={link.href}
-          end={link.href === '/'}
           aria-label={link.label}
-          className="relative transition hover:text-[#5C1A2B]"
+          className="link-underline"
         >
-          {({ isActive }) => (
-            <>
-              <span className={isActive ? 'text-[#5C1A2B]' : ''}>{link.label === 'About' ? 'Our Story' : link.label}</span>
-              {isActive && (
-                <motion.span
-                  layoutId="desktop-active-nav"
-                  className="absolute inset-x-0 -bottom-1 h-0.5 rounded-full bg-[#5C1A2B]"
-                  transition={{ duration: reduceMotion ? 0 : 0.25 }}
-                />
-              )}
-            </>
-          )}
-        </NavLink>
+          {link.label}
+        </Link>
       ))}
-    </div>
+    </nav>
   )
 }
 
@@ -66,7 +63,7 @@ function HeaderLanguageButton({ reduceMotion }: MotionPreference) {
   return (
     <motion.button
       type="button"
-      className="pill-tab inline-flex size-12 items-center justify-center rounded-full border border-[#3B2A21]/15 bg-transparent text-[13px] font-semibold text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B]"
+      className="inline-flex items-center justify-center rounded-full border border-brown/22 bg-transparent px-3 py-[7px] text-[12.5px] font-semibold tracking-[0.08em] text-brown transition hover:border-brown/35"
       aria-label="Current language: Estonian"
       whileHover={reduceMotion ? undefined : { y: -1, scale: 1.02 }}
       whileTap={reduceMotion ? undefined : { scale: 0.98 }}
@@ -81,12 +78,13 @@ function HeaderWhatsappButton({ reduceMotion, className = '' }: MotionPreference
   return (
     <motion.a
       href={site.whatsapp}
-      className={`inline-flex min-h-10 items-center justify-center rounded-full bg-[#5C6B47] px-[18px] text-[13.5px] font-semibold text-[#F6EFE2] no-underline transition hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(59,42,33,0.16)] ${className}`}
+      className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-green px-[18px] text-[13.5px] font-semibold text-cream no-underline transition hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(59,42,33,0.16)] ${className}`}
       aria-label="Chat with Desi Dabba on WhatsApp"
       whileHover={reduceMotion ? undefined : { y: -2, scale: 1.015 }}
       whileTap={reduceMotion ? undefined : { scale: 0.985 }}
       transition={{ duration: reduceMotion ? 0 : 0.2, ease: premiumEase }}
     >
+      <WhatsappIcon className="size-4" />
       WhatsApp
     </motion.a>
   )
@@ -101,7 +99,7 @@ function MobileMenuButton({ open, reduceMotion, onClick }: MobileMenuButtonProps
   return (
     <motion.button
       type="button"
-      className="grid size-[54px] place-items-center rounded-full border border-[#3B2A21]/15 text-[#3B2A21] transition hover:border-[#5C1A2B] hover:text-[#5C1A2B] min-[720px]:hidden"
+      className="nav-pill grid size-[54px] place-items-center min-[720px]:hidden"
       aria-label={open ? 'Close menu' : 'Open menu'}
       aria-controls="mobile-navigation"
       aria-expanded={open}
@@ -137,7 +135,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
         <>
           <motion.button
             type="button"
-            className="fixed inset-x-0 bottom-0 top-[84px] bg-[#3B2A21]/20 min-[720px]:hidden"
+            className="fixed inset-x-0 bottom-0 top-[88px] bg-brown/20 min-[720px]:hidden"
             aria-label="Close menu overlay"
             variants={overlayVariants}
             initial="closed"
@@ -150,7 +148,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
             id="mobile-navigation"
             role="dialog"
             aria-modal="true"
-            className="fixed right-0 top-[84px] z-50 h-[calc(100svh-84px)] w-full max-w-sm border-l border-[#3B2A21]/10 bg-[#F6EFE2] px-5 py-6 shadow-[0_24px_70px_rgba(59,42,33,0.18)] min-[720px]:hidden"
+            className="fixed right-0 top-[88px] z-50 h-[calc(100svh-88px)] w-full max-w-sm border-l border-brown/10 bg-cream px-5 py-6 shadow-[0_24px_70px_rgba(59,42,33,0.18)] min-[720px]:hidden"
             variants={drawerVariants}
             initial="closed"
             animate="open"
@@ -159,7 +157,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
           >
             <div className="flex h-full flex-col">
               <div className="flex flex-col gap-2">
-                {navigationLinks.map((link, index) => (
+                {headerNavigationLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: 18 }}
@@ -172,7 +170,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
                       aria-label={link.label}
                       className={({ isActive }) =>
                         `flex min-h-12 items-center justify-between rounded-md px-4 text-sm font-bold uppercase tracking-[0.14em] transition ${
-                          isActive ? 'bg-[#5C1A2B] text-[#F6EFE2]' : 'text-[#3B2A21]/78 hover:bg-[#EFE6D3] hover:text-[#5C1A2B]'
+                          isActive ? 'bg-maroon text-cream' : 'text-brown/78 hover:bg-cream-100 hover:text-maroon'
                         }`
                       }
                     >
@@ -182,9 +180,9 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
                 ))}
               </div>
 
-              <div className="mt-auto border-t border-cream-50/10 pt-5">
+              <div className="mt-auto border-t border-brown/10 pt-5">
                 <HeaderWhatsappButton reduceMotion={reduceMotion} className="w-full" />
-                <p className="body-sm mt-4 text-[#3B2A21]/58">
+                <p className="body-sm mt-4 text-brown/58">
                   Weekly dabbas, event catering, and private chef bookings.
                 </p>
               </div>
@@ -227,18 +225,18 @@ export function Header() {
 
   return (
     <motion.header
-      className="sticky inset-x-0 top-0 z-50 border-b border-[#3B2A21]/10 bg-[#F6EFE2] text-[#3B2A21] shadow-none transition-colors duration-500"
+      className="sticky inset-x-0 top-0 z-50 border-b border-brown/9 bg-[rgba(246,239,226,0.82)] text-brown backdrop-blur-[14px] transition-colors duration-500"
       initial={false}
       animate={{ y: 0 }}
     >
-      <nav className="mx-auto flex h-[84px] max-w-[1220px] items-center justify-between gap-5 px-7" aria-label="Primary navigation">
+      <div className="mx-auto flex max-w-[1220px] items-center justify-between gap-5 px-7 py-4">
         <HeaderBrand reduceMotion={reduceMotion} />
-        <DesktopNavigation reduceMotion={reduceMotion} />
+        <DesktopNavigation />
         <div className="hidden items-center gap-3 min-[720px]:flex">
           <HeaderLanguageButton reduceMotion={reduceMotion} />
         </div>
         <MobileMenuButton open={open} reduceMotion={reduceMotion} onClick={() => setOpen((value) => !value)} />
-      </nav>
+      </div>
 
       <MobileDrawer open={open} reduceMotion={reduceMotion} onClose={() => setOpen(false)} />
     </motion.header>

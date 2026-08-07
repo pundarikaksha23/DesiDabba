@@ -49,6 +49,7 @@ export const pageHeroImages = {
   weeklyMeals: weeklyMealsService,
   catering: cateringHero,
   privateChef: privateChefHero,
+  glazingPlatters: homeHero,
   contact: contactHero,
 } as const
 
