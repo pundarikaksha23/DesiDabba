@@ -13,7 +13,7 @@ function HomeFooter() {
     <footer className="container-brand bg-cream px-7 pb-10 pt-[clamp(44px,6vw,80px)] text-brown">
       <div className="grid gap-8 border-b border-brown/10 pb-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
         <div>
-          <BrandLink variant="footer" />
+          <BrandLink variant="footer" tone="light" />
           <p className="mt-3 max-w-[34ch] text-[14.5px] leading-[1.6] text-brown/60">
             Simple, Sustainable, Soulful. Indian & South Asian food, made with care in {site.address}.
           </p>
@@ -95,9 +95,8 @@ function DarkFooter() {
     <footer className="bg-maroon-900 text-cream-50/80">
       <div className="container-brand flex flex-wrap gap-11 px-8 pb-8 pt-16">
         <div className="min-w-0 flex-[1_1_260px]">
-          <div className="brand-link-title text-2xl text-cream-50">Desi Dabba</div>
-          <div className="brand-link-tagline mb-5 mt-1 text-[9.5px] tracking-[0.25em] text-gold-600">
-            Simple {separator} Sustainable {separator} Soulful
+          <div className="mb-5">
+            <BrandLink variant="footer" tone="dark" />
           </div>
           <p className="text-sm leading-[1.7] text-cream-50/65">
             South Asian-inspired food experiences,
