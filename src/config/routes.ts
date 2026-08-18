@@ -29,9 +29,9 @@ export type RouteConfig = {
 export const routeConfig = {
   home: {
     path: '/',
-    pageTitle: 'Simple Sustainable Soulful Indian Food',
+    pageTitle: 'Indian Warmth. Global Flavours.',
     metaDescription:
-      'Desi Dabba creates premium Indian weekly meals, catering, and private chef experiences with Scandinavian simplicity and South Asian warmth.',
+      'Desi Dabba brings weekly meals, catering, private dining, and grazing platters to Tallinn with Indian warmth, global flavours, and thoughtful hospitality.',
     canonicalUrl: getCanonicalUrl('/'),
     navigationLabel: 'Home',
     footerVisibility: 'navigation',
@@ -51,7 +51,7 @@ export const routeConfig = {
     metaDescription:
       'The story, mission, vision, philosophy, timeline, and values behind Desi Dabba premium Indian meals and catering.',
     canonicalUrl: getCanonicalUrl('/about'),
-    navigationLabel: 'About',
+    navigationLabel: 'Our Story',
     footerVisibility: 'navigation',
   },
   story: {
@@ -76,7 +76,7 @@ export const routeConfig = {
     path: '/weekly-meals',
     pageTitle: 'Weekly Meals',
     metaDescription:
-      'Explore Desi Dabba weekly rotating Indian meal plans, subscription details, delivery information, benefits, and FAQs.',
+      'Explore Desi Dabba weekly meals in Tallinn with changing menus, vegetarian, vegan, and non-vegetarian options, subscription details, and delivery information.',
     canonicalUrl: getCanonicalUrl('/weekly-meals'),
     navigationLabel: 'Weekly Meals',
     footerVisibility: 'hidden',
@@ -85,7 +85,7 @@ export const routeConfig = {
     path: '/catering',
     pageTitle: 'Catering',
     metaDescription:
-      'Book Desi Dabba premium Indian catering for corporate lunches, weddings, private celebrations, buffet packages, and elegant hosted events.',
+      'Book Desi Dabba catering in Tallinn for gatherings, weddings, office events, private celebrations, and custom food experiences with Indian, Asian, and global flavours.',
     canonicalUrl: getCanonicalUrl('/catering'),
     navigationLabel: 'Catering',
     footerVisibility: 'hidden',
@@ -101,11 +101,11 @@ export const routeConfig = {
   },
   glazingPlatters: {
     path: '/glazing-platters',
-    pageTitle: 'Glazing Platters',
+    pageTitle: 'Grazing Platters',
     metaDescription:
-      'Explore Desi Dabba glazing platters for celebrations, office gatherings, host-ready sharing menus, and custom South Asian platter styling.',
+      'Explore Desi Dabba grazing platters for celebrations, office gatherings, host-ready sharing menus, and warm, beautifully styled food experiences.',
     canonicalUrl: getCanonicalUrl('/glazing-platters'),
-    navigationLabel: 'Glazing Platters',
+    navigationLabel: 'Grazing Platters',
     footerVisibility: 'hidden',
   },
   gallery: {

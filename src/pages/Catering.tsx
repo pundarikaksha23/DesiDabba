@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CalendarCheck, CheckCircle2, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
+import { CalendarCheck, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
@@ -14,37 +14,37 @@ import { SplitHero } from '../components/sections/SplitHero'
 import { TimelineGrid } from '../components/sections/TimelineGrid'
 import {
   bookingProcess,
-  buffetPackages,
+  cateringFormats,
   cateringFaq,
   cateringGallery,
   cateringOccasions,
-  menuHighlights,
+  menuStyles,
 } from '../data/catering'
 import { fadeUp, stagger, viewportOnce } from '../utils/motion'
 import { site } from '../config/site'
 
-const occasionOptions = ['Corporate hosting', 'Wedding or milestone', 'Private celebration', 'Other catered gathering']
+const occasionOptions = ['Small get-together', 'Birthday', 'Wedding', 'Office event', 'Corporate event', 'Private celebration', 'Other']
 
 export default function Catering() {
   return (
     <>
       <SplitHero
         eyebrow="Catering"
-        title="Indian catering with the poise of a beautifully hosted table."
-        description="We design catering around flow, memory, and guest comfort: menus that feel generous without becoming crowded, service that feels polished without losing warmth."
-        imageAlt="Premium Indian catering dishes arranged for a hosted event"
+        title="Thoughtful catering for gatherings, celebrations and events in Tallinn."
+        description="Desi Dabba creates warm, flavourful and beautifully presented food experiences for small gatherings, birthdays, weddings, office events and private celebrations. Our menus are rooted in Indian hospitality, inspired by Asian and global flavours, and shaped around your occasion."
+        imageAlt="Clean buffet-style catering setup with warm, elegant presentation"
         imagePosition="48% 52%"
         imageSrc={pageHeroImages.catering}
         imageHeightClass="h-80 w-full object-cover sm:h-[33rem]"
         columnsClass="lg:grid-cols-[0.94fr_1.06fr]"
         actions={
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to="#catering-form">Request a quote</Button>
-              <Button to={site.whatsapp} variant="secondary">
-                <WhatsappIcon className="size-4" />
-                WhatsApp
-              </Button>
-            </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button to="#catering-form">Request a Quote</Button>
+            <Button to={site.whatsapp} variant="secondary">
+              <WhatsappIcon className="size-4" />
+              WhatsApp
+            </Button>
+          </div>
         }
       />
 
@@ -52,11 +52,11 @@ export default function Catering() {
         <Container>
           <SectionHeader
             eyebrow="Occasions"
-            title="Menus shaped around why people are gathering."
-            description="A catered meal should understand the room before it reaches the table: the pace, the guests, the mood, and the memories in play."
+            title="Catering for every kind of gathering."
+            description="Every event has a different mood, guest list and flow. We create menus that feel generous, balanced and easy to enjoy."
           />
           <motion.div
-            className="mt-12 grid gap-5 md:grid-cols-3"
+            className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -78,12 +78,12 @@ export default function Catering() {
       <Section>
         <Container>
           <SectionHeader
-            eyebrow="Buffet Packages"
-            title="Elegant formats for different scales of hosting."
-            description="Each package is a starting point. We refine the dishes, portions, and service details around your venue and guest list."
+            eyebrow="Catering Formats"
+            title="Choose the format that suits your event."
+            description="Catering is flexible and custom, with formats that suit intimate dinners, celebrations, workplace events and relaxed hosting."
           />
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {buffetPackages.map((item, index) => (
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {cateringFormats.map((item, index) => (
               <motion.div
                 key={item.name}
                 initial={{ opacity: 0, y: 18 }}
@@ -91,25 +91,9 @@ export default function Catering() {
                 viewport={viewportOnce}
                 transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.06 }}
               >
-                <Card className={`h-full ${index === 1 ? 'bg-maroon text-cream-50' : ''}`}>
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{item.serves}</p>
-                  <h2 className={`heading-md mt-4 ${index === 1 ? 'text-cream-50' : 'text-brown'}`}>{item.name}</h2>
-                  <p className={`body-sm mt-3 ${index === 1 ? 'text-cream-50/72' : 'text-brown/70'}`}>
-                    {item.description}
-                  </p>
-                  <ul className="mt-7 space-y-3">
-                    {item.inclusions.map((inclusion) => (
-                      <li
-                        key={inclusion}
-                        className={`flex items-start gap-3 text-sm font-semibold leading-6 ${
-                          index === 1 ? 'text-cream-50/86' : 'text-green'
-                        }`}
-                      >
-                        <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden />
-                        <span>{inclusion}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <Card className={`h-full ${index === 0 ? 'bg-maroon text-cream-50' : ''}`}>
+                  <h2 className={`heading-md ${index === 0 ? 'text-cream-50' : 'text-brown'}`}>{item.name}</h2>
+                  <p className={`body-sm mt-4 ${index === 0 ? 'text-cream-50/78' : 'text-brown/70'}`}>{item.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -120,14 +104,14 @@ export default function Catering() {
       <Section tone="green">
         <Container className="grid items-start gap-10 lg:grid-cols-[0.78fr_1.22fr]">
           <SectionHeader
-            eyebrow="Menu Highlights"
-            title="Dishes with presence, balance, and memory."
-            description="Menus may move across regions, but the standard stays steady: fragrance, contrast, generosity, and a final detail guests notice."
+            eyebrow="Menu Style"
+            title="Menus shaped around your guests and occasion."
+            description="Our catering menus are custom-made for each event. They can include Indian favourites, Asian flavours, vegetarian and vegan dishes, non-vegetarian options, fusion food, sweets, drinks and seasonal additions. We do not show fixed dish names as if they are always available."
             align="left"
             inverse
           />
           <div className="grid gap-4 sm:grid-cols-2">
-            {menuHighlights.map((item) => (
+            {menuStyles.map((item) => (
               <div key={item} className="rounded-lg border border-cream-50/12 bg-cream-50/8 p-5 text-cream-50">
                 <UtensilsCrossed className="size-5 text-gold" aria-hidden />
                 <p className="mt-4 font-serif text-2xl font-semibold leading-snug">{item}</p>
@@ -139,22 +123,22 @@ export default function Catering() {
 
       <ImageGalleryGrid
         eyebrow="Gallery"
-        title="A glimpse of how the table can feel."
-        description="Buffets, dabbas, shared platters, and finishing touches, presented with quiet confidence."
+        title="A glimpse of our catering style."
+        description="Buffet setups, platters, sweets, drinks and table details that show the warm, polished feel of our events."
         items={cateringGallery}
       />
 
       <TimelineGrid
         eyebrow="Booking Process"
-        title="A calm timeline from first note to final plate."
-        description="Planning should feel as considered as the food. We keep the steps clear, paced, and practical."
+        title="Simple catering process."
+        description="We keep the planning practical, warm and easy to follow from the first message to the final quote."
         items={bookingProcess}
       />
 
       <FaqSection
         eyebrow="FAQ"
-        title="Useful answers before we plan the table."
-        description="Catering has many moving parts. The work is to make them feel simple before guests arrive."
+        title="Useful answers before we plan your event."
+        description="A few practical answers to keep the planning simple, especially for custom menus and event logistics."
         items={cateringFaq}
       />
 
@@ -162,10 +146,10 @@ export default function Catering() {
         <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Send className="size-8 text-gold" aria-hidden />
-            <h2 className="display-lg mt-4 text-cream-50">Tell us the table you're setting.</h2>
+            <h2 className="display-lg mt-4 text-cream-50">Planning an event? Let’s create the menu together.</h2>
             <p className="body-lg mt-5 text-cream-50/72">
-              Share the date, guest count, occasion, dietary needs, and anything personal we should understand before
-              suggesting a menu.
+              Share your date, guest count, occasion, location and dietary needs. We will suggest a suitable catering
+              style and prepare a custom quote.
             </p>
             <a href={site.whatsapp} className="btn btn-ghost mt-8">
               <WhatsappIcon className="size-4" />
@@ -180,22 +164,27 @@ export default function Catering() {
             <div className="grid gap-5 md:grid-cols-2">
               <InputField label="Name" name="name" />
               <InputField label="Email" type="email" name="email" />
+              <InputField label="Phone / WhatsApp" name="phone" />
               <InputField label="Event Date" type="date" name="event-date" />
               <InputField label="Guest Count" type="number" name="guest-count" min="1" />
+              <InputField label="Location" name="location" />
             </div>
             <div className="mt-5">
               <SelectField label="Occasion" name="occasion" options={occasionOptions} />
             </div>
             <div className="mt-5">
+              <InputField label="Dietary Needs" name="dietary-needs" />
+            </div>
+            <div className="mt-5">
               <TextareaField
-                label="Notes"
+                label="Notes / Preferred Food Style"
                 rows={5}
                 name="notes"
-                placeholder="Tell us about dietary needs, service style, regional preferences, or the feeling you want the meal to carry."
+                placeholder="Tell us about menu direction, service style, preferred flavours, guest needs, or anything else we should know."
               />
             </div>
             <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto">
-              Send enquiry
+              Request a Quote
               <Sparkles className="size-4" aria-hidden />
             </button>
           </form>

@@ -12,31 +12,31 @@ import { WhatsappIcon } from '../components/WhatsappIcon'
 
 const MotionCardLink = motion.create(Link)
 
-const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Glazing Platters']
+const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters']
 const scrollingMarqueeItems = [...marqueeItems, ...marqueeItems]
 
 const serviceCards = [
   {
     title: 'Weekly Meals',
-    copy: 'Home-style tiffin, rotating each week. Nourishing lunches and dinners, delivered on your schedule.',
+    copy: 'Fresh weekly meals for busy weekdays, with changing menus and vegetarian, vegan, and non-vegetarian options.',
     href: routes.weeklyMeals,
     icon: 'dot',
   },
   {
     title: 'Catering',
-    copy: 'Generous, beautiful spreads for gatherings — from intimate dinners to celebrations of a hundred.',
+    copy: 'Thoughtful catering for gatherings, celebrations, office events, and well-planned occasions in Tallinn.',
     href: routes.catering,
     icon: 'ring',
   },
   {
     title: 'Private Chef',
-    copy: 'A chef in your kitchen for the evening. A slow, personal menu cooked and served in your home.',
+    copy: 'A personal dining experience for homes and private venues, shaped around your guests, occasion, and pace.',
     href: routes.privateChef,
     icon: 'line-y',
   },
   {
-    title: 'Glazing Platters',
-    copy: 'Effortless hosting. Abundant platters of chaat, kebabs and sweets, styled and ready to share.',
+    title: 'Grazing Platters',
+    copy: 'Sharing platters with snacks, sweets, and finger food for gatherings, celebrations, and hosted tables.',
     href: routes.glazingPlatters,
     icon: 'line-x',
   },
@@ -124,16 +124,19 @@ export default function Home() {
         <div className="animate-enter">
           <div className="mb-[22px] inline-flex items-center gap-[10px] text-[12.5px] font-semibold uppercase tracking-[0.22em] text-green">
             <span className="h-px w-[26px] bg-gold" />
-            <span>Simple · Sustainable · Soulful</span>
+            <span>Warm · Premium · International</span>
           </div>
           <h1 className="mb-5 mt-0 font-serif text-[clamp(40px,6vw,74px)] font-semibold leading-[1.02] tracking-[-0.01em] text-maroon">
-            South Asian warmth,
+            Indian warmth.
             <br />
-            <span className="italic text-brown">Estonian soul.</span>
+            <span className="italic text-brown">Global flavours.</span>
+            <br />
+            Food made with care in Tallinn.
           </h1>
-          <p className="mb-8 mt-0 max-w-[440px] text-[17px] leading-[1.65] text-brown/72">
-            Slow-cooked Indian and South Asian food for weekly meals, gatherings, and quiet celebrations — cooked with
-            care in Tallinn, and shared like family.
+          <p className="mb-8 mt-0 max-w-[560px] text-[17px] leading-[1.65] text-brown/72">
+            Desi Dabba brings warm, thoughtful food experiences to Tallinn — from weekly meals and private dining to
+            catering, grazing platters and celebration menus. Rooted in Indian hospitality and inspired by global
+            flavours, every menu is made with care, balance and soul.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <a
@@ -283,13 +286,14 @@ export default function Home() {
           <div>
             <div className="mb-[18px] text-[12.5px] font-semibold uppercase tracking-[0.22em] text-gold">Our Story</div>
             <h2 className="m-0 mb-[22px] font-serif text-[clamp(26px,3.4vw,40px)] font-medium leading-[1.22] text-cream">
-              “Every dabba we pack carries a little of the home we grew up in — and a lot of the one we've built here in
-              Tallinn.”
+              “Every meal we create carries warmth, care and flavour inspired by where we come from, and shaped by the
+              home we are building here in Tallinn.”
             </h2>
             <p className="m-0 mb-[18px] max-w-[52ch] text-base leading-[1.7] text-cream-200/80">
-              Desi Dabba began at a family table — a longing for the food we missed, cooked slowly and shared
-              generously. Today we bring that same spirit to Estonian kitchens: seasonal, sustainable, and made by hand.
-              No shortcuts, no fuss. Just food with soul.
+              Desi Dabba began with a simple idea: food should feel warm, personal and full of care. Rooted in Indian
+              hospitality and inspired by global flavours, we create weekly meals, catering menus, private chef
+              experiences and grazing platters for homes, offices and celebrations in Tallinn. Every menu is made
+              thoughtfully, with fresh ingredients, balanced flavours and a soulful touch.
             </p>
             <div className="mt-[26px] flex flex-wrap items-center gap-4">
               <div className="font-serif text-2xl italic text-gold">Pooja and Team</div>
@@ -308,11 +312,11 @@ export default function Home() {
         <div className="mb-[30px] flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="mb-3 text-[12.5px] font-semibold uppercase tracking-[0.22em] text-green">From the kitchen</div>
-            <h2 className="m-0 font-serif text-[clamp(28px,3.6vw,42px)] font-semibold text-brown">@desidabba</h2>
+            <h2 className="m-0 font-serif text-[clamp(28px,3.6vw,42px)] font-semibold text-brown">Recent food moments</h2>
           </div>
-          <a href={site.instagram} className="rounded-full bg-cream-100 px-5 py-3 text-sm font-semibold text-maroon no-underline">
-            Follow on Instagram →
-          </a>
+          <Link to={routes.gallery} className="rounded-full bg-cream-100 px-5 py-3 text-sm font-semibold text-maroon no-underline">
+            View gallery →
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {[serviceImages.weeklyMeals, serviceImages.corporateCatering, serviceImages.fusionExperiences, serviceImages.premiumPlatters, ...homeInstagramImages.slice(0, 2)].map((image, index) => (

@@ -15,8 +15,8 @@ export default function About() {
     <>
       <SplitHero
         eyebrow="About Desi Dabba"
-        title="Food that travels well without losing its soul."
-        description="Desi Dabba began with a private kind of longing: for Indian food that could move through modern life and still feel close to the hands, memories, and rituals that made it meaningful."
+        title="Warm food experiences, made with care in Tallinn."
+        description="Desi Dabba brings weekly meals, catering, private chef experiences and grazing platters together under one food brand rooted in Indian hospitality, global flavours and thoughtful service."
         imageAlt="Desi Dabba meal with Indian dishes arranged with care"
         imagePosition="52% center"
         imageSrc={pageHeroImages.about}
@@ -28,7 +28,7 @@ export default function About() {
         <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
             <Badge>Our Story</Badge>
-            <h2 className="display-lg mt-5 text-brown">A dabba is never just a container.</h2>
+            <h2 className="display-lg mt-5 text-brown">A food brand built around warmth, care and practical hospitality.</h2>
           </div>
           <motion.div
             className="body-lg space-y-6 text-brown/72"
@@ -38,17 +38,14 @@ export default function About() {
             viewport={viewportOnce}
           >
             <motion.p variants={fadeUp}>
-              It is timing, care, appetite, memory, and someone quietly asking: will this meal still make you feel
-              looked after when you open it later?
+              Desi Dabba began with a simple idea: food should feel warm, personal and full of care. Rooted in Indian
+              hospitality and inspired by global flavours, we create weekly meals, catering menus, private chef
+              experiences and grazing platters for homes, offices and celebrations in Tallinn. Every menu is made
+              thoughtfully, with fresh ingredients, balanced flavours and a soulful touch.
             </motion.p>
             <motion.p variants={fadeUp}>
-              That question became the heart of Desi Dabba. We were not trying to make Indian food more modern by
-              removing its warmth. We were trying to make the service around it more graceful, more dependable, and more
-              in tune with the way people actually eat now.
-            </motion.p>
-            <motion.p variants={fadeUp}>
-              So we built around dishes that hold their character: slow gravies, fragrant rice, soft breads, sharp
-              pickles, cooling raita, and sweets that feel like a final note rather than an obligation.
+              That same care shapes how we think about delivery, catering, private dining and shared tables across
+              Tallinn, with menus designed to feel clear, balanced and genuinely welcoming.
             </motion.p>
           </motion.div>
         </Container>
@@ -65,10 +62,10 @@ export default function About() {
             <Card className="h-full bg-maroon text-cream-50">
               <FlameKindling className="size-8 text-gold" aria-hidden />
               <p className="eyebrow mt-6">Mission</p>
-              <h2 className="heading-md mt-3 text-cream-50">To make everyday Indian food feel intentionally cared for.</h2>
+              <h2 className="heading-md mt-3 text-cream-50">To create warm, thoughtful food experiences people can trust.</h2>
               <p className="body-sm mt-4 text-cream-50/72">
-                We cook for people who want nourishment with memory in it: meals that are balanced, beautifully packed,
-                and easy to bring into a workday, family rhythm, or gathering without losing emotional texture.
+                We want weekly meals, catering and private dining to feel well-planned, balanced and genuinely cared for,
+                without becoming complicated or overly formal.
               </p>
             </Card>
           </motion.div>
@@ -83,11 +80,11 @@ export default function About() {
               <UtensilsCrossed className="size-8 text-gold" aria-hidden />
               <p className="eyebrow mt-6">Vision</p>
               <h2 className="heading-md mt-3 text-cream-50">
-                To become the most trusted modern Indian table for ordinary weeks and important days.
+                To become a trusted food-experience brand for ordinary weeks and important days in Tallinn.
               </h2>
               <p className="body-sm mt-4 text-cream-50/72">
-                Not by becoming bigger for the sake of it, but by becoming more precise: better menus, warmer service,
-                calmer planning, and food that people remember for how personally it landed.
+                We want the brand to feel warm, premium, flexible and international, with menus that can move naturally
+                from weekday meals to celebrations and custom events.
               </p>
             </Card>
           </motion.div>
@@ -98,13 +95,13 @@ export default function About() {
         <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <SectionHeader
             eyebrow="Brand Philosophy"
-            title="Rooted food. Restrained service. Real warmth."
-            description="Our philosophy is to let Indian cooking keep its depth while editing the surrounding experience with care. Nothing should feel overexplained, overstyled, or stripped of feeling."
+            title="Rooted food, clear service, real warmth."
+            description="Our approach is simple: keep the food full of flavour, keep the service thoughtful, and make the whole experience easy to understand."
             align="left"
             inverse
           />
           <div className="grid gap-4 sm:grid-cols-2">
-            {['Soul before spectacle', 'Detail before decoration', 'Hospitality before performance', 'Memory before novelty'].map(
+            {['Warmth before noise', 'Care before shortcuts', 'Clarity before fuss', 'Flavour before trends'].map(
               (line) => (
                 <div key={line} className="rounded-lg border border-cream-50/12 bg-cream-50/8 p-5 text-cream-50">
                   <p className="font-serif text-2xl font-semibold leading-snug">{line}</p>
@@ -119,10 +116,10 @@ export default function About() {
         <Container className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
           <div>
             <p className="eyebrow">Why Desi Dabba</p>
-            <h2 className="display-lg mt-3 text-brown">For people who can taste when food was thought through.</h2>
+            <h2 className="display-lg mt-3 text-brown">Made for people who want food to feel personal and well considered.</h2>
             <p className="body-lg mt-5 text-brown/72">
-              Desi Dabba exists in the space between home cooking and formal catering: personal enough to feel familiar,
-              polished enough to trust for the moments that matter.
+              Desi Dabba sits between home-style comfort and premium event food: familiar enough to feel welcoming,
+              polished enough to trust for important occasions.
             </p>
           </div>
           <motion.div
@@ -147,8 +144,8 @@ export default function About() {
         <Container>
           <SectionHeader
             eyebrow="Timeline"
-            title="The path was less launch story, more kitchen truth."
-            description="Desi Dabba took shape through repetition: cook, pack, carry, open, taste, adjust, and listen."
+            title="How the brand took shape."
+            description="Desi Dabba grew through practical testing, careful cooking and a better understanding of what people want from everyday meals and hosted events."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {aboutTimeline.map((item, index) => (
@@ -175,7 +172,7 @@ export default function About() {
           <SectionHeader
             eyebrow="Values"
             title="The standards behind the table."
-            description="These are the quiet choices we come back to when deciding what belongs in a box, on a platter, or at a private dinner."
+            description="These are the standards we come back to when shaping weekly meals, platters, catering and private dining."
           />
           <motion.div
             className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"

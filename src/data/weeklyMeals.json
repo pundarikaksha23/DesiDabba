@@ -1,102 +1,104 @@
 {
-  "weekOf": "This Week's Dabba",
-  "intro": "A rotating set of meals built for real weekdays: enough comfort to feel grounded, enough balance to keep the rest of the day light.",
-  "meals": [
+  "weekOf": "17 August – 21 August",
+  "intro": "Desi Dabba weekly meals are made for busy weekdays when you want fresh, comforting and balanced food without cooking every day.",
+  "menuDays": [
     {
-      "name": "Royal Paneer Dabba",
-      "description": "Paneer tikka masala, jeera rice, tandoori roti, dal tadka, kachumber, and smoked chilli pickle.",
-      "price": "€18",
-      "tag": "Vegetarian",
-      "icon": "leaf"
+      "day": "Monday",
+      "dishes": ["Paneer butter masala", "Jeera rice", "Seasonal salad"]
     },
     {
-      "name": "Lucknowi Chicken Dabba",
-      "description": "Slow-cooked chicken korma, saffron pulao, roomali roti, cucumber raita, and onion laccha.",
-      "price": "€21",
-      "tag": "Signature",
-      "icon": "sparkles"
+      "day": "Tuesday",
+      "dishes": ["Chana masala", "Vegetable pulao", "Cucumber raita"]
     },
     {
-      "name": "Coastal Coconut Dabba",
-      "description": "Coconut vegetable curry, lemon rice, pepper rasam, appalam, beetroot pachadi, and mango pickle.",
-      "price": "€19",
-      "tag": "Seasonal",
-      "icon": "flame"
+      "day": "Wednesday",
+      "dishes": ["Thai green vegetable curry", "Steamed rice", "Sesame greens"]
     },
     {
-      "name": "Homestyle Dal Dabba",
-      "description": "Black dal, ghee rice, phulka, aloo gobi, carrot achar, and jaggery sesame bite.",
-      "price": "€16",
-      "tag": "Comfort",
-      "icon": "wheat"
+      "day": "Thursday",
+      "dishes": ["Dal makhani", "Roti", "Roasted cauliflower"]
     },
     {
-      "name": "Green Moong Khichdi Bowl",
-      "description": "Moong khichdi with cumin ghee, roasted vegetables, cucumber salad, papad crumble, and coriander chutney.",
-      "price": "€17",
-      "tag": "Light",
-      "icon": "leaf"
+      "day": "Friday",
+      "dishes": ["Chicken curry or vegan main", "Rice", "Fresh kachumber"]
+    }
+  ],
+  "mealOptions": [
+    {
+      "title": "Vegetarian Meals",
+      "description": "Fresh, balanced and comforting vegetarian weekly meals."
     },
     {
-      "name": "Malabar Egg Curry Dabba",
-      "description": "Coconut egg curry, tomato rice, flaky parotta, beetroot pachadi, lemon pickle, and a cardamom sweet.",
-      "price": "€20",
-      "tag": "Coastal",
-      "icon": "flame"
+      "title": "Vegan Meals",
+      "description": "Plant-based meals prepared with flavour, care and seasonal ingredients."
+    },
+    {
+      "title": "Non-Vegetarian Meals",
+      "description": "Non-vegetarian meals are served once a week as part of the weekly menu."
     }
   ],
   "subscription": {
-    "title": "How the weekly plan works",
-    "description": "Choose your dabbas before the weekly cutoff, pause whenever travel or life gets busy, and let the menu change often enough that lunch still feels cared for.",
+    "title": "How the Weekly Plan Works",
+    "description": "Choose your weekly meal plan before the order cutoff and enjoy fresh meals delivered from Monday to Friday.",
     "steps": [
-      "Pick 3, 5, or 7 meals for the week.",
-      "Choose vegetarian, mixed, light, or family-style preferences.",
-      "Receive packed meals with reheating notes and fresh accompaniments."
+      "Choose your meal preference: vegetarian, vegan or non-vegetarian.",
+      "Confirm your weekly plan before the cutoff.",
+      "Receive fresh meals during the week."
     ]
   },
   "delivery": {
-    "title": "Delivery information",
-    "description": "Weekly meals are prepared in small batches and delivered chilled so the textures hold well. Each dabba is labeled with the dish name, date, and simple reheating guidance.",
+    "title": "Delivery Information",
+    "description": "Weekly meals are prepared fresh and delivered with care.",
     "details": [
-      "Delivery windows: Monday and Wednesday, 9 AM to 12 PM.",
-      "Order cutoff: Friday at 5 PM for the following week.",
-      "Local delivery available within our current service radius."
+      "Delivery days: Monday to Friday",
+      "Order cutoff: Friday at 5 PM for the following week",
+      "Menu: Changes every week",
+      "Options: Vegetarian, vegan and non-vegetarian",
+      "Delivery area: Tallinn and nearby areas, based on availability"
     ]
   },
   "benefits": [
     {
-      "title": "No menu fatigue",
-      "description": "Regional dishes rotate so the week feels varied without asking you to plan from scratch."
+      "title": "Fresh Weekly Menu",
+      "description": "The menu changes every week, so meals stay interesting and seasonal."
     },
     {
-      "title": "Balanced by default",
-      "description": "Each meal is composed with grain, protein, vegetable, freshness, and a small finishing note."
+      "title": "Balanced Meals",
+      "description": "Each meal is planned with comfort, flavour and balance in mind."
     },
     {
-      "title": "Built for reheating",
-      "description": "We choose dishes that hold their shape, aroma, and comfort after delivery."
+      "title": "Made in Small Batches",
+      "description": "Food is prepared with care, not in mass production."
     },
     {
-      "title": "Easy to pause",
-      "description": "Travel week, fasting week, unexpected week: subscriptions can be paused without fuss."
+      "title": "Flexible Plan",
+      "description": "Customers can pause or adjust their plan with advance notice."
     }
   ],
   "faq": [
     {
       "question": "Can I choose vegetarian meals only?",
-      "answer": "Yes. You can choose a vegetarian preference for the week, and we will keep the menu balanced across dal, paneer, vegetables, rice, breads, and accompaniments."
+      "answer": "Yes. Vegetarian meal plans are available."
     },
     {
-      "question": "Are meals delivered hot?",
-      "answer": "Weekly meals are delivered chilled for quality and food safety. Each dabba includes reheating guidance so the meal opens warm, fragrant, and composed."
+      "question": "Do you offer vegan meals?",
+      "answer": "Yes. Vegan options are available based on the weekly menu."
     },
     {
-      "question": "Can I skip a week?",
-      "answer": "Yes. Weekly plans are designed around real schedules, so you can pause before the cutoff and resume when you are ready."
+      "question": "Is non-vegetarian food available?",
+      "answer": "Yes. A non-vegetarian meal is served once a week."
+    },
+    {
+      "question": "Can I skip or pause a week?",
+      "answer": "Yes. The plan can be paused with advance notice."
     },
     {
       "question": "Do you handle dietary notes?",
-      "answer": "We can accommodate many common preferences when shared ahead of the cutoff. For severe allergies, contact us before subscribing so we can confirm what is possible."
+      "answer": "Yes. Please share allergies, spice preferences or dietary restrictions before confirming your plan."
+    },
+    {
+      "question": "What is a tiffin / dabba?",
+      "answer": "A tiffin, also called a dabba, is a reusable meal box used to carry fresh home-style food. At Desi Dabba, we deliver meals in a hot tiffin box that is microwave-safe and dishwasher-safe, making it easy to heat, eat and reuse."
     }
   ]
 }

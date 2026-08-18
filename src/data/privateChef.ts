@@ -13,18 +13,18 @@ export type ExperienceNote = {
 
 export const experienceNotes: ExperienceNote[] = [
   {
-    title: 'A menu with a point of view',
-    copy: 'Built around one region, one season, one memory, or one mood, so the evening feels composed instead of assembled.',
+    title: 'A menu with clear direction',
+    copy: 'Menus can be shaped around a region, season, family preference or occasion so the meal feels consistent from start to finish.',
     icon: Sparkles,
   },
   {
-    title: 'A kitchen that moves quietly',
-    copy: 'Prep, plating, pacing, and reset are handled with calm attention, letting the host stay present at the table.',
+    title: 'A kitchen that runs smoothly',
+    copy: 'Prep, plating, pacing and reset are handled carefully, so the host can stay with guests instead of managing service.',
     icon: ChefHat,
   },
   {
     title: 'A meal paced for conversation',
-    copy: 'Courses arrive with enough ceremony to feel special and enough ease to keep the room warm.',
+    copy: 'Courses are timed to keep the evening relaxed, comfortable and easy to enjoy.',
     icon: Clock,
   },
 ]
@@ -42,22 +42,22 @@ export const privateChefProcess: TimelineItem[] = [
   {
     step: '01',
     title: 'Tell us the room',
-    description: 'Share the guest count, kitchen setup, dietary needs, occasion, and the tone you want the evening to carry.',
+    description: 'Share the guest count, kitchen setup, dietary needs, occasion and the kind of meal you want to host.',
   },
   {
     step: '02',
     title: 'Shape the menu',
-    description: 'We propose a seasonal Indian menu with course flow, plating notes, and thoughtful alternates where needed.',
+    description: 'We propose an Indian menu with course flow, service details and suitable alternatives where needed.',
   },
   {
     step: '03',
     title: 'Prepare with precision',
-    description: 'Ingredients, prep, timing, and service details are planned before the chef arrives, so the evening can feel effortless.',
+    description: 'Ingredients, prep, timing and service details are planned before the chef arrives, so the evening runs smoothly.',
   },
   {
     step: '04',
     title: 'Serve and settle',
-    description: 'The chef cooks, plates, and closes the service with the kind of care that lets the host return to the table.',
+    description: 'The chef cooks, plates and wraps up service so the host can stay focused on the guests.',
   },
 ]
 
@@ -81,21 +81,21 @@ export const privateChefFaq: FaqItem[] = [
   {
     question: 'How many guests is private chef service best for?',
     answer:
-      'Most private chef evenings work beautifully for intimate groups, but the exact fit depends on the menu style, kitchen setup, and pacing you want for the night.',
+      'Private chef service works best for intimate groups, but the right size depends on the menu, kitchen setup and service style you want.',
   },
   {
     question: 'Can the menu be built around one region or family preference?',
     answer:
-      'Yes. Regional references, family favorites, spice comfort, and dietary boundaries are often what make the evening feel personal rather than generic.',
+      'Yes. We can shape the menu around a region, family favourites, spice comfort and dietary needs.',
   },
   {
     question: 'Do you cook everything on site?',
     answer:
-      'Some preparation happens in advance so service can stay smooth, but the final cooking, plating, and table pacing are shaped around your space and the flow of the evening.',
+      'Some preparation happens in advance, but the final cooking, plating and service are planned around your space.',
   },
   {
     question: 'What do you need from the host before booking?',
     answer:
-      'The most useful starting details are the date, guest count, kitchen setup, dietary needs, and the mood or occasion you want the meal to carry.',
+      'The most useful starting details are the date, guest count, kitchen setup, dietary needs and the kind of meal you want to host.',
   },
 ]

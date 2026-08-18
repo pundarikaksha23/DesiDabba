@@ -5,12 +5,15 @@ import {
   serviceImages,
 } from '../assets/images/selected-images'
 
-export type ServicePriceBox = {
+export type Service = {
   label: string
-  value?: string
-  note?: string
-  detail: string
-  highlight?: boolean
+  title: string
+  description: string
+  benefits: string[]
+  href: string
+  cta: string
+  imageAlt: string
+  imagePosition: string
 }
 
 export type DetailedService = {
@@ -22,8 +25,6 @@ export type DetailedService = {
   body: string[]
   benefits?: string[]
   chips?: string[]
-  price?: ServicePriceBox
-  priceCards?: ServicePriceBox[]
   image: string
   imageAlt: string
   reverse: boolean
@@ -33,34 +34,27 @@ export const serviceHeroAnchors = [
   { label: 'Weekly Meals', href: '#weekly-meals' },
   { label: 'Event Catering', href: '#event-catering' },
   { label: 'Private Chef', href: '#private-chef' },
-  { label: 'Elegant Platters', href: '#platters' },
+  { label: 'Grazing Platters', href: '#platters' },
 ] as const
 
 export const detailedServices: DetailedService[] = [
   {
     id: 'weekly-meals',
     number: '01',
-    eyebrow: 'Weekly Meal Subscription',
-    title: 'Home-style Indian dinners. Delivered to your door.',
-    lead: 'A warm, wholesome dinner waiting for you every evening — made fresh, delivered on time, no fuss.',
+    eyebrow: 'Weekly Meals',
+    title: 'Fresh weekly meals, delivered Monday to Friday in Tallinn.',
+    lead: 'Comforting, balanced meals for busy weekdays — with a menu that changes each week and stays easy to enjoy.',
     body: [
-      'Life in Tallinn is busy. Cooking a fresh, balanced meal every evening is not always possible. That is where Desi Dabba steps in. Each week, we prepare a rotating menu of home-style Indian dinners — made from quality ingredients, cooked with care, and delivered warm to your door between 18:00 and 20:00, Monday to Friday.',
-      'Whether you are a working professional, a family craving something different, or an expat missing the flavours of home — our weekly subscription brings the comfort of a home-cooked South Asian meal, right to your table.',
+      'Life in Tallinn is busy. Cooking a fresh, balanced meal every day is not always possible. That is where Desi Dabba steps in. Each week, we prepare a changing menu of fresh weekday meals with Indian and Asian flavours, seasonal variety and home-style comfort.',
+      'Choose a vegetarian, vegan or non-vegetarian plan, confirm before the weekly cutoff and enjoy meals delivered Monday to Friday. The website does not lock you into a fixed restaurant-style list — the menu changes with the week.',
     ],
     benefits: [
-      'One fresh home-style dinner per day, Monday to Friday',
-      'Rotating weekly menu — curry, dal, rice, bread and sides',
-      'Vegetarian, selected non-vegetarian and vegan options',
-      'Delivery between 18:00 and 20:00 in Tallinn',
-      'Designed for working professionals, families and expats craving comfort food',
+      'Fresh weekly menu that changes every week',
+      'Vegetarian, vegan and non-vegetarian meal options',
+      'Monday to Friday delivery in Tallinn and nearby areas',
+      'Friday 5 PM cutoff for the following week',
+      'Balanced meals prepared in small batches with care',
     ],
-    price: {
-      label: 'Starting from',
-      value: '€85 / week',
-      note: '— including delivery and VAT',
-      detail: 'Final price varies by meal type, dietary preference and delivery area. Custom plans available on request.',
-      highlight: true,
-    },
     image: pageHeroImages.weeklyMeals,
     imageAlt: 'Weekly dinner dabba with rice, curry, bread, and fresh accompaniments',
     reverse: false,
@@ -69,11 +63,11 @@ export const detailedServices: DetailedService[] = [
     id: 'event-catering',
     number: '02',
     eyebrow: 'Event Catering',
-    title: 'Premium catering for moments that matter.',
-    lead: 'Birthdays, weddings, corporate lunches, cultural celebrations — we bring South Asian flavour and elegant presentation to every event.',
+    title: 'Flexible catering for gatherings and events.',
+    lead: 'Birthdays, weddings, corporate lunches and private celebrations with warm flavours, clear planning and polished presentation.',
     body: [
-      'Food is at the heart of every great gathering. At Desi Dabba, we design catering experiences that go beyond a buffet — each menu is crafted around your event, your guests and the story you want to tell. From intimate family celebrations to large corporate gatherings, we bring Indian and South Asian-inspired cuisine with the warmth, care and presentation it deserves.',
-      'We are proud to be one of the first dedicated South Asian catering brands in Estonia — offering flavours, concepts and food experiences that many guests in Tallinn may be discovering for the very first time.',
+      'Desi Dabba creates catering menus around your event, your guests and the way you want food to be served. From intimate family celebrations to larger corporate gatherings, we bring Indian, Asian and global flavours with warm service and polished presentation.',
+      'Our catering is designed to feel flexible, international and welcoming in Tallinn — with thoughtful menus for guests who may want familiar Indian favourites, broader Asian influences, or a more global food experience.',
     ],
     chips: [
       'Birthdays',
@@ -88,21 +82,11 @@ export const detailedServices: DetailedService[] = [
     ],
     benefits: [
       'Customised menu designed around your event and guests',
-      'Premium buffet-style meals, elegant platters and fusion options',
+      'Buffet-style meals, sharing tables, grazing platters and private dining formats',
       'Vegan, vegetarian and gut-friendly options available',
-      'Probiotic drinks and South Asian-inspired beverages',
+      'Probiotic drinks and house beverages',
       'Food display, platter styling and basic serving arrangements',
-      'Events from 10–15 guests to large gatherings — fully scalable',
-    ],
-    priceCards: [
-      {
-        label: 'Pricing',
-        detail: 'Per-head or package · Customised based on guest count, menu, service style and event requirements.',
-      },
-      {
-        label: 'Advance booking',
-        detail: '5–7 days minimum · For large events, weddings and corporate, 2 to 4 weeks preferred.',
-      },
+      'Suitable for small gatherings and larger events',
     ],
     image: cateringGalleryImages[0],
     imageAlt: 'Catering spread event photo',
@@ -112,26 +96,22 @@ export const detailedServices: DetailedService[] = [
     id: 'private-chef',
     number: '03',
     eyebrow: 'Private Chef Hire',
-    title: 'A personal dining experience, crafted just for you.',
-    lead: 'Bring the magic of South Asian cuisine into your home, venue or private event — with a dedicated chef, live cooking and a menu built around you.',
+    title: 'Private dining, planned around your guests.',
+    lead: 'Bring a dedicated chef, live cooking and a custom menu into your home, venue or private event.',
     body: [
-      'Some meals deserve more than a restaurant. Whether you are hosting an intimate dinner, celebrating a special occasion or simply craving a truly personal food experience — our private chef service brings the kitchen to you.',
-      'From South Asian tasting menus and live cooking counters to bespoke private dining experiences, every detail is designed around what you love. This is food as hospitality — personal, thoughtful and unlike anything you have experienced before.',
+      'Private chef service is ideal for intimate dinners, special occasions and home or venue events where you want something more personal than standard catering.',
+      'From Indian tasting menus and live cooking counters to private dining shaped by Asian and global flavours, the menu and service are built around your guests, your space and your preferences.',
+      'Every private chef booking is quoted individually based on the menu, guest count, location and service style.',
     ],
     benefits: [
       'Per-event private chef for home or venue dining',
       'Live cooking counters and interactive food stations',
-      'South Asian tasting menus — curated and personalised',
-      'Fusion menus blending Indian, South Asian and international flavours',
+      'Indian tasting menus — curated and personalised',
+      'Fusion menus blending Indian, Asian and international flavours',
       'Festive and cultural celebration menus',
       'Vegan, vegetarian and allergen-aware menus on request',
     ],
-    chips: ['Home-style Indian', 'South Asian fusion', 'Festive menus', 'Live cooking', 'Tasting menus', 'Vegan & vegetarian'],
-    price: {
-      label: 'Pricing',
-      detail:
-        'Customised per event — based on guest count, menu selection, preparation time, service duration, location and live cooking requirements. Share your vision and we will create a tailored quote.',
-    },
+    chips: ['Home-style Indian', 'Asian fusion', 'Festive menus', 'Live cooking', 'Tasting menus', 'Vegan & vegetarian'],
     image: privateChefGalleryImages[2],
     imageAlt: 'Chef at live counter photo',
     reverse: false,
@@ -139,27 +119,24 @@ export const detailedServices: DetailedService[] = [
   {
     id: 'platters',
     number: '04',
-    eyebrow: 'Elegant Platters',
-    title: 'Beautiful platters. Made to be shared.',
-    lead: 'Curated South Asian-inspired food platters for gatherings of any size — thoughtfully prepared, beautifully presented and full of flavour.',
+    eyebrow: 'Grazing Platters',
+    title: 'Grazing platters for easy hosting.',
+    lead: 'Grazing platters for gatherings of any size, prepared with care and presented cleanly.',
     body: [
-      'Food shared is food remembered. Our elegant platters are designed for moments when presentation matters as much as taste — gatherings, celebrations, office events or simply an evening with people you love.',
-      'Each platter is carefully prepared using fresh ingredients, inspired by South Asian flavours and styled to look as beautiful as it tastes. From vibrant vegetarian spreads to fusion finger food and probiotic drink accompaniments, Desi Dabba platters bring something truly different to any table.',
+      'Our platters are designed for gatherings, celebrations, office events and casual hosting where presentation matters as much as flavour.',
+      'Each platter is prepared with fresh ingredients and shaped by Indian, Asian and global flavours. From vegetarian spreads to fusion finger food and probiotic drink pairings, the selection can be adjusted for the occasion.',
+      'Each platter order is quoted based on guest count, selection and dietary requirements.',
     ],
     benefits: [
-      'South Asian-inspired mezze and sharing platters',
+      'Grazing and sharing platters for warm hosting',
       'Vegetarian, vegan and fusion finger food selections',
       'Festive and celebration platters for cultural events',
       'Gut-friendly ingredients and probiotic drink pairings',
       'Suitable for small gatherings to large events',
       'Custom platter design based on dietary needs and preferences',
     ],
-    price: {
-      label: 'Pricing',
-      detail: 'Customised by size and selection — depends on number of guests, items selected and dietary requirements. Contact us for a quote.',
-    },
     image: serviceImages.premiumPlatters,
-    imageAlt: 'Styled South Asian sharing platter with colorful appetizers',
+    imageAlt: 'Styled grazing platter with colorful appetizers',
     reverse: true,
   },
 ] as const
@@ -168,7 +145,7 @@ export const servicesFaq = [
   {
     question: 'Can I combine services for one event?',
     answer:
-      'Absolutely. Many of our clients combine catering with glazing platters, or add a private chef experience to a larger event. Get in touch and we will put together a package that works for you.',
+      'Absolutely. Many clients combine catering with grazing platters, or add a private chef experience to a larger event. Get in touch and we will suggest a setup that fits your event.',
   },
   {
     question: 'Do you serve clients outside Tallinn?',

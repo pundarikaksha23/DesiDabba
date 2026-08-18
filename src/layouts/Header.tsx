@@ -3,8 +3,8 @@ import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { BrandLink } from '../components/BrandLink'
+import { navigationLinks } from '../config/navigation'
 import { WhatsappIcon } from '../components/WhatsappIcon'
-import { routes } from '../config/routes'
 import { site } from '../config/site'
 import { premiumEase } from '../utils/motion'
 
@@ -22,14 +22,6 @@ type MotionPreference = {
   reduceMotion: boolean | null
 }
 
-const headerNavigationLinks = [
-  { label: 'Home', href: routes.home },
-  { label: 'Our Story', href: routes.about },
-  { label: 'Services', href: routes.services },
-  { label: 'Menu', href: routes.weeklyMeals },
-  { label: 'Contact', href: routes.contact },
-]
-
 function HeaderBrand({ reduceMotion }: MotionPreference) {
   return (
     <motion.div
@@ -45,7 +37,7 @@ function HeaderBrand({ reduceMotion }: MotionPreference) {
 function DesktopNavigation() {
   return (
     <nav className="hidden items-center gap-[30px] text-[14.5px] font-medium tracking-[0.01em] text-brown min-[720px]:flex" aria-label="Primary navigation">
-      {headerNavigationLinks.map((link) => (
+      {navigationLinks.map((link) => (
         <Link
           key={link.href}
           to={link.href}
@@ -103,6 +95,7 @@ function MobileMenuButton({ open, reduceMotion, onClick }: MobileMenuButtonProps
       aria-label={open ? 'Close menu' : 'Open menu'}
       aria-controls="mobile-navigation"
       aria-expanded={open}
+      aria-haspopup="dialog"
       onClick={onClick}
       whileHover={reduceMotion ? undefined : { scale: 1.04 }}
       whileTap={reduceMotion ? undefined : { scale: 0.96 }}
@@ -157,7 +150,7 @@ function MobileDrawer({ open, reduceMotion, onClose }: MobileDrawerProps) {
           >
             <div className="flex h-full flex-col">
               <div className="flex flex-col gap-2">
-                {headerNavigationLinks.map((link, index) => (
+                {navigationLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: 18 }}

@@ -2,7 +2,7 @@ import { Check } from 'lucide-react'
 import { useState } from 'react'
 import { WhatsappIcon } from '../components/WhatsappIcon'
 import { site } from '../config/site'
-import { detailedServices, serviceHeroAnchors, servicesFaq, type ServicePriceBox } from '../data/services'
+import { detailedServices, serviceHeroAnchors, servicesFaq } from '../data/services'
 
 function Benefit({ children }: { children: string }) {
   return (
@@ -35,36 +35,6 @@ function ServiceImage({ src, alt, minHeightClass }: { src: string; alt: string; 
   )
 }
 
-function PriceBox({ price }: { price: ServicePriceBox }) {
-  const isHighlight = price.highlight
-
-  return (
-    <div
-      className={`${
-        isHighlight
-          ? 'mb-5 rounded-[14px] border border-gold-600/35 bg-[linear-gradient(135deg,#FBEFD6,#F6E2BE)] px-6 py-[22px]'
-          : 'mb-[26px] rounded-[12px] border border-brown-700/10 bg-white px-[22px] py-5'
-      }`}
-    >
-      <div
-        className={`mb-1.5 text-xs font-bold uppercase ${
-          isHighlight ? 'tracking-[2px] text-[#8a5a10]' : 'tracking-[1.5px] text-maroon-700'
-        }`}
-      >
-        {price.label}
-      </div>
-      {price.value ? (
-        <div className="mb-2 font-serif text-[28px] font-bold text-brown-700">
-          {price.value} {price.note ? <span className="text-base font-medium text-brown-700/60">{price.note}</span> : null}
-        </div>
-      ) : null}
-      <div className={isHighlight ? 'text-[13.5px] leading-[1.5] text-brown-700/62' : 'text-[14.5px] leading-[1.6] text-brown-700/75'}>
-        {price.detail}
-      </div>
-    </div>
-  )
-}
-
 export default function Services() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
@@ -76,8 +46,8 @@ export default function Services() {
           Every service, made with the same care.
         </h1>
         <p className="mx-auto mb-10 max-w-[680px] text-[clamp(16px,2vw,19px)] leading-[1.65] text-brown-700/72">
-          From your weekly dinner to your most memorable celebration — Desi Dabba brings South Asian warmth, premium
-          presentation and home-style flavour to every experience we create.
+          From weekday meals to celebrations, Desi Dabba brings Indian warmth, premium
+          presentation and global flavours to every experience we create.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {serviceHeroAnchors.map((anchor) => (
@@ -152,26 +122,6 @@ export default function Services() {
                     </div>
                   ) : null}
 
-                  {service.priceCards?.length ? (
-                    <div className="mb-[26px] flex flex-wrap gap-4">
-                      {service.priceCards.map((card) => (
-                        <div key={card.label} className="flex-[1_1_220px] rounded-[12px] border border-brown-700/10 bg-white px-5 py-[18px]">
-                          <div className="mb-1 text-xs font-bold uppercase tracking-[1.5px] text-maroon-700">{card.label}</div>
-                          {card.value ? <div className="mb-1.5 font-serif text-[24px] font-bold text-brown-700">{card.value}</div> : null}
-                          <div className="text-[14.5px] leading-[1.55] text-brown-700/75">{card.detail}</div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {service.price ? <PriceBox price={service.price} /> : null}
-
-                  {service.id === 'weekly-meals' ? (
-                    <p className="mb-[26px] text-[14.5px] italic leading-[1.6] text-brown-700/70">
-                      Not ready to commit to a full week? We offer trial plans and single-day meal options. Get in touch
-                      to find out what is available this week.
-                    </p>
-                  ) : null}
                 </div>
                 <ServiceImage
                   src={service.image}

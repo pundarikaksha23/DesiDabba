@@ -27,10 +27,10 @@ export default function GlazingPlatters() {
   return (
     <>
       <SplitHero
-        eyebrow="Glazing Platters"
-        title="Host-ready platters with South Asian warmth and a polished eye."
-        description="Designed for easy sharing and immediate visual impact, our platters bring flavor, abundance, and calm presentation to gatherings of every scale."
-        imageAlt="Desi Dabba glazing platter with colorful appetizers and garnishes"
+        eyebrow="Grazing Platters"
+        title="Styled platters for easy hosting and warm, generous sharing."
+        description="Our grazing platters are designed for gatherings where you want the food to look polished, feel generous and stay easy to serve."
+        imageAlt="Desi Dabba grazing platter with colorful appetizers and garnishes"
         imagePosition="48% 52%"
         imageSrc={platterFeatureImage}
         imageHeightClass="h-80 w-full object-cover sm:h-[33rem]"
@@ -50,8 +50,8 @@ export default function GlazingPlatters() {
         <Container>
           <SectionHeader
             eyebrow="Why Platters"
-            title="The easiest way to make the table feel generous."
-            description="Platters are built for hosts who want food to feel abundant, beautiful, and immediately welcoming without managing individual courses."
+            title="An easy way to make the table feel generous."
+            description="Platters work well when you want beautiful food on the table without managing individual courses or a more formal setup."
           />
           <motion.div
             className="mt-12 grid gap-5 md:grid-cols-3"
@@ -81,8 +81,8 @@ export default function GlazingPlatters() {
         <Container>
           <SectionHeader
             eyebrow="Collections"
-            title="Formats that scale from a small visit to a full celebration."
-            description="Each platter collection is a starting point. We adjust item mix, quantity, and styling around the room, the guests, and the mood you want."
+            title="Formats that work for smaller visits and larger celebrations."
+            description="Each platter collection is a starting point. We can adjust the item mix, quantity and styling to suit the occasion."
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {platterCollections.map((collection, index) => (
@@ -123,8 +123,8 @@ export default function GlazingPlatters() {
         <Container className="grid items-start gap-10 lg:grid-cols-[0.78fr_1.22fr]">
           <SectionHeader
             eyebrow="Occasions"
-            title="For gatherings that need ease without looking effortless."
-            description="Platters work beautifully when people are moving, mingling, arriving in waves, or simply sharing a table without the structure of a seated dinner."
+            title="Made for gatherings where easy serving matters."
+            description="Platters work well when guests are moving around, sharing casually or arriving at different times."
             align="left"
             inverse
           />
@@ -141,15 +141,15 @@ export default function GlazingPlatters() {
 
       <ImageGalleryGrid
         eyebrow="Gallery"
-        title="A look at the kind of abundance we mean."
-        description="Color, garnish, texture, and thoughtful layout all matter. These platters are designed to feel celebratory before the first bite."
+        title="A look at our platter style."
+        description="Colour, freshness and layout all matter. These platters are designed to look inviting before the first bite."
         items={platterGallery}
       />
 
       <TimelineGrid
         eyebrow="How It Works"
-        title="A simple process from first message to shared table."
-        description="We keep platter planning straightforward: understand the gathering, shape the selection, style the spread, and deliver it ready to enjoy."
+        title="A simple process from first message to delivery."
+        description="We keep platter planning straightforward: understand the gathering, shape the selection and deliver it ready to enjoy."
         items={platterProcess}
       />
 
@@ -164,13 +164,13 @@ export default function GlazingPlatters() {
         <Container className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
           <div>
             <CalendarCheck className="size-8 text-gold" aria-hidden />
-            <h2 className="display-lg mt-4 max-w-3xl text-cream-50">Tell us the date, the guests, and the kind of table you want.</h2>
+            <h2 className="display-lg mt-4 max-w-3xl text-cream-50">Tell us the date, guest count and platter style you need.</h2>
             <p className="body-lg mt-4 max-w-2xl text-cream-50/72">
-              We will help you choose the right platter format, item mix, and styling direction for the occasion.
+              We will help you choose the right platter format, item mix and styling direction for the occasion.
             </p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
-            <Button to={routes.contact}>Book glazing platters</Button>
+            <Button to={routes.contact}>Book grazing platters</Button>
             <Button to={site.whatsapp} variant="ghost">
               <WhatsappIcon className="size-4" />
               WhatsApp

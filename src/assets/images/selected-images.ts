@@ -1,18 +1,15 @@
 import aboutHero from './about/family-event-portrait-8f0a4221.jpg'
 import privateChefHero from './backgrounds/outdoor-dining-table-drinks-8f0a4381.jpg'
-import cateringHero from './catering/guests-serving-appetizer-buffet-8f0a4341.jpg'
 import corporateCateringService from './catering/rice-sabzi-buffet-chafing-dishes-8f0a4310.jpg'
 import weddingCateringService from './catering/guests-serving-dessert-buffet-8f0a4358.jpg'
 import galleryKitchenDetail from './gallery/guest-appetizer-plate-detail-8f0a4353.jpg'
 import servicesHero from './platters/canape-spoon-appetizer-row-8f0a4281.jpg'
 import fusionExperienceService from './platters/canape-spoon-appetizer-row-8f0a4279.jpg'
 import homeHero from './platters/mixed-canape-platter-table-8f0a4288.jpg'
-import strongestHero from './platters/passed-appetizer-platter-8f0a4277.jpg'
 import premiumPlattersService from './platters/tandoori-skewer-appetizer-platter-8f0a4331.jpg'
 import privateChefService from './team/guest-dining-with-drinks-8f0a4382.jpg'
 import contactHero from './team/event-guests-dining-8f0a4373.jpg'
 import healthyMealPlansService from './weekly-meals/vegetable-curry-chafing-dish-8f0a4315.jpg'
-import weeklyMealsService from './weekly-meals/plated-indian-meal-close-up-8f0a4364.jpg'
 
 import cateringBuffetTable from './catering/guests-serving-buffet-8f0a4224.jpg'
 import cateringChafingDish from './catering/curry-chafing-dish-8f0a4302.jpg'
@@ -43,11 +40,11 @@ import homeInstagramCanape from './platters/canape-spoon-appetizer-row-8f0a4280.
 import homeInstagramGuest from './team/guest-dining-with-drinks-8f0a4384.jpg'
 
 export const pageHeroImages = {
-  home: strongestHero,
+  home: homeHero,
   about: aboutHero,
   services: servicesHero,
-  weeklyMeals: weeklyMealsService,
-  catering: cateringHero,
+  weeklyMeals: privateChefPlatedCourse,
+  catering: corporateCateringService,
   privateChef: privateChefHero,
   glazingPlatters: homeHero,
   contact: contactHero,
@@ -57,14 +54,14 @@ export const storytellingImages = {
   homeAbout: homeHero,
   homeCatering: cateringEventService,
   homePrivateChef: privateChefHero,
-  weeklyMealsFeature: weeklyMealsService,
+  weeklyMealsFeature: galleryHandheldMeal,
   cateringMenu: cateringNaanService,
   privateChefTable: privateChefService,
   contactGathering: contactHero,
 } as const
 
 export const serviceImages = {
-  weeklyMeals: weeklyMealsService,
+  weeklyMeals: galleryHandheldMeal,
   corporateCatering: corporateCateringService,
   weddingCatering: weddingCateringService,
   privateChef: privateChefService,

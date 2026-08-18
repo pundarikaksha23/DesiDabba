@@ -3,47 +3,50 @@ import type { FaqItem, GalleryImage, TimelineItem } from '../types/content'
 
 export const cateringOccasions = [
   {
-    name: 'Corporate Hosting',
-    detail: 'Boardroom lunches, client tables, leadership offsites, and long workshop days that need food to arrive calm and composed.',
+    name: 'Small Get-Togethers',
+    detail: 'Food for intimate gatherings, house parties, family dinners and relaxed evenings with friends.',
   },
   {
-    name: 'Weddings & Family Milestones',
-    detail: 'Generous menus shaped around ceremony, elders, children, pacing, dietary needs, and the dishes families quietly hope to see.',
+    name: 'Birthdays & Private Celebrations',
+    detail: 'Warm and flavourful menus for birthdays, anniversaries, housewarmings and personal milestones.',
   },
   {
-    name: 'Private Celebrations',
-    detail: 'Birthdays, anniversaries, housewarmings, and intimate evenings where the food should feel personal without making hosting heavy.',
+    name: 'Weddings & Family Events',
+    detail: 'Thoughtful catering for weddings, family functions and larger celebrations, with vegetarian, vegan and non-vegetarian options.',
+  },
+  {
+    name: 'Office & Corporate Events',
+    detail: 'Fresh and well-presented food for office lunches, team gatherings, workshops, client meetings and company events.',
   },
 ]
 
-export const buffetPackages = [
+export const cateringFormats = [
   {
-    name: 'The Polished Lunch',
-    serves: '20-60 guests',
-    description: 'A refined office-friendly buffet with fragrant rice, two mains, dal, bread, salad, chutneys, and a sweet finish.',
-    inclusions: ['Vegetarian and mixed menus', 'Labeled dietary notes', 'Chafing setup available'],
+    name: 'Buffet Style',
+    description: 'A generous and elegant setup for weddings, office events, birthdays and larger gatherings.',
   },
   {
-    name: 'The Celebration Table',
-    serves: '40-180 guests',
-    description: 'A fuller spread for family-style abundance: chaat, kebabs, regional mains, breads, rice, accompaniments, and dessert.',
-    inclusions: ['Custom regional direction', 'Dessert and chai add-ons', 'Service staff coordination'],
+    name: 'Sharing Table',
+    description: 'Beautiful food arranged for relaxed gatherings, family-style meals and private celebrations.',
   },
   {
-    name: 'The Signature Feast',
-    serves: '60-260 guests',
-    description: 'A premium event menu with layered courses, live stations, elevated presentation, and planning for guest flow.',
-    inclusions: ['Live station options', 'Menu tasting available', 'Full event planning support'],
+    name: 'Grazing Platters',
+    description: 'Styled platters with snacks, bites, sweets and sharing food for effortless hosting.',
+  },
+  {
+    name: 'Private Dining',
+    description: 'A more personal food experience for homes, private venues and special evenings.',
   },
 ]
 
-export const menuHighlights = [
-  'Mini masala dosa with coconut chutney',
-  'Ajwain paneer tikka with smoked chilli',
-  'Lucknowi chicken korma with saffron pulao',
-  'Coastal coconut vegetable curry',
-  'Dal makhani finished with cumin ghee',
-  'Cardamom phirni with pistachio',
+export const menuStyles = [
+  'Indian and Asian flavours',
+  'Vegetarian and vegan menus',
+  'Non-vegetarian options',
+  'Fusion and comfort food',
+  'Chaat, snacks and sharing bites',
+  'Buffet-style meals',
+  'Sweets, desserts and drinks',
 ]
 
 export const cateringGallery: GalleryImage[] = [
@@ -57,44 +60,54 @@ export const bookingProcess: TimelineItem[] = [
   {
     step: '01',
     title: 'Share the Occasion',
-    description: 'Tell us the date, guest count, setting, dietary needs, and the kind of feeling the meal should leave behind.',
+    description: 'Tell us the date, guest count, location, occasion and dietary needs.',
   },
   {
     step: '02',
-    title: 'Shape the Menu',
-    description: 'We suggest a polished menu direction with courses, formats, service notes, and thoughtful alternatives.',
+    title: 'Choose the Style',
+    description: 'We suggest a menu and service format based on your event.',
   },
   {
     step: '03',
     title: 'Confirm the Details',
-    description: 'Once timing, quantities, setup, and delivery are aligned, we prepare a clear quote and production plan.',
+    description: 'We confirm the menu, quantity, delivery, setup and final quote.',
   },
   {
     step: '04',
-    title: 'Serve With Calm',
-    description: 'On the day, food arrives labeled, composed, and ready for the table, buffet, or hosted service style.',
+    title: 'Enjoy the Event',
+    description: 'Food is prepared with care and delivered or served according to the agreed plan.',
   },
 ]
 
 export const cateringFaq: FaqItem[] = [
   {
-    question: 'How far ahead should we book catering?',
+    question: 'How far in advance should we book catering?',
     answer:
-      'For office lunches, one to two weeks is usually enough. For weddings, large gatherings, or custom regional menus, four to eight weeks gives us better room for planning.',
+      'For small events, please contact us at least a few days in advance. For weddings, corporate events and larger gatherings, earlier booking is recommended.',
   },
   {
-    question: 'Can you support vegetarian and mixed menus together?',
+    question: 'Do you provide vegetarian and vegan options?',
     answer:
-      'Yes. We often design parallel vegetarian and mixed menus so guests feel equally considered rather than treated as an exception.',
+      'Yes. Vegetarian and vegan options are available.',
   },
   {
-    question: 'Do you provide staff and setup?',
+    question: 'Do you provide non-vegetarian options?',
     answer:
-      'For larger buffets and premium events, we can coordinate setup, chafing, labeling, and service support based on the venue and guest count.',
+      'Yes. Non-vegetarian options can be included based on the event menu.',
   },
   {
-    question: 'Can the menu be region-specific?',
+    question: 'Can the menu be customised?',
     answer:
-      'Absolutely. We can build around Punjabi, Gujarati, Bengali, South Indian, coastal, or mixed regional references when shared early in planning.',
+      'Yes. Menus are customised based on the occasion, guest count, dietary needs and preferred food style.',
+  },
+  {
+    question: 'Do you provide setup or staff?',
+    answer:
+      'Basic setup can be discussed. Service staff and additional support can be arranged depending on the event.',
+  },
+  {
+    question: 'Do you mention prices on the website?',
+    answer:
+      'No. Pricing should not be shown on the catering page. Each event is quoted separately based on menu, guest count, location, service style and setup needs.',
   },
 ]

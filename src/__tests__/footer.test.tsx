@@ -7,14 +7,14 @@ import { Footer } from '../layouts/Footer'
 import { renderWithProviders } from '../test/render'
 
 describe('Footer', () => {
-  test('renders brand, navigation, services, contact, legal, and newsletter form', () => {
+  test('renders brand, navigation, services, contact, and legal links', () => {
     renderWithProviders(<Footer />)
 
     expect(screen.getByLabelText(/desi dabba home/i)).toBeTruthy()
-    expect(screen.getByRole('textbox', { name: /email address/i })).toBeTruthy()
-    expect(screen.getByRole('button', { name: /join/i })).toBeTruthy()
-    expect(screen.getByRole('link', { name: site.email })).toBeTruthy()
-    expect(screen.getByRole('link', { name: site.phone })).toBeTruthy()
+    expect(screen.getByRole('link', { name: `Email: ${site.email}` })).toBeTruthy()
+    expect(screen.getByRole('link', { name: `WhatsApp: ${site.phone}` })).toBeTruthy()
+    expect(screen.getByRole('link', { name: /privacy policy/i })).toBeTruthy()
+    expect(screen.getByRole('link', { name: /terms/i })).toBeTruthy()
 
     for (const link of [...navigationLinks, ...footerServiceLinks, ...footerLegalLinks]) {
       expect(screen.getByRole('link', { name: link.label })).toBeTruthy()

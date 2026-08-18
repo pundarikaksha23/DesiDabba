@@ -5,19 +5,19 @@ type IconComponent = ComponentType<{ className?: string; 'aria-hidden'?: boolean
 
 export const aboutTimeline = [
   {
-    year: 'Memory',
-    title: 'The first reference point was home.',
-    copy: 'Not a trend, not a format: just the feeling of opening a steel dabba and knowing someone had thought about your whole day.',
+    year: 'Start',
+    title: 'The first idea was simple.',
+    copy: 'Food should feel warm, personal and dependable, whether it is part of a busy week or a special gathering.',
   },
   {
     year: 'Practice',
-    title: 'Menus became quieter and more intentional.',
-    copy: 'We tested what holds warmth, what travels gracefully, and what still tastes alive after a commute, a meeting, or a long table conversation.',
+    title: 'Menus became more thoughtful.',
+    copy: 'We tested what travels well, what stays balanced, and what still feels fresh and enjoyable after delivery or setup.',
   },
   {
     year: 'Desi Dabba',
-    title: 'A modern service formed around an old kind of care.',
-    copy: 'The food stayed rooted. The experience became more composed: clear menus, polished packing, honest portions, and hospitality without noise.',
+    title: 'A broader food brand took shape.',
+    copy: 'The result is a warm, flexible brand for weekly meals, catering, private chef experiences and grazing platters in Tallinn.',
   },
 ]
 
@@ -27,30 +27,30 @@ export const aboutValues: Array<{
   icon: IconComponent
 }> = [
   {
-    title: 'Cooked With Memory',
-    copy: 'Recipes begin with remembered textures: the softness of dal, the brightness of chutney, the comfort of rice that smells like a kitchen you trust.',
+    title: 'Warm Hospitality',
+    copy: 'We want every meal and event to feel welcoming, personal and thoughtfully prepared from the first message to the final dish.',
     icon: Heart,
   },
   {
-    title: 'Balanced By Design',
-    copy: 'Every meal needs contrast: richness and acid, heat and relief, softness and crunch. Accompaniments are part of the architecture.',
+    title: 'Balanced Flavours',
+    copy: 'Menus are shaped to feel comforting, fresh and well-rounded, with flavour and balance built in from the start.',
     icon: Sparkles,
   },
   {
-    title: 'Packed With Respect',
-    copy: 'A dabba should arrive with dignity. We think about temperature, portioning, lids, labels, and the small pause before someone opens it.',
+    title: 'Thoughtful Delivery',
+    copy: 'We think carefully about packing, delivery, setup and service so the food arrives in good condition and feels easy to enjoy.',
     icon: PackageCheck,
   },
   {
-    title: 'Seasonal Where It Matters',
-    copy: 'Freshness is not decoration. Herbs, vegetables, pickles, and lighter dishes shift with the season so the menu never feels automatic.',
+    title: 'Fresh Ingredients',
+    copy: 'Seasonal ingredients, lighter touches and fresh accompaniments help the menus feel lively rather than repetitive.',
     icon: Leaf,
   },
 ]
 
 export const whyDesiDabba = [
-  'Because Indian food can be premium without becoming precious.',
-  'Because convenience should not flatten culture.',
-  'Because a weekday meal deserves the same care as a celebration table.',
-  'Because hospitality can be calm, clear, and deeply personal.',
+  'Because weekly meals should feel fresh and cared for, not routine.',
+  'Because catering can feel warm, flexible and premium at the same time.',
+  'Because private dining should be personal without becoming complicated.',
+  'Because a food brand can feel rooted in Indian hospitality while still feeling international.',
 ]

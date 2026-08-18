@@ -15,46 +15,35 @@ function HomeFooter() {
         <div>
           <BrandLink variant="footer" tone="light" />
           <p className="mt-3 max-w-[34ch] text-[14.5px] leading-[1.6] text-brown/60">
-            Simple, Sustainable, Soulful. Indian & South Asian food, made with care in {site.address}.
+            Indian warmth, Asian flavours and global food experiences, made with care in {site.address}.
           </p>
         </div>
         <FooterColumn
           tone="light"
           title="Explore"
-          links={[
-            { label: 'Our Story', href: routes.about },
-            { label: 'Services', href: routes.services },
-            { label: 'Menu', href: routes.weeklyMeals },
-            { label: 'Contact', href: routes.contact },
-          ]}
+          links={navigationLinks}
         />
         <FooterColumn
           tone="light"
-          title="Get in touch"
+          title="Services"
+          links={footerServiceLinks}
+        />
+        <FooterColumn
+          tone="light"
+          title="Get in Touch"
           links={[
-            { label: 'WhatsApp', href: site.whatsapp },
-            { label: site.email, href: `mailto:${site.email}` },
+            { label: `WhatsApp: ${site.phone}`, href: site.whatsapp },
+            { label: `Email: ${site.email}`, href: `mailto:${site.email}` },
+            { label: site.address, href: routes.contact },
             { label: 'Instagram', href: site.instagram },
+            { label: 'Facebook', href: site.facebook },
           ]}
         />
-        <div>
-          <h2 className="footer-heading footer-heading-light">Language</h2>
-          <div className="mt-4 flex gap-2">
-            {['EN', 'ET'].map((label) => (
-              <button
-                key={label}
-                type="button"
-                className="nav-pill px-3.5 py-2 text-[12.5px] font-semibold"
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
-      <div className="flex flex-wrap justify-between gap-3 pt-6 text-[13px] text-brown/50">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-[13px] text-brown/50">
         <span>Copyright 2026 Desi Dabba {separator} {site.address}</span>
-        <span>Simple {separator} Sustainable {separator} Soulful</span>
+        <LegalFooterLinks tone="light" />
+        <span>Indian warmth {separator} Asian flavours {separator} Global food experiences</span>
       </div>
     </footer>
   )
@@ -75,7 +64,9 @@ function FooterColumn({ title, links, tone }: { title: string; links: FooterLink
       <h2 className={`footer-heading ${headingTone}`}>{title}</h2>
       <div className={`footer-link-stack ${linkColor}`}>
         {links.map((link) =>
-          link.href.startsWith('http') || link.href.startsWith('mailto:') || link.href.startsWith('tel:') ? (
+          !link.href ? (
+            <span key={`${title}-${link.label}`}>{link.label}</span>
+          ) : link.href.startsWith('http') || link.href.startsWith('mailto:') || link.href.startsWith('tel:') ? (
             <a key={`${title}-${link.label}`} href={link.href} className={`transition ${linkHoverColor}`}>
               {link.label}
             </a>
@@ -90,6 +81,21 @@ function FooterColumn({ title, links, tone }: { title: string; links: FooterLink
   )
 }
 
+function LegalFooterLinks({ tone }: { tone: 'light' | 'dark' }) {
+  const textTone = tone === 'light' ? 'text-brown/55' : 'text-cream-50/55'
+  const hoverTone = tone === 'light' ? 'hover:text-maroon' : 'hover:text-gold-600'
+
+  return (
+    <div className={`flex flex-wrap items-center gap-3 ${textTone}`}>
+      {footerLegalLinks.map((link) => (
+        <Link key={`legal-${link.href}`} to={link.href} className={`transition ${hoverTone}`}>
+          {link.label}
+        </Link>
+      ))}
+    </div>
+  )
+}
+
 function DarkFooter() {
   return (
     <footer className="bg-maroon-900 text-cream-50/80">
@@ -99,64 +105,33 @@ function DarkFooter() {
             <BrandLink variant="footer" tone="dark" />
           </div>
           <p className="text-sm leading-[1.7] text-cream-50/65">
-            South Asian-inspired food experiences,
+            Indian warmth, Asian flavours and global food experiences,
             <br />
             made with care in {site.address}.
           </p>
         </div>
-        <FooterColumn tone="dark" title="Explore" links={navigationLinks.map((link) => ({
-          label: link.label === 'About' ? 'Our Story' : link.label,
-          href: link.href,
-        }))} />
-        <FooterColumn tone="dark" title="Services" links={footerServiceLinks.slice(0, 4).map((link) => ({
-          label: link.label.replace('Corporate Catering', 'Event Catering'),
-          href: link.href,
-        }))} />
+        <FooterColumn tone="dark" title="Explore" links={navigationLinks} />
+        <FooterColumn tone="dark" title="Services" links={footerServiceLinks} />
         <FooterColumn
           tone="dark"
-          title="Get in touch"
+          title="Get in Touch"
           links={[
-            { label: `WhatsApp ${separator} ${site.phone}`, href: site.whatsapp },
-            { label: site.email, href: `mailto:${site.email}` },
+            { label: `WhatsApp: ${site.phone}`, href: site.whatsapp },
+            { label: `Email: ${site.email}`, href: `mailto:${site.email}` },
             { label: site.address, href: routes.contact },
             { label: 'Instagram', href: site.instagram },
+            { label: 'Facebook', href: site.facebook },
           ]}
         />
       </div>
       <div className="border-t border-cream-50/10">
-        <div className="container-brand flex flex-wrap justify-between gap-2.5 px-8 py-5 text-[13px] text-cream-50/55">
+        <div className="container-brand flex flex-wrap items-center justify-between gap-2.5 px-8 py-5 text-[13px] text-cream-50/55">
           <span>Copyright 2026 Desi Dabba. All rights reserved.</span>
+          <LegalFooterLinks tone="dark" />
           <span>{websiteHost}</span>
         </div>
       </div>
     </footer>
-  )
-}
-
-function PreservedFooterLinks() {
-  const hiddenNavigationLinks = navigationLinks.filter((link) =>
-    ['Home', 'About', 'Gallery'].includes(link.label),
-  )
-
-  return (
-    <div className="sr-only">
-      <a href={`tel:${site.phone}`}>{site.phone}</a>
-      {[...hiddenNavigationLinks, ...footerServiceLinks, ...footerLegalLinks].map((link) => (
-        <Link key={`preserved-${link.label}-${link.href}`} to={link.href}>
-          {link.label}
-        </Link>
-      ))}
-    </div>
-  )
-}
-
-function PreservedNewsletterForm() {
-  return (
-    <form className="sr-only" onSubmit={(event) => event.preventDefault()}>
-      <label htmlFor="preserved-footer-email">Email address</label>
-      <input id="preserved-footer-email" name="email" type="email" />
-      <button type="submit">Join</button>
-    </form>
   )
 }
 
@@ -167,8 +142,6 @@ export function Footer() {
   return (
     <>
       {isHome ? <HomeFooter /> : <DarkFooter />}
-      <PreservedNewsletterForm />
-      <PreservedFooterLinks />
     </>
   )
 }
