@@ -7,8 +7,20 @@ import { site } from '../config/site'
 
 const websiteHost = new URL(site.url).hostname
 const separator = '\u00b7'
+const hasLiveSocialLink = (href: string | undefined) => Boolean(href && href !== '#')
+
+function getSocialLinks(...links: Array<FooterLink | null>) {
+  return links.filter((link): link is FooterLink => link !== null)
+}
 
 function HomeFooter() {
+  const contactLinks = getSocialLinks(
+    { label: 'WhatsApp', href: site.whatsapp },
+    { label: site.email, href: `mailto:${site.email}` },
+    hasLiveSocialLink(site.instagram) ? { label: 'Instagram', href: site.instagram } : null,
+    hasLiveSocialLink(site.facebook) ? { label: 'Facebook', href: site.facebook } : null,
+  )
+
   return (
     <footer className="container-brand bg-cream px-7 pb-10 pt-[clamp(44px,6vw,80px)] text-brown">
       <div className="grid gap-8 border-b border-brown/10 pb-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
@@ -21,7 +33,13 @@ function HomeFooter() {
         <FooterColumn
           tone="light"
           title="Explore"
-          links={navigationLinks}
+          links={[
+            { label: 'Home', href: routes.home },
+            { label: 'Our Story', href: routes.about },
+            { label: 'Services', href: routes.services },
+            { label: 'Gallery', href: routes.gallery },
+            { label: 'Contact', href: routes.contact },
+          ]}
         />
         <FooterColumn
           tone="light"
@@ -30,20 +48,14 @@ function HomeFooter() {
         />
         <FooterColumn
           tone="light"
-          title="Get in Touch"
-          links={[
-            { label: `WhatsApp: ${site.phone}`, href: site.whatsapp },
-            { label: `Email: ${site.email}`, href: `mailto:${site.email}` },
-            { label: site.address, href: routes.contact },
-            { label: 'Instagram', href: site.instagram },
-            { label: 'Facebook', href: site.facebook },
-          ]}
+          title="Get in touch"
+          links={contactLinks}
         />
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-[13px] text-brown/50">
         <span>Copyright 2026 Desi Dabba {separator} {site.address}</span>
         <LegalFooterLinks tone="light" />
-        <span>Indian warmth {separator} Asian flavours {separator} Global food experiences</span>
+        <span>Simple {separator} Sustainable {separator} Soulful</span>
       </div>
     </footer>
   )
@@ -97,6 +109,14 @@ function LegalFooterLinks({ tone }: { tone: 'light' | 'dark' }) {
 }
 
 function DarkFooter() {
+  const contactLinks = getSocialLinks(
+    { label: `WhatsApp ${separator} ${site.phone}`, href: site.whatsapp },
+    { label: site.email, href: `mailto:${site.email}` },
+    { label: site.address, href: routes.contact },
+    hasLiveSocialLink(site.instagram) ? { label: 'Instagram', href: site.instagram } : null,
+    hasLiveSocialLink(site.facebook) ? { label: 'Facebook', href: site.facebook } : null,
+  )
+
   return (
     <footer className="bg-maroon-900 text-cream-50/80">
       <div className="container-brand flex flex-wrap gap-11 px-8 pb-8 pt-16">
@@ -110,18 +130,18 @@ function DarkFooter() {
             made with care in {site.address}.
           </p>
         </div>
-        <FooterColumn tone="dark" title="Explore" links={navigationLinks} />
-        <FooterColumn tone="dark" title="Services" links={footerServiceLinks} />
+        <FooterColumn tone="dark" title="Explore" links={navigationLinks.map((link) => ({
+          label: link.label === 'About' ? 'Our Story' : link.label,
+          href: link.href,
+        }))} />
+        <FooterColumn tone="dark" title="Services" links={footerServiceLinks.slice(0, 4).map((link) => ({
+          label: link.label.replace('Corporate Catering', 'Event Catering'),
+          href: link.href,
+        }))} />
         <FooterColumn
           tone="dark"
-          title="Get in Touch"
-          links={[
-            { label: `WhatsApp: ${site.phone}`, href: site.whatsapp },
-            { label: `Email: ${site.email}`, href: `mailto:${site.email}` },
-            { label: site.address, href: routes.contact },
-            { label: 'Instagram', href: site.instagram },
-            { label: 'Facebook', href: site.facebook },
-          ]}
+          title="Get in touch"
+          links={contactLinks}
         />
       </div>
       <div className="border-t border-cream-50/10">

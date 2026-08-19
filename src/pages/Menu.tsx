@@ -71,7 +71,7 @@ export default function Menu() {
           <SectionHeader
             eyebrow="Weekly Rotating Menu"
             title={`Weekly Menu: ${weeklyMeals.weekOf}`}
-            description="The menu changes every week, so the site can stay current without showing a fixed restaurant-style list or individual dish prices. Weekly meals are chosen and paid for as a weekly plan, not as individual dishes."
+            description=""
           />
           <motion.div
             className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5"
@@ -100,13 +100,8 @@ export default function Menu() {
 
       <Section tone="cream">
         <Container>
-          <SectionHeader
-            eyebrow="Meal Options"
-            title="Choose the weekly plan that suits your table."
-            description="You can stay fully vegetarian, choose plant-based meals, or include one non-vegetarian meal in the weekly mix."
-          />
           <motion.div
-            className="mt-12 grid gap-5 md:grid-cols-3"
+            className="grid gap-5 md:grid-cols-3"
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -156,7 +151,7 @@ export default function Menu() {
               ))}
             </ul>
             <p className="mt-6 text-sm leading-6 text-brown/70">
-              For weekly menu details, special preferences or questions, contact us on WhatsApp or email at {site.email}.
+              For weekly menu details, special preferences or questions, customers can contact us by WhatsApp or email.
             </p>
           </Card>
         </Container>
@@ -164,15 +159,15 @@ export default function Menu() {
 
       <ImageGalleryGrid
         eyebrow="Gallery"
-        title="A glimpse of our weekly meals style."
-        description="Freshly prepared meals, warm mains and balanced plates designed for real weekday rhythm."
+        title="A glimpse of the kind of weekday comfort we mean."
+        description="Freshly packed dabbas, warm mains, and balanced plates designed to fit real household rhythm."
         items={weeklyMealsGallery}
       />
 
       <FaqSection
         eyebrow="FAQ"
-        title="Still have questions? We have got you covered."
-        description="For weekly menu details, special preferences or questions, customers can contact us by WhatsApp or email."
+        title="Questions people ask before the first dabba."
+        description="The weekly plan is intentionally simple: choose your rhythm, share your preferences, and let the menu change around you."
         items={weeklyMeals.faq}
       />
 
@@ -188,8 +183,7 @@ export default function Menu() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button to={routes.contact}>Start Weekly Meals</Button>
-            <Button to={routes.contact} variant="secondary">Register Me for the Dabba</Button>
-            <Button to={site.whatsapp} variant="ghost">
+                        <Button to={site.whatsapp} variant="ghost">
               <WhatsappIcon className="size-4" />
               WhatsApp
             </Button>

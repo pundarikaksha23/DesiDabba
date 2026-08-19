@@ -10,6 +10,18 @@ export type ContactFormValues = {
   message: string
 }
 
+export type CateringFormValues = {
+  name: string
+  email: string
+  phone: string
+  eventDate: string
+  guestCount: string
+  location: string
+  occasion: string
+  dietaryNeeds: string
+  notes: string
+}
+
 export type NewsletterFormValues = {
   email: string
 }

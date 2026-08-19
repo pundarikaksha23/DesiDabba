@@ -20,8 +20,8 @@ export default function Contact() {
     <>
       <SplitHero
         eyebrow="Contact"
-        title="Tell us what you need, and we will help shape the right food experience."
-        description="Weekly meals, catering, private chef experiences, grazing platters or a custom event plan — start with the details you already have and we will help with the rest."
+        title="Tell us what kind of meal you are imagining."
+        description="Weekly dabbas, corporate lunches, private chef evenings, wedding tables, or something still taking shape. Start with the details you have, and we will help shape the rest."
         imageAlt="Guests gathered around a Desi Dabba event table"
         imagePosition="54% center"
         imageSrc={pageHeroImages.contact}
@@ -31,20 +31,20 @@ export default function Contact() {
         <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
             <Badge>Start Here</Badge>
-            <h2 className="display-lg mt-5 text-brown">A simple message is enough to get started.</h2>
+            <h2 className="display-lg mt-5 text-brown">The first message does not need to be perfectly formed.</h2>
           </div>
           <div className="body-lg space-y-6 text-brown/72">
             <p>
-              Some people already know the exact service they want. Others only know the date, guest count or delivery
-              area. Both are a good place to begin.
+              Some people arrive knowing the exact service they want. Others only know the date, the guest count, or
+              the feeling they want the meal to carry. Both are a good place to begin.
             </p>
             <p>
-              The first conversation is about understanding the occasion, practical requirements and any food
-              preferences that matter.
+              The work of the first conversation is simple: understand the occasion, the practical constraints, and the
+              personal details that will make the food feel considered rather than generic.
             </p>
             <p>
-              Share what you know now and we will help with the next steps, whether that means weekly delivery, a
-              catered gathering, a private chef dinner or a custom menu plan.
+              Share what you know now and we will help shape the next steps with care, whether that means weekly
+              delivery, a catered gathering, a private chef dinner, or a custom service direction.
             </p>
           </div>
         </Container>
@@ -82,7 +82,7 @@ export default function Contact() {
         <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="eyebrow">Where We Work</p>
-            <h2 className="display-lg mt-3 text-cream-50">Tallinn-based, with planning shaped around your event or delivery area.</h2>
+            <h2 className="display-lg mt-3 text-cream-50">Tallinn-based, with planning shaped around the table in front of us.</h2>
             <p className="body-lg mt-5 text-cream-50/72">
               Visits and tastings are arranged by appointment so the kitchen can stay focused on prep, packing, and
               service. We primarily serve Tallinn and selected events across Estonia.
@@ -117,9 +117,9 @@ export default function Contact() {
           <div>
             <Send className="size-8 text-gold" aria-hidden />
             <p className="eyebrow mt-5">Opening Hours</p>
-            <h2 className="display-lg mt-3 text-brown">Reply hours and planning time.</h2>
+            <h2 className="display-lg mt-3 text-brown">Kitchen rhythm, reply windows, and planning time.</h2>
             <p className="body-lg mt-5 text-brown/72">
-              We reply as quickly as we can while keeping enough time for cooking, packing and event preparation.
+              We reply as quickly as we can, but we also protect the time needed to cook, pack, and prepare carefully.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -219,10 +219,10 @@ export default function Contact() {
         <Container className="text-center">
           <p className="eyebrow">Large CTA</p>
           <h2 className="display-lg mx-auto mt-3 max-w-3xl text-cream-50">
-            One message is enough to start the plan.
+            One message can become the first meal, menu, or table plan.
           </h2>
           <p className="body-lg mx-auto mt-5 max-w-2xl text-cream-50/72">
-            Send what you know now. We will ask the practical questions and help shape the rest.
+            Send what you know now. We will ask the right questions and help shape the rest with care.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button to={site.whatsapp}>

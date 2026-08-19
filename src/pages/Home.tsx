@@ -18,25 +18,25 @@ const scrollingMarqueeItems = [...marqueeItems, ...marqueeItems]
 const serviceCards = [
   {
     title: 'Weekly Meals',
-    copy: 'Fresh weekly meals for busy weekdays, with changing menus and vegetarian, vegan, and non-vegetarian options.',
+    copy: 'Home-style tiffin, rotating each week. Nourishing lunches and dinners, delivered on your schedule.',
     href: routes.weeklyMeals,
     icon: 'dot',
   },
   {
     title: 'Catering',
-    copy: 'Thoughtful catering for gatherings, celebrations, office events, and well-planned occasions in Tallinn.',
+    copy: 'Generous, beautiful spreads for gatherings — from intimate dinners to celebrations of a hundred.',
     href: routes.catering,
     icon: 'ring',
   },
   {
     title: 'Private Chef',
-    copy: 'A personal dining experience for homes and private venues, shaped around your guests, occasion, and pace.',
+    copy: 'A chef in your kitchen for the evening. A slow, personal menu cooked and served in your home.',
     href: routes.privateChef,
     icon: 'line-y',
   },
   {
     title: 'Grazing Platters',
-    copy: 'Sharing platters with snacks, sweets, and finger food for gatherings, celebrations, and hosted tables.',
+    copy: 'Effortless hosting. Abundant platters of chaat, kebabs and sweets, styled and ready to share.',
     href: routes.glazingPlatters,
     icon: 'line-x',
   },
@@ -116,6 +116,7 @@ function HomeHeroGraphics() {
 
 export default function Home() {
   const reduceMotion = useReducedMotion()
+  const hasInstagramLink = Boolean(site.instagram && site.instagram !== '#')
 
   return (
     <div className="surface-cream overflow-x-hidden">
@@ -124,7 +125,7 @@ export default function Home() {
         <div className="animate-enter">
           <div className="mb-[22px] inline-flex items-center gap-[10px] text-[12.5px] font-semibold uppercase tracking-[0.22em] text-green">
             <span className="h-px w-[26px] bg-gold" />
-            <span>Warm · Premium · International</span>
+            <span>Simple · Sustainable · Soulful</span>
           </div>
           <h1 className="mb-5 mt-0 font-serif text-[clamp(40px,6vw,74px)] font-semibold leading-[1.02] tracking-[-0.01em] text-maroon">
             Indian warmth.
@@ -133,7 +134,7 @@ export default function Home() {
             <br />
             Food made with care in Tallinn.
           </h1>
-          <p className="mb-8 mt-0 max-w-[560px] text-[17px] leading-[1.65] text-brown/72">
+          <p className="mb-8 mt-0 max-w-[440px] text-[17px] leading-[1.65] text-brown/72">
             Desi Dabba brings warm, thoughtful food experiences to Tallinn — from weekly meals and private dining to
             catering, grazing platters and celebration menus. Rooted in Indian hospitality and inspired by global
             flavours, every menu is made with care, balance and soul.
@@ -312,11 +313,13 @@ export default function Home() {
         <div className="mb-[30px] flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="mb-3 text-[12.5px] font-semibold uppercase tracking-[0.22em] text-green">From the kitchen</div>
-            <h2 className="m-0 font-serif text-[clamp(28px,3.6vw,42px)] font-semibold text-brown">Recent food moments</h2>
+            <h2 className="m-0 font-serif text-[clamp(28px,3.6vw,42px)] font-semibold text-brown">@desidabba</h2>
           </div>
-          <Link to={routes.gallery} className="rounded-full bg-cream-100 px-5 py-3 text-sm font-semibold text-maroon no-underline">
-            View gallery →
-          </Link>
+          {hasInstagramLink && (
+            <a href={site.instagram} className="rounded-full bg-cream-100 px-5 py-3 text-sm font-semibold text-maroon no-underline">
+              Follow on Instagram →
+            </a>
+          )}
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {[serviceImages.weeklyMeals, serviceImages.corporateCatering, serviceImages.fusionExperiences, serviceImages.premiumPlatters, ...homeInstagramImages.slice(0, 2)].map((image, index) => (

@@ -12,6 +12,7 @@ import { FaqSection } from '../components/sections/FaqSection'
 import { ImageGalleryGrid } from '../components/sections/ImageGalleryGrid'
 import { SplitHero } from '../components/sections/SplitHero'
 import { TimelineGrid } from '../components/sections/TimelineGrid'
+import { useCateringForm } from '../hooks/useCateringForm'
 import {
   bookingProcess,
   cateringFormats,
@@ -26,6 +27,8 @@ import { site } from '../config/site'
 const occasionOptions = ['Small get-together', 'Birthday', 'Wedding', 'Office event', 'Corporate event', 'Private celebration', 'Other']
 
 export default function Catering() {
+  const { values, errors, isLoading, isSuccess, isError, submitMessage, updateValue, handleSubmit } = useCateringForm()
+
   return (
     <>
       <SplitHero
@@ -78,9 +81,9 @@ export default function Catering() {
       <Section>
         <Container>
           <SectionHeader
-            eyebrow="Catering Formats"
-            title="Choose the format that suits your event."
-            description="Catering is flexible and custom, with formats that suit intimate dinners, celebrations, workplace events and relaxed hosting."
+            eyebrow="Formats"
+            title="Catering Formats"
+            description="Choose the format that suits your event."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {cateringFormats.map((item, index) => (
@@ -106,7 +109,7 @@ export default function Catering() {
           <SectionHeader
             eyebrow="Menu Style"
             title="Menus shaped around your guests and occasion."
-            description="Our catering menus are custom-made for each event. They can include Indian favourites, Asian flavours, vegetarian and vegan dishes, non-vegetarian options, fusion food, sweets, drinks and seasonal additions. We do not show fixed dish names as if they are always available."
+            description="Our catering menus are custom-made for each event. They can include Indian favourites, Asian flavours, vegetarian and vegan dishes, non-vegetarian options, fusion food, sweets, drinks and seasonal additions."
             align="left"
             inverse
           />
@@ -124,21 +127,21 @@ export default function Catering() {
       <ImageGalleryGrid
         eyebrow="Gallery"
         title="A glimpse of our catering style."
-        description="Buffet setups, platters, sweets, drinks and table details that show the warm, polished feel of our events."
+        description="Buffets, dabbas, shared platters, and finishing touches, presented with quiet confidence."
         items={cateringGallery}
       />
 
       <TimelineGrid
         eyebrow="Booking Process"
         title="Simple catering process."
-        description="We keep the planning practical, warm and easy to follow from the first message to the final quote."
+        description="Planning should feel as considered as the food. We keep the steps clear, paced, and practical."
         items={bookingProcess}
       />
 
       <FaqSection
         eyebrow="FAQ"
-        title="Useful answers before we plan your event."
-        description="A few practical answers to keep the planning simple, especially for custom menus and event logistics."
+        title="Useful answers before we plan the table."
+        description="Catering has many moving parts. The work is to make them feel simple before guests arrive."
         items={cateringFaq}
       />
 
@@ -159,32 +162,99 @@ export default function Catering() {
 
           <form
             className="rounded-lg border border-cream-50/12 bg-cream-50 p-6 shadow-card md:p-8"
-            onSubmit={(event) => event.preventDefault()}
+            onSubmit={handleSubmit}
+            noValidate
           >
             <div className="grid gap-5 md:grid-cols-2">
-              <InputField label="Name" name="name" />
-              <InputField label="Email" type="email" name="email" />
-              <InputField label="Phone / WhatsApp" name="phone" />
-              <InputField label="Event Date" type="date" name="event-date" />
-              <InputField label="Guest Count" type="number" name="guest-count" min="1" />
-              <InputField label="Location" name="location" />
+              <InputField
+                label="Name"
+                name="name"
+                value={values.name}
+                error={errors.name}
+                onChange={(event) => updateValue('name', event.target.value)}
+              />
+              <InputField
+                label="Email"
+                type="email"
+                name="email"
+                value={values.email}
+                error={errors.email}
+                onChange={(event) => updateValue('email', event.target.value)}
+              />
+              <InputField
+                label="Phone / WhatsApp"
+                name="phone"
+                value={values.phone}
+                error={errors.phone}
+                onChange={(event) => updateValue('phone', event.target.value)}
+              />
+              <InputField
+                label="Event date"
+                type="date"
+                name="event-date"
+                value={values.eventDate}
+                error={errors.eventDate}
+                onChange={(event) => updateValue('eventDate', event.target.value)}
+              />
+              <InputField
+                label="Guest count"
+                type="number"
+                name="guest-count"
+                min="1"
+                value={values.guestCount}
+                error={errors.guestCount}
+                onChange={(event) => updateValue('guestCount', event.target.value)}
+              />
+              <InputField
+                label="Location"
+                name="location"
+                value={values.location}
+                error={errors.location}
+                onChange={(event) => updateValue('location', event.target.value)}
+              />
             </div>
             <div className="mt-5">
-              <SelectField label="Occasion" name="occasion" options={occasionOptions} />
+              <SelectField
+                label="Occasion"
+                name="occasion"
+                options={occasionOptions}
+                value={values.occasion}
+                error={errors.occasion}
+                onChange={(event) => updateValue('occasion', event.target.value)}
+              />
             </div>
             <div className="mt-5">
-              <InputField label="Dietary Needs" name="dietary-needs" />
+              <InputField
+                label="Dietary needs"
+                name="dietary-needs"
+                value={values.dietaryNeeds}
+                error={errors.dietaryNeeds}
+                onChange={(event) => updateValue('dietaryNeeds', event.target.value)}
+              />
             </div>
             <div className="mt-5">
               <TextareaField
-                label="Notes / Preferred Food Style"
+                label="Notes / preferred food style"
                 rows={5}
                 name="notes"
+                value={values.notes}
+                error={errors.notes}
+                onChange={(event) => updateValue('notes', event.target.value)}
                 placeholder="Tell us about menu direction, service style, preferred flavours, guest needs, or anything else we should know."
               />
             </div>
-            <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto">
-              Request a Quote
+            {isSuccess && (
+              <p className="mt-5 rounded-md bg-mint px-4 py-3 text-sm font-semibold text-green">
+                {submitMessage}
+              </p>
+            )}
+            {isError && submitMessage && (
+              <p className="mt-5 rounded-md bg-cream px-4 py-3 text-sm font-semibold text-maroon">
+                {submitMessage}
+              </p>
+            )}
+            <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto" disabled={isLoading} aria-busy={isLoading}>
+              {isLoading ? 'Sending...' : 'Request a Quote'}
               <Sparkles className="size-4" aria-hidden />
             </button>
           </form>

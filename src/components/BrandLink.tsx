@@ -31,7 +31,7 @@ export function BrandLink({ variant = 'header', tone = 'dark' }: BrandLinkProps)
     <Link to={routeConfig.home.path} className={classes.link} aria-label="Desi Dabba home">
       <span className="min-w-0">
         <span className={`${classes.title} ${footerTitleTone}`.trim()}>Desi Dabba</span>
-        <span className={classes.tagline}>Simple Sustainable Thoughtful</span>
+        <span className={classes.tagline}>Simple Sustainable Soulful</span>
       </span>
       {variant === 'header' && (
         <span className="brand-link-dot size-[6px] -translate-y-[3px]" aria-hidden />

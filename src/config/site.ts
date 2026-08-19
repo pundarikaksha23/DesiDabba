@@ -2,7 +2,7 @@ export const site = {
   name: 'Desi Dabba',
   url: 'https://www.desidabba.ee',
   description:
-    'Indian warmth, Asian flavours and global food experiences, made with care in Tallinn, Estonia.',
+    'Premium Indian tiffin meals, regional comfort food, and elegant catering for modern gatherings.',
   locale: 'en_EE',
   openGraphImage: '/desi-dabba-og.jpg',
   openGraphImageAlt: 'A premium Desi Dabba Indian meal spread arranged for sharing.',

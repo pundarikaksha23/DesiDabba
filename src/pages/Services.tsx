@@ -46,8 +46,8 @@ export default function Services() {
           Every service, made with the same care.
         </h1>
         <p className="mx-auto mb-10 max-w-[680px] text-[clamp(16px,2vw,19px)] leading-[1.65] text-brown-700/72">
-          From weekday meals to celebrations, Desi Dabba brings Indian warmth, premium
-          presentation and global flavours to every experience we create.
+          From your weekly dinner to your most memorable celebration — Desi Dabba brings South Asian warmth, premium
+          presentation and home-style flavour to every experience we create.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {serviceHeroAnchors.map((anchor) => (

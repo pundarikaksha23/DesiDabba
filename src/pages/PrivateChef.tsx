@@ -31,8 +31,8 @@ export default function PrivateChef() {
     <>
       <SplitHero
         eyebrow="Private Chef"
-        title="Private Indian dining, prepared for your home and guests."
-        description="A chef-led experience for intimate gatherings, with the menu, timing and service planned around your space."
+        title="A soulful Indian table, cooked close to the people you love."
+        description="An intimate chef-led experience shaped around memory, pacing, and the quiet pleasure of being fully hosted in your own space."
         imageAlt="Private chef Indian dinner table with elegant dishes and accompaniments"
         imagePosition="48% 56%"
         imageSrc={pageHeroImages.privateChef}
@@ -53,8 +53,8 @@ export default function PrivateChef() {
         <Container>
           <SectionHeader
             eyebrow="Experience"
-            title="Restaurant-level care in a more personal setting."
-            description="Private chef service is designed for hosts who want a well-planned Indian meal without managing the kitchen themselves."
+            title="Restaurant polish without the room losing its intimacy."
+            description="The private chef experience is built for hosts who want a memorable Indian meal without spending the evening managing the kitchen."
           />
           <motion.div
             className="mt-12 grid gap-5 md:grid-cols-3"
@@ -84,10 +84,10 @@ export default function PrivateChef() {
         <Container className="grid items-start gap-10 lg:grid-cols-[0.78fr_1.22fr]">
           <div>
             <p className="eyebrow">Occasions</p>
-            <h2 className="display-lg mt-3 text-brown">For intimate dinners, celebrations and hosted evenings.</h2>
+            <h2 className="display-lg mt-3 text-brown">For evenings that deserve more than a reservation.</h2>
             <p className="body-lg mt-5 text-brown/72">
-              We cook for occasions where the setting matters, with a menu and service style shaped around your guests,
-              your space and the kind of evening you want to host.
+              We cook for moments where the setting matters: familiar rooms, close guests, and food that should feel
+              personal from the first sip to the last sweet bite.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -103,8 +103,8 @@ export default function PrivateChef() {
 
       <TimelineGrid
         eyebrow="How It Works"
-        title="A clear process for a well-planned evening."
-        description="Planning is straightforward, the menu is personal, and service is handled with care from start to finish."
+        title="A calm process for a beautifully paced evening."
+        description="The planning is clear, the menu is personal, and the service is designed to feel quietly handled."
         items={privateChefProcess}
         tone="green"
       />
@@ -113,10 +113,10 @@ export default function PrivateChef() {
         <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
             <p className="eyebrow">Sample Menu</p>
-            <h2 className="display-lg mt-3 text-brown">A sample of how the evening can be planned.</h2>
+            <h2 className="display-lg mt-3 text-brown">One possible evening, shaped with regional warmth.</h2>
             <p className="body-lg mt-5 text-brown/72">
-              Every private chef menu is custom, but this gives a sense of how a dinner can flow from welcome bites to
-              dessert.
+              Every private chef menu is custom, but this gives a sense of the pacing: a graceful beginning, a generous
+              middle, and a sweet finish that lingers.
             </p>
           </div>
           <div className="space-y-4">
@@ -132,8 +132,8 @@ export default function PrivateChef() {
 
       <ImageGalleryGrid
         eyebrow="Gallery"
-        title="Details from a private chef evening."
-        description="A look at plating, table setup and the pace of a chef-led dinner in a home or private venue."
+        title="Small details, quietly elevated."
+        description="A private chef evening is made of pacing, plating, fragrance, and the feeling that someone is watching the whole table."
         items={privateChefGallery}
         imageClassName="block h-full w-full object-cover transition duration-700 hover:scale-105"
       />
