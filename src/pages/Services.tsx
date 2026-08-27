@@ -192,14 +192,11 @@ export default function Services() {
           <div className="relative flex flex-wrap justify-center gap-3.5">
             <a href={site.whatsapp} className="inline-flex items-center gap-2.5 rounded-full bg-green-700 px-[30px] py-[15px] text-[15.5px] font-semibold text-cream-50 no-underline shadow-[0_6px_18px_rgba(0,0,0,0.2)]">
               <WhatsappIcon className="size-5" />
-              Message on WhatsApp
+              WhatsApp Desi Dabba
             </a>
             <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2.5 rounded-full border-[1.5px] border-cream-50/50 px-[29px] py-[14px] text-[15.5px] font-semibold text-cream-50 no-underline">
-              Send us an email
+              Email {site.email}
             </a>
-          </div>
-          <div className="relative mt-[26px] text-sm text-cream-50/70">
-            {site.phone} &nbsp;·&nbsp; {site.email}
           </div>
         </div>
       </section>

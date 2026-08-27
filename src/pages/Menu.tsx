@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { PackageCheck, Truck } from 'lucide-react'
-import { pageHeroImages } from '../assets/images/selected-images'
+import { Check, Mail, PackageCheck, Truck } from 'lucide-react'
+import { pageHeroImages, serviceImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { Container } from '../components/Container'
@@ -12,7 +12,6 @@ import { ImageGalleryGrid } from '../components/sections/ImageGalleryGrid'
 import { SplitHero } from '../components/sections/SplitHero'
 import { weeklyMeals, weeklyMealsGallery } from '../data/menu'
 import { fadeUp, stagger, viewportOnce } from '../utils/motion'
-import { routes } from '../config/routes'
 import { site } from '../config/site'
 
 export default function Menu() {
@@ -26,6 +25,57 @@ export default function Menu() {
         imagePosition="48% 54%"
         imageSrc={pageHeroImages.weeklyMeals}
       />
+
+      <Section tone="cream">
+        <Container>
+          <div className="grid items-center gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12">
+            <motion.figure
+              className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[22px] border border-brown/10 bg-cream-50 shadow-soft lg:mx-0"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportOnce}
+              transition={{ duration: 0.45, ease: 'easeOut', delay: 0.06 }}
+            >
+              <img
+                src={serviceImages.healthyMealPlans}
+                alt="Warm weekly meal service with vibrant curry trays"
+                width="1200"
+                height="1800"
+                className="aspect-[5/4] w-full object-cover"
+                style={{ objectPosition: '50% 44%' }}
+                sizes="(min-width: 1024px) 28vw, (min-width: 768px) 50vw, 100vw"
+                loading="lazy"
+                decoding="async"
+              />
+            </motion.figure>
+            <div className="max-w-2xl">
+              <p className="eyebrow">Weekly Meals</p>
+              <h2 className="display-lg mt-3 text-brown">Fresh, comforting and balanced meals for busy weekdays.</h2>
+              <p className="body-lg mt-5 text-brown/70">
+                Life in Tallinn is busy. Cooking fresh meals every day is not always possible. Desi Dabba prepares a
+                rotating weekly menu with Indian and Asian flavours, seasonal ingredients and home-style care,
+                delivered Monday to Friday.
+              </p>
+            </div>
+          </div>
+          <motion.div
+            className="mt-12 grid gap-5 md:grid-cols-3"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {weeklyMeals.mealOptions.map((option) => (
+              <motion.div key={option.title} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
+                <Card className="h-full">
+                  <h3 className="heading-md text-maroon">{option.title}</h3>
+                  <p className="body-sm mt-3 text-brown/70">{option.description}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Container>
+      </Section>
 
       <Section tone="cream">
         <Container>
@@ -55,11 +105,7 @@ export default function Menu() {
 
       <Section>
         <Container>
-          <SectionHeader
-            eyebrow="Weekly Rotating Menu"
-            title={`Weekly Menu: ${weeklyMeals.weekOf}`}
-            description=""
-          />
+          <p className="eyebrow text-center">Weekly Rotating Menu</p>
           <motion.div
             className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5"
             variants={stagger}
@@ -78,27 +124,6 @@ export default function Menu() {
                       </li>
                     ))}
                   </ul>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section tone="cream">
-        <Container>
-          <motion.div
-            className="grid gap-5 md:grid-cols-3"
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-          >
-            {weeklyMeals.mealOptions.map((option) => (
-              <motion.div key={option.title} variants={fadeUp} transition={{ duration: 0.45, ease: 'easeOut' }}>
-                <Card className="h-full">
-                  <h3 className="heading-md text-maroon">{option.title}</h3>
-                  <p className="body-sm mt-3 text-brown/70">{option.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -132,14 +157,23 @@ export default function Menu() {
             <p className="body-sm mt-4 text-brown/70">{weeklyMeals.delivery.description}</p>
             <ul className="mt-7 space-y-3">
               {weeklyMeals.delivery.details.map((detail) => (
-                <li key={detail} className="border-b border-brown/10 pb-3 text-sm font-semibold leading-6 text-green last:border-0 last:pb-0">
-                  {detail}
+                <li key={detail} className="flex items-start gap-3 border-b border-brown/10 pb-3 text-sm font-semibold leading-6 text-green last:border-0 last:pb-0">
+                  <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-green-700/12">
+                    <Check className="size-3.5 text-green-700" strokeWidth={2.4} aria-hidden />
+                  </span>
+                  <span>{detail}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm leading-6 text-brown/70">
-              For weekly menu details, special preferences or questions, customers can contact us by WhatsApp or email.
-            </p>
+            <div className="mt-6 flex items-start gap-3 text-sm leading-6 text-brown/70">
+              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-gold/18">
+                <WhatsappIcon className="size-3 text-maroon" />
+              </span>
+              <p className="m-0">
+                For weekly menu details, special preferences or questions, customers can contact us by WhatsApp or
+                email.
+              </p>
+            </div>
           </Card>
         </Container>
       </Section>
@@ -169,10 +203,13 @@ export default function Menu() {
             help you choose the right plan.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button to={routes.contact}>Start Weekly Meals</Button>
-            <Button to={site.whatsapp} variant="ghost">
+            <Button to={site.whatsapp}>
               <WhatsappIcon className="size-4" />
               WhatsApp
+            </Button>
+            <Button to={`mailto:${site.email}`} variant="ghost">
+              <Mail className="size-4" />
+              Email us
             </Button>
           </div>
         </Container>

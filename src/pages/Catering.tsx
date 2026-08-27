@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { CalendarCheck, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
-import { pageHeroImages } from '../assets/images/selected-images'
+import { pageHeroImages, serviceImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
 import { Container } from '../components/Container'
@@ -35,8 +35,8 @@ export default function Catering() {
         eyebrow="Catering"
         title="Thoughtful catering for gatherings, celebrations and events in Tallinn."
         description="Desi Dabba creates warm, flavourful and beautifully presented food experiences for small gatherings, birthdays, weddings, office events and private celebrations. Our menus are rooted in Indian hospitality, inspired by Asian and global flavours, and shaped around your occasion."
-        imageAlt="Clean buffet-style catering setup with warm, elegant presentation"
-        imagePosition="48% 52%"
+        imageAlt="Guests enjoying an elegant outdoor catering buffet with appetisers and warm service"
+        imagePosition="50% 42%"
         imageSrc={pageHeroImages.catering}
         imageHeightClass="h-80 w-full object-cover sm:h-[33rem]"
         columnsClass="lg:grid-cols-[0.94fr_1.06fr]"
@@ -50,6 +50,46 @@ export default function Catering() {
           </div>
         }
       />
+
+      <Section tone="cream">
+        <Container className="grid items-center gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-12">
+          <motion.figure
+            className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[22px] border border-brown/10 bg-cream-50 shadow-soft lg:mx-0"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.45, ease: 'easeOut', delay: 0.06 }}
+          >
+            <img
+              src={serviceImages.corporateCatering}
+              alt="Elegant catering buffet with warm food service"
+              width="1200"
+              height="1800"
+              className="aspect-[5/4] w-full object-cover"
+              style={{ objectPosition: '50% 44%' }}
+              sizes="(min-width: 1024px) 28vw, (min-width: 768px) 50vw, 100vw"
+              loading="lazy"
+              decoding="async"
+            />
+          </motion.figure>
+          <div className="body-lg space-y-6 text-brown/72">
+            <div>
+              <p className="eyebrow">Catering</p>
+              <h2 className="display-lg mt-3 text-brown">Custom catering for gatherings, celebrations and events.</h2>
+            </div>
+            <p>
+              Thoughtfully prepared food for birthdays, weddings, office events, private celebrations, and cultural
+              gatherings. Food is an important part of every event, and at Desi Dabba, we create catering menus based
+              on your occasion, guest count, dietary needs, and preferred food style.
+            </p>
+            <p>
+              Our catering can include Indian warmth, Asian flavours, and global food experiences, with options for
+              vegetarian, vegan, and non-vegetarian menus. We support small get-togethers, birthdays, weddings, office
+              lunches, corporate events, private dinners, and larger celebrations.
+            </p>
+          </div>
+        </Container>
+      </Section>
 
       <Section tone="cream">
         <Container>
@@ -168,6 +208,9 @@ export default function Catering() {
             onSubmit={handleSubmit}
             noValidate
           >
+            <div className="mb-6">
+              <h3 className="heading-md text-brown">Request a Quote</h3>
+            </div>
             <div className="grid gap-5 md:grid-cols-2">
               <InputField
                 label="Name"

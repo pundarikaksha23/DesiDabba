@@ -129,7 +129,10 @@ export default function PrivateChef() {
             <p className="eyebrow mt-7">Menu can include</p>
             <div className="mt-4 flex flex-wrap gap-2.5">
               {privateChefMenuStyles.map((item) => (
-                <span key={item} className="badge">
+                <span
+                  key={item}
+                  className="inline-flex items-center rounded-full border border-gold/30 bg-cream-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-maroon shadow-[0_12px_24px_-18px_rgba(59,42,33,0.4)] transition-transform duration-300 hover:-translate-y-0.5"
+                >
                   {item}
                 </span>
               ))}

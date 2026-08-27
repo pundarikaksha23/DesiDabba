@@ -1,4 +1,3 @@
-import aboutHero from './about/family-event-portrait-8f0a4221.jpg'
 import privateChefHero from './backgrounds/outdoor-dining-table-drinks-8f0a4381.jpg'
 import corporateCateringService from './catering/rice-sabzi-buffet-chafing-dishes-8f0a4310.jpg'
 import weddingCateringService from './catering/guests-serving-dessert-buffet-8f0a4358.jpg'
@@ -40,12 +39,14 @@ import homeInstagramBread from './catering/naan-roti-chafing-dish-8f0a4328.jpg'
 import homeInstagramCanape from './platters/canape-spoon-appetizer-row-8f0a4280.jpg'
 import homeInstagramGuest from './team/guest-dining-with-drinks-8f0a4384.jpg'
 
+const founderPortrait = encodeURI('/images/drive-download-20260825T172700Z-1-001/Our Story.png')
+
 export const pageHeroImages = {
   home: homePageHero,
-  about: aboutHero,
+  about: founderPortrait,
   services: servicesHero,
   weeklyMeals: privateChefPlatedCourse,
-  catering: corporateCateringService,
+  catering: cateringEventService,
   privateChef: privateChefHero,
   glazingPlatters: homeHero,
   contact: contactHero,
