@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CalendarCheck, PackageCheck, Truck } from 'lucide-react'
+import { PackageCheck, Truck } from 'lucide-react'
 import { pageHeroImages } from '../assets/images/selected-images'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
@@ -25,19 +25,6 @@ export default function Menu() {
         imageAlt="Plated Indian weekly meal with curry, rice, and fresh accompaniments"
         imagePosition="48% 54%"
         imageSrc={pageHeroImages.weeklyMeals}
-        actions={
-          <div className="max-w-[27rem] rounded-[20px] border border-brown/10 bg-cream-50/78 px-6 py-5 shadow-[0_20px_40px_-30px_rgba(59,42,33,0.42)] backdrop-blur-sm">
-            <div className="flex items-start gap-4">
-              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-maroon text-gold">
-                <CalendarCheck className="size-5" aria-hidden />
-              </span>
-              <div>
-                <p className="eyebrow">Weekly Menu: {weeklyMeals.weekOf}</p>
-                <p className="mt-3 text-[15.5px] leading-[1.68] text-brown/74">{weeklyMeals.intro}</p>
-              </div>
-            </div>
-          </div>
-        }
       />
 
       <Section tone="cream">
@@ -183,16 +170,11 @@ export default function Menu() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button to={routes.contact}>Start Weekly Meals</Button>
-                        <Button to={site.whatsapp} variant="ghost">
+            <Button to={site.whatsapp} variant="ghost">
               <WhatsappIcon className="size-4" />
               WhatsApp
             </Button>
           </div>
-          <p className="mt-6 text-sm text-cream-50/72">
-            WhatsApp: {site.phone} {` `}
-            <span className="mx-2">|</span>
-            Email: {site.email}
-          </p>
         </Container>
       </Section>
     </>

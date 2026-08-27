@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { Check, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { WhatsappIcon } from '../components/WhatsappIcon'
 import { site } from '../config/site'
@@ -46,8 +46,8 @@ export default function Services() {
           Every service, made with the same care.
         </h1>
         <p className="mx-auto mb-10 max-w-[680px] text-[clamp(16px,2vw,19px)] leading-[1.65] text-brown-700/72">
-          From your weekly dinner to your most memorable celebration — Desi Dabba brings South Asian warmth, premium
-          presentation and home-style flavour to every experience we create.
+          From weekly meals to private celebrations, Desi Dabba brings Indian warmth, Asian flavours and global food
+          experiences to every table.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {serviceHeroAnchors.map((anchor) => (
@@ -162,7 +162,13 @@ export default function Services() {
                   onClick={() => setOpenFaq(isOpen ? null : index)}
                 >
                   <span>{faq.question}</span>
-                  <span className="shrink-0 text-[26px] font-normal leading-none text-maroon-700">{isOpen ? '–' : '+'}</span>
+                  <span
+                    className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-brown-700/10 text-maroon-700 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                  >
+                    <ChevronDown className="size-4" strokeWidth={2.2} aria-hidden />
+                  </span>
                 </button>
                 {isOpen ? <div className="px-6 pb-6 text-[15.5px] leading-[1.65] text-brown-700/70">{faq.answer}</div> : null}
               </div>
@@ -181,7 +187,7 @@ export default function Services() {
           </h2>
           <p className="relative mx-auto mb-9 max-w-[620px] text-[clamp(15px,2vw,18px)] leading-[1.65] text-cream-50/80">
             Tell us a little about what you are looking for and we will help you figure out the best option. There is no
-            pressure — just a friendly conversation about food.
+            pressure - just a friendly conversation about food.
           </p>
           <div className="relative flex flex-wrap justify-center gap-3.5">
             <a href={site.whatsapp} className="inline-flex items-center gap-2.5 rounded-full bg-green-700 px-[30px] py-[15px] text-[15.5px] font-semibold text-cream-50 no-underline shadow-[0_6px_18px_rgba(0,0,0,0.2)]">

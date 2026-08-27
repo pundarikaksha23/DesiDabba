@@ -9,7 +9,7 @@ import { Section } from '../components/Section'
 import { WhatsappIcon } from '../components/WhatsappIcon'
 import { FaqSection } from '../components/sections/FaqSection'
 import { SplitHero } from '../components/sections/SplitHero'
-import { contactFaq, openingHours } from '../data/contact'
+import { contactFaq } from '../data/contact'
 import { useContactForm } from '../hooks/useContactForm'
 import { site } from '../config/site'
 
@@ -108,27 +108,6 @@ export default function Contact() {
               <Phone className="size-5 text-gold" aria-hidden />
               <p className="mt-4 font-serif text-2xl font-semibold leading-snug">We confirm availability, address fit, and event flow before booking.</p>
             </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-          <div>
-            <Send className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-5">Opening Hours</p>
-            <h2 className="display-lg mt-3 text-brown">Kitchen rhythm, reply windows, and planning time.</h2>
-            <p className="body-lg mt-5 text-brown/72">
-              We reply as quickly as we can, but we also protect the time needed to cook, pack, and prepare carefully.
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {openingHours.map(([day, time]) => (
-              <Card key={day}>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{day}</p>
-                <p className="mt-4 font-serif text-3xl font-semibold text-green">{time}</p>
-              </Card>
-            ))}
           </div>
         </Container>
       </Section>

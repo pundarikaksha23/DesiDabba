@@ -18,6 +18,7 @@ import {
   experienceNotes,
   privateChefFaq,
   privateChefGallery,
+  privateChefMenuStyles,
   privateChefOccasions,
   privateChefProcess,
   sampleMenu,
@@ -31,9 +32,9 @@ export default function PrivateChef() {
     <>
       <SplitHero
         eyebrow="Private Chef"
-        title="A soulful Indian table, cooked close to the people you love."
-        description="An intimate chef-led experience shaped around memory, pacing, and the quiet pleasure of being fully hosted in your own space."
-        imageAlt="Private chef Indian dinner table with elegant dishes and accompaniments"
+        title="Private dining for homes, venues and special occasions."
+        description="Bring a warm, thoughtful food experience into your home, venue or private event - with a custom menu created around your occasion."
+        imageAlt="Private chef dinner table with elegant dishes and accompaniments"
         imagePosition="48% 56%"
         imageSrc={pageHeroImages.privateChef}
         imageHeightClass="h-80 w-full object-cover sm:h-[33rem]"
@@ -54,7 +55,7 @@ export default function PrivateChef() {
           <SectionHeader
             eyebrow="Experience"
             title="Restaurant polish without the room losing its intimacy."
-            description="The private chef experience is built for hosts who want a memorable Indian meal without spending the evening managing the kitchen."
+            description="The private chef experience is built for hosts who want a memorable meal without spending the evening managing the kitchen."
           />
           <motion.div
             className="mt-12 grid gap-5 md:grid-cols-3"
@@ -112,35 +113,69 @@ export default function PrivateChef() {
       <Section id="sample-menu">
         <Container className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="eyebrow">Sample Menu</p>
-            <h2 className="display-lg mt-3 text-brown">One possible evening, shaped with regional warmth.</h2>
+            <p className="eyebrow">A Possible Evening</p>
+            <h2 className="display-lg mt-3 text-brown">A private dining experience shaped around your taste, comfort and dietary needs.</h2>
             <p className="body-lg mt-5 text-brown/72">
-              Every private chef menu is custom, but this gives a sense of the pacing: a graceful beginning, a generous
-              middle, and a sweet finish that lingers.
+              Every private chef menu is personalised. We can create a full spread from many different dishes,
+              depending on your occasion, guest preferences and food style.
             </p>
+            <p className="body-lg mt-4 text-brown/72">
+              Menus can include Indian warmth, Asian flavours, fusion dishes, healthy meals, vegetarian and vegan
+              options, non-vegetarian dishes, desserts, chaat counters and gut-friendly food.
+            </p>
+            <p className="body-lg mt-4 text-brown/72">
+              Everything is cooked with care and adjusted to your comfort, spice level, allergies and dietary needs.
+            </p>
+            <p className="eyebrow mt-7">Menu can include</p>
+            <div className="mt-4 flex flex-wrap gap-2.5">
+              {privateChefMenuStyles.map((item) => (
+                <span key={item} className="badge">
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
           <div className="space-y-4">
             {sampleMenu.map((item) => (
-              <Card key={item.course} className="grid gap-3 md:grid-cols-[9rem_1fr]">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{item.course}</p>
-                <p className="font-serif text-2xl font-semibold leading-snug text-brown">{item.dish}</p>
+              <Card key={item.course}>
+                <div className="grid gap-3 md:grid-cols-[9rem_minmax(0,1fr)] md:items-start">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{item.course}</p>
+                  <div className="min-w-0 space-y-2">
+                    {item.lines.map((line) => (
+                      <p
+                        key={line}
+                        className={
+                          line === 'or'
+                            ? 'text-sm font-semibold uppercase tracking-[0.16em] text-gold'
+                            : 'font-serif text-2xl font-semibold leading-snug text-brown'
+                        }
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
               </Card>
             ))}
+            <p className="body-sm px-2 text-brown/72">
+              Menus can be made lighter, vegetarian, vegan, gut-friendly or more festive depending on the occasion and
+              guest preferences.
+            </p>
           </div>
         </Container>
       </Section>
 
       <ImageGalleryGrid
         eyebrow="Gallery"
-        title="Small details, quietly elevated."
-        description="A private chef evening is made of pacing, plating, fragrance, and the feeling that someone is watching the whole table."
+        title="A glimpse of private dining."
+        description="Private chef experiences can include plated dishes, sharing tables, live cooking moments, desserts, drinks and small finishing details."
         items={privateChefGallery}
         imageClassName="block h-full w-full object-cover transition duration-700 hover:scale-105"
       />
 
       <FaqSection
         eyebrow="FAQ"
-        title="Useful details before you book the evening."
+        title="Useful details before you book."
         description="A few answers that help hosts understand fit, menu direction, and what the service needs from the room."
         items={privateChefFaq}
       />

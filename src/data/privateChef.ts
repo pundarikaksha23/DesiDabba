@@ -47,7 +47,7 @@ export const privateChefProcess: TimelineItem[] = [
   {
     step: '02',
     title: 'Shape the menu',
-    description: 'We propose a seasonal Indian menu with course flow, plating notes, and thoughtful alternates where needed.',
+    description: 'We propose a seasonal menu with Indian warmth, Asian flavours and global food experiences, plus course flow, plating notes, and thoughtful alternates where needed.',
   },
   {
     step: '03',
@@ -61,13 +61,65 @@ export const privateChefProcess: TimelineItem[] = [
   },
 ]
 
+export const privateChefMenuStyles = [
+  'Indian favourites',
+  'Asian flavours',
+  'Indo-Chinese dishes',
+  'Chaat counters',
+  'Desserts',
+  'Healthy meals',
+  'Gut-friendly food',
+  'Vegetarian options',
+  'Vegan options',
+  'Non-vegetarian options',
+  'Custom celebration menus',
+] as const
+
 export const sampleMenu = [
-  { course: 'Welcome', dish: 'Curry leaf lime spritz with spiced makhana' },
-  { course: 'First', dish: 'Mini masala dosa, coconut chutney, tomato podi oil' },
-  { course: 'Second', dish: 'Ajwain paneer tikka, smoked chilli, pickled onion' },
-  { course: 'Main', dish: 'Lucknowi chicken korma or coastal vegetable curry with saffron pulao' },
-  { course: 'Table', dish: 'Dal makhani, soft breads, kachumber, raita, seasonal achar' },
-  { course: 'Sweet', dish: 'Cardamom phirni, pistachio, rose, jaggery sesame crisp' },
+  {
+    course: 'Welcome',
+    lines: [
+      'Curry leaf lime spritz with roasted makhana',
+      'or',
+      'House-made probiotic drink with herbs and citrus',
+    ],
+  },
+  {
+    course: 'First Bite',
+    lines: [
+      'Mini paneer tikka with mint yoghurt',
+      'or',
+      'Crispy vegetable wonton with chilli-garlic dip',
+    ],
+  },
+  {
+    course: 'Second Bite',
+    lines: [
+      'Tandoori-style cauliflower with pickled onion',
+      'or',
+      'Asian cucumber salad with sesame and ginger',
+    ],
+  },
+  {
+    course: 'Main Plate',
+    lines: [
+      'Lucknowi chicken korma or coastal vegetable curry with saffron pulao',
+      'or',
+      'Indo-Chinese chilli paneer / tofu with fragrant rice',
+    ],
+  },
+  {
+    course: 'For the Table',
+    lines: ['Dal, soft breads, seasonal salad, raita, fresh chutneys and light pickles'],
+  },
+  {
+    course: 'Healthy Finish',
+    lines: [
+      'Cardamom phirni with pistachio',
+      'or',
+      'Fresh fruit with spiced yoghurt and jaggery crumble',
+    ],
+  },
 ]
 
 export const privateChefGallery: GalleryImage[] = [
@@ -81,21 +133,31 @@ export const privateChefFaq: FaqItem[] = [
   {
     question: 'How many guests is private chef service best for?',
     answer:
-      'Most private chef evenings work beautifully for intimate groups, but the exact fit depends on the menu style, kitchen setup, and pacing you want for the night.',
+      'Private chef service is best for small and medium private gatherings. The final guest count depends on the menu, kitchen setup and service style.',
   },
   {
-    question: 'Can the menu be built around one region or family preference?',
+    question: 'Can the menu be customised?',
     answer:
-      'Yes. Regional references, family favorites, spice comfort, and dietary boundaries are often what make the evening feel personal rather than generic.',
+      'Yes. Every menu is customised based on your taste, comfort, dietary needs, spice level and occasion.',
+  },
+  {
+    question: 'Can you include vegetarian, vegan or non-vegetarian options?',
+    answer:
+      'Yes. Menus can include vegetarian, vegan and non-vegetarian dishes.',
+  },
+  {
+    question: 'Do you also do desserts and chaat counters?',
+    answer:
+      'Yes. We can include desserts, chaat counters, fusion bites, healthy dishes and gut-friendly food as part of the menu.',
   },
   {
     question: 'Do you cook everything on site?',
     answer:
-      'Some preparation happens in advance so service can stay smooth, but the final cooking, plating, and table pacing are shaped around your space and the flow of the evening.',
+      'Some preparation may be done in advance, and final cooking, plating or service can be done at the location depending on the menu and setup.',
   },
   {
-    question: 'What do you need from the host before booking?',
+    question: 'What do you need before booking?',
     answer:
-      'The most useful starting details are the date, guest count, kitchen setup, dietary needs, and the mood or occasion you want the meal to carry.',
+      'Please share the date, guest count, location, kitchen setup, dietary needs and the kind of food experience you want.',
   },
 ]

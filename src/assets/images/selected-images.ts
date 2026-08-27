@@ -3,6 +3,7 @@ import privateChefHero from './backgrounds/outdoor-dining-table-drinks-8f0a4381.
 import corporateCateringService from './catering/rice-sabzi-buffet-chafing-dishes-8f0a4310.jpg'
 import weddingCateringService from './catering/guests-serving-dessert-buffet-8f0a4358.jpg'
 import galleryKitchenDetail from './gallery/guest-appetizer-plate-detail-8f0a4353.jpg'
+import homePageHero from './home/hero-canape-cones.png'
 import servicesHero from './platters/canape-spoon-appetizer-row-8f0a4281.jpg'
 import fusionExperienceService from './platters/canape-spoon-appetizer-row-8f0a4279.jpg'
 import homeHero from './platters/mixed-canape-platter-table-8f0a4288.jpg'
@@ -40,7 +41,7 @@ import homeInstagramCanape from './platters/canape-spoon-appetizer-row-8f0a4280.
 import homeInstagramGuest from './team/guest-dining-with-drinks-8f0a4384.jpg'
 
 export const pageHeroImages = {
-  home: homeHero,
+  home: homePageHero,
   about: aboutHero,
   services: servicesHero,
   weeklyMeals: privateChefPlatedCourse,

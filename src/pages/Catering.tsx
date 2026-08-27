@@ -154,13 +154,16 @@ export default function Catering() {
               Share your date, guest count, occasion, location and dietary needs. We will suggest a suitable catering
               style and prepare a custom quote.
             </p>
-            <a href={site.whatsapp} className="btn btn-ghost mt-8">
-              <WhatsappIcon className="size-4" />
-              Chat on WhatsApp
-            </a>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href={site.whatsapp} className="btn btn-ghost">
+                <WhatsappIcon className="size-4" />
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
 
           <form
+            id="catering-contact-form"
             className="rounded-lg border border-cream-50/12 bg-cream-50 p-6 shadow-card md:p-8"
             onSubmit={handleSubmit}
             noValidate
@@ -254,7 +257,7 @@ export default function Catering() {
               </p>
             )}
             <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto" disabled={isLoading} aria-busy={isLoading}>
-              {isLoading ? 'Sending...' : 'Request a Quote'}
+              {isLoading ? 'Sending...' : 'Submit'}
               <Sparkles className="size-4" aria-hidden />
             </button>
           </form>

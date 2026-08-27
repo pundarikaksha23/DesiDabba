@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Container } from '../Container'
 import { Section } from '../Section'
@@ -28,8 +29,11 @@ export function FaqSection({ eyebrow, title, description, items, icon }: FaqSect
         <div className="space-y-4">
           {items.map((item) => (
             <details key={item.question} className="panel-card card group p-5 open:shadow-card md:p-6">
-              <summary className="cursor-pointer list-none font-serif text-2xl font-semibold leading-snug text-brown">
-                {item.question}
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-2xl font-semibold leading-snug text-brown">
+                <span>{item.question}</span>
+                <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-brown/10 text-brown/60 transition-transform duration-200 group-open:rotate-180">
+                  <ChevronDown className="size-4" strokeWidth={2.2} aria-hidden />
+                </span>
               </summary>
               <p className="body-sm mt-3 text-brown/70">{item.answer}</p>
             </details>

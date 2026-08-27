@@ -36,22 +36,28 @@ export const platterNotes: PlatterNote[] = [
 
 export const platterCollections = [
   {
-    name: 'The Casual Gathering',
-    serves: '8-15 guests',
-    description: 'An easygoing mix of chaat bites, kebabs, breads, dips, and sweets for house visits, birthdays, and office drop-offs.',
-    inclusions: ['Savory and sweet balance', 'Vegetarian-first options available', 'Designed for coffee tables and counters'],
+    name: 'Small Gathering Platter',
+    serves: '',
+    description: 'For small get-togethers, birthdays, house visits and office drop-offs.',
+    icon: Leaf,
+    detail: 'An easy mix of hot bites, cold platters, dips, breads, sweets and signature snacks, styled for easy sharing.',
+    inclusions: ['Savoury and sweet balance', 'Vegetarian and vegan options available', 'Designed for coffee tables, counters and small gatherings'],
   },
   {
-    name: 'The Celebration Spread',
-    serves: '15-35 guests',
-    description: 'A fuller platter story with layered textures, signature garnishes, and a more polished presentation for milestone occasions.',
-    inclusions: ['Canapes, skewers, chutneys, and desserts', 'Festive styling and garnish direction', 'Easy serving for larger groups'],
+    name: 'Celebration Platter',
+    serves: '',
+    description: 'For birthdays, milestones, family events and private celebrations.',
+    icon: Sparkles,
+    detail: 'A fuller grazing spread with hot and cold bites, canapes, skewers, chutneys, desserts and unique sharing dishes.',
+    inclusions: ['Hot bites and cold platters', 'Signature snacks and fusion finger food', 'Festive styling and easy serving'],
   },
   {
-    name: 'The Signature Table',
-    serves: '35+ guests',
-    description: 'A custom platter-led setup for launches, cultural celebrations, receptions, and hosted events where food doubles as visual decor.',
-    inclusions: ['Custom styling by event mood', 'Dietary split planning', 'Optional pairing with catering or dessert table'],
+    name: 'Signature Grazing Table',
+    serves: '',
+    description: 'For weddings, receptions, launches, cultural events and larger celebrations.',
+    icon: HandPlatter,
+    detail: 'A custom grazing table with layered presentation, dietary planning and a mix of Indian, Asian and global flavours.',
+    inclusions: ['Custom styling by event mood', 'Vegetarian, vegan and non-vegetarian options', 'Can be paired with catering, desserts or drinks'],
   },
 ]
 

@@ -7,6 +7,7 @@ import { site } from '../config/site'
 
 const websiteHost = new URL(site.url).hostname
 const separator = '\u00b7'
+const phoneHref = `tel:${site.phone.replace(/\s+/g, '')}`
 const hasLiveSocialLink = (href: string | undefined) => Boolean(href && href !== '#')
 
 function getSocialLinks(...links: Array<FooterLink | null>) {
@@ -15,7 +16,7 @@ function getSocialLinks(...links: Array<FooterLink | null>) {
 
 function HomeFooter() {
   const contactLinks = getSocialLinks(
-    { label: 'WhatsApp', href: site.whatsapp },
+    { label: site.phone, href: phoneHref },
     { label: site.email, href: `mailto:${site.email}` },
     hasLiveSocialLink(site.instagram) ? { label: 'Instagram', href: site.instagram } : null,
     hasLiveSocialLink(site.facebook) ? { label: 'Facebook', href: site.facebook } : null,
@@ -26,7 +27,7 @@ function HomeFooter() {
       <div className="grid gap-8 border-b border-brown/10 pb-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
         <div>
           <BrandLink variant="footer" tone="light" />
-          <p className="mt-3 max-w-[34ch] text-[14.5px] leading-[1.6] text-brown/60">
+          <p className="mt-3 max-w-[34ch] text-[14.5px] leading-[1.6] text-brown/78">
             Indian warmth, Asian flavours and global food experiences, made with care in {site.address}.
           </p>
         </div>
@@ -52,7 +53,7 @@ function HomeFooter() {
           links={contactLinks}
         />
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-[13px] text-brown/50">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-6 text-[13px] text-brown/70">
         <span>Copyright 2026 Desi Dabba {separator} {site.address}</span>
         <LegalFooterLinks tone="light" />
         <span>Simple {separator} Sustainable {separator} Soulful</span>
@@ -68,7 +69,7 @@ type FooterLink = {
 
 function FooterColumn({ title, links, tone }: { title: string; links: FooterLink[]; tone: 'light' | 'dark' }) {
   const headingTone = tone === 'light' ? 'footer-heading-light' : 'footer-heading-dark'
-  const linkColor = tone === 'light' ? 'text-brown/70' : 'text-cream-50/78'
+  const linkColor = tone === 'light' ? 'text-brown/82' : 'text-cream-50/78'
   const linkHoverColor = tone === 'light' ? 'hover:text-maroon' : 'hover:text-gold-600'
 
   return (
@@ -94,7 +95,7 @@ function FooterColumn({ title, links, tone }: { title: string; links: FooterLink
 }
 
 function LegalFooterLinks({ tone }: { tone: 'light' | 'dark' }) {
-  const textTone = tone === 'light' ? 'text-brown/55' : 'text-cream-50/55'
+  const textTone = tone === 'light' ? 'text-brown/70' : 'text-cream-50/55'
   const hoverTone = tone === 'light' ? 'hover:text-maroon' : 'hover:text-gold-600'
 
   return (
@@ -110,7 +111,7 @@ function LegalFooterLinks({ tone }: { tone: 'light' | 'dark' }) {
 
 function DarkFooter() {
   const contactLinks = getSocialLinks(
-    { label: `WhatsApp ${separator} ${site.phone}`, href: site.whatsapp },
+    { label: site.phone, href: phoneHref },
     { label: site.email, href: `mailto:${site.email}` },
     { label: site.address, href: routes.contact },
     hasLiveSocialLink(site.instagram) ? { label: 'Instagram', href: site.instagram } : null,
@@ -134,7 +135,7 @@ function DarkFooter() {
           label: link.label === 'About' ? 'Our Story' : link.label,
           href: link.href,
         }))} />
-        <FooterColumn tone="dark" title="Services" links={footerServiceLinks.slice(0, 4).map((link) => ({
+        <FooterColumn tone="dark" title="Services" links={footerServiceLinks.map((link) => ({
           label: link.label.replace('Corporate Catering', 'Event Catering'),
           href: link.href,
         }))} />

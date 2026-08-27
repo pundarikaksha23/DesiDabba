@@ -1,4 +1,4 @@
-import { CalendarCheck, HandPlatter, Sparkles } from 'lucide-react'
+import { CalendarCheck, HandPlatter } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Button } from '../components/Button'
 import { Card } from '../components/Card'
@@ -28,8 +28,8 @@ export default function GlazingPlatters() {
     <>
       <SplitHero
         eyebrow="Grazing Platters"
-        title="Host-ready platters with South Asian warmth and a polished eye."
-        description="Designed for easy sharing and immediate visual impact, our platters bring flavor, abundance, and calm presentation to gatherings of every scale."
+        title="Host-ready grazing platters for gatherings, celebrations and easy sharing."
+        description="Our grazing platters are created for easy hosting, beautiful presentation and generous sharing. Each platter can include savoury bites, sweets, snacks, fusion finger food, vegetarian and vegan options, and seasonal additions."
         imageAlt="Desi Dabba grazing platter with colorful appetizers and garnishes"
         imagePosition="48% 52%"
         imageSrc={platterFeatureImage}
@@ -81,40 +81,51 @@ export default function GlazingPlatters() {
         <Container>
           <SectionHeader
             eyebrow="Collections"
-            title="Formats that scale from a small visit to a full celebration."
-            description="Each platter collection is a starting point. We adjust item mix, quantity, and styling around the room, the guests, and the mood you want."
+            title="Flexible platter styles for different kinds of hosting."
+            description="Each platter format is a starting point. We shape the mix, styling and quantity around your occasion, your guests and the way you want the table to feel."
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {platterCollections.map((collection, index) => (
-              <motion.div
-                key={collection.name}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewportOnce}
-                transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.06 }}
-              >
-                <Card className={`h-full ${index === 1 ? 'bg-maroon text-cream-50' : ''}`}>
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{collection.serves}</p>
-                  <h2 className={`heading-md mt-4 ${index === 1 ? 'text-cream-50' : 'text-brown'}`}>{collection.name}</h2>
-                  <p className={`body-sm mt-3 ${index === 1 ? 'text-cream-50/72' : 'text-brown/70'}`}>
-                    {collection.description}
-                  </p>
-                  <ul className="mt-7 space-y-3">
-                    {collection.inclusions.map((inclusion) => (
-                      <li
-                        key={inclusion}
-                        className={`flex items-start gap-3 text-sm font-semibold leading-6 ${
-                          index === 1 ? 'text-cream-50/86' : 'text-green'
-                        }`}
-                      >
-                        <Sparkles className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden />
-                        <span>{inclusion}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-              </motion.div>
-            ))}
+            {platterCollections.map((collection, index) => {
+              const InclusionIcon = collection.icon
+
+              return (
+                <motion.div
+                  key={collection.name}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewportOnce}
+                  transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.06 }}
+                >
+                  <Card className={`h-full ${index === 1 ? 'bg-maroon text-cream-50' : ''}`}>
+                    {collection.serves ? (
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{collection.serves}</p>
+                    ) : null}
+                    <h2 className={`heading-md ${collection.serves ? 'mt-4' : ''} ${index === 1 ? 'text-cream-50' : 'text-brown'}`}>
+                      {collection.name}
+                    </h2>
+                    <p className={`body-sm mt-3 ${index === 1 ? 'text-cream-50/72' : 'text-brown/70'}`}>
+                      {collection.description}
+                    </p>
+                    <p className={`body-sm mt-4 ${index === 1 ? 'text-cream-50/78' : 'text-brown/72'}`}>
+                      {collection.detail}
+                    </p>
+                    <ul className="mt-7 space-y-3">
+                      {collection.inclusions.map((inclusion) => (
+                        <li
+                          key={inclusion}
+                          className={`flex items-start gap-3 text-sm font-semibold leading-6 ${
+                            index === 1 ? 'text-cream-50/86' : 'text-green'
+                          }`}
+                        >
+                          <InclusionIcon className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden />
+                          <span>{inclusion}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                </motion.div>
+              )
+            })}
           </div>
         </Container>
       </Section>

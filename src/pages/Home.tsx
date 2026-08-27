@@ -24,7 +24,7 @@ const serviceCards = [
   },
   {
     title: 'Catering',
-    copy: 'Generous, beautiful spreads for gatherings — from intimate dinners to celebrations of a hundred.',
+    copy: 'Generous, beautiful spreads for gatherings - from intimate dinners to celebrations of a hundred.',
     href: routes.catering,
     icon: 'ring',
   },
@@ -135,7 +135,7 @@ export default function Home() {
             Food made with care in Tallinn.
           </h1>
           <p className="mb-8 mt-0 max-w-[440px] text-[17px] leading-[1.65] text-brown/72">
-            Desi Dabba brings warm, thoughtful food experiences to Tallinn — from weekly meals and private dining to
+            Desi Dabba brings warm, thoughtful food experiences to Tallinn - from weekly meals and private dining to
             catering, grazing platters and celebration menus. Rooted in Indian hospitality and inspired by global
             flavours, every menu is made with care, balance and soul.
           </p>
@@ -286,11 +286,11 @@ export default function Home() {
           </div>
           <div>
             <div className="mb-[18px] text-[12.5px] font-semibold uppercase tracking-[0.22em] text-gold">Our Story</div>
-            <h2 className="m-0 mb-[22px] font-serif text-[clamp(26px,3.4vw,40px)] font-medium leading-[1.22] text-cream">
+            <h2 className="m-0 mb-[22px] text-justify font-serif text-[clamp(26px,3.4vw,40px)] font-medium leading-[1.22] text-cream">
               “Every meal we create carries warmth, care and flavour inspired by where we come from, and shaped by the
               home we are building here in Tallinn.”
             </h2>
-            <p className="m-0 mb-[18px] max-w-[52ch] text-base leading-[1.7] text-cream-200/80">
+            <p className="m-0 mb-[18px] max-w-[52ch] text-justify text-base leading-[1.7] text-cream-200/80">
               Desi Dabba began with a simple idea: food should feel warm, personal and full of care. Rooted in Indian
               hospitality and inspired by global flavours, we create weekly meals, catering menus, private chef
               experiences and grazing platters for homes, offices and celebrations in Tallinn. Every menu is made
@@ -349,7 +349,7 @@ export default function Home() {
             </h2>
             <p className="m-0 max-w-[46ch] text-[16.5px] leading-[1.65] text-cream/85">
               Planning a gathering, a weekly rhythm, or a night to remember? Tell us the occasion and we'll take it from
-              there — no online ordering, just a warm conversation.
+              there - no online ordering, just a warm conversation.
             </p>
           </div>
           <div className="relative z-[1] flex flex-col gap-3.5">
@@ -357,7 +357,10 @@ export default function Home() {
               <WhatsappIcon className="size-[18px]" />
               Message us on WhatsApp
             </a>
-            <a href={`mailto:${site.email}`} className="rounded-full border border-cream/50 px-6 py-4 text-center text-[15.5px] font-semibold text-cream no-underline">
+            <a
+              href={`mailto:${site.email}`}
+              className="rounded-full border border-cream/70 bg-cream/12 px-6 py-4 text-center text-[15.5px] font-semibold text-cream no-underline backdrop-blur-[2px]"
+            >
               {site.email}
             </a>
           </div>
