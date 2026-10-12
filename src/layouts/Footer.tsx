@@ -33,7 +33,7 @@ function HomeFooter() {
           title="Get in touch"
           links={[
             { label: 'WhatsApp', href: site.whatsapp },
-            { label: site.email, href: `mailto:${site.email}` },
+            { label: site.email, href: routes.contact },
             { label: 'Instagram', href: 'https://instagram.com' },
           ]}
         />
@@ -75,7 +75,7 @@ function FooterColumn({ title, links, tone }: { title: string; links: FooterLink
       <h2 className={`text-xs font-bold uppercase tracking-[0.14em] ${headingColor}`}>{title}</h2>
       <div className={`mt-4 flex flex-col gap-2.5 text-[14.5px] ${linkColor}`}>
         {links.map((link) =>
-          link.href.startsWith('http') || link.href.startsWith('mailto:') || link.href.startsWith('tel:') ? (
+          link.href.startsWith('http') || link.href.startsWith('tel:') ? (
             <a key={`${title}-${link.label}`} href={link.href} className={`transition ${linkHoverColor}`}>
               {link.label}
             </a>
@@ -118,7 +118,7 @@ function DarkFooter() {
           title="Get in touch"
           links={[
             { label: `WhatsApp ${separator} ${site.phone}`, href: site.whatsapp },
-            { label: site.email, href: `mailto:${site.email}` },
+            { label: site.email, href: routes.contact },
             { label: site.address, href: routes.contact },
             { label: `Instagram ${separator} Facebook`, href: 'https://instagram.com' },
           ]}

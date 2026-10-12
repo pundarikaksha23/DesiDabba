@@ -7,7 +7,7 @@ export const site = {
   openGraphImage: '/desi-dabba-og.jpg',
   openGraphImageAlt: 'A premium Desi Dabba Indian meal spread arranged for sharing.',
   phone: '+372 590 63303',
-  email: 'desidabba@vidyn.ee',
+  email: 'poojagkohli@gmail.com',
   whatsapp: 'https://wa.me/37259063303',
   address: 'Tallinn, Estonia',
 } as const

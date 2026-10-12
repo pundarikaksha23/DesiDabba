@@ -1,10 +1,14 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, test } from 'vitest'
+import { afterEach, describe, expect, test, vi } from 'vitest'
 import Contact from '../pages/Contact'
 import { renderWithProviders } from '../test/render'
 
 describe('Contact form validation', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
   test('shows required validation errors before submission', async () => {
     const user = userEvent.setup()
     renderWithProviders(<Contact />)
@@ -32,7 +36,17 @@ describe('Contact form validation', () => {
     expect(screen.getByText(/please add a few more details/i)).toBeTruthy()
   })
 
-  test('shows loading and success states for a valid mock submission', async () => {
+  test('sends a valid enquiry and shows the success state', async () => {
+    let resolveFetch: (response: Response) => void = () => undefined
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        () =>
+          new Promise<Response>((resolve) => {
+            resolveFetch = resolve
+          }),
+      ),
+    )
     const user = userEvent.setup()
     renderWithProviders(<Contact />)
 
@@ -42,8 +56,18 @@ describe('Contact form validation', () => {
     await user.click(screen.getByRole('button', { name: /send message/i }))
 
     expect(screen.getByRole('button', { name: /sending/i })).toBeTruthy()
+    resolveFetch(
+      new Response(JSON.stringify({ success: 'true' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    )
     await waitFor(() => {
-      expect(screen.getAllByText(/we will follow up with a thoughtful next step/i).length).toBeGreaterThan(0)
+      expect(screen.getAllByText(/your message has been sent; we will follow up/i).length).toBeGreaterThan(0)
     })
+    expect(fetch).toHaveBeenCalledWith(
+      'https://formsubmit.co/ajax/poojagkohli@gmail.com',
+      expect.objectContaining({ method: 'POST' }),
+    )
   })
 })

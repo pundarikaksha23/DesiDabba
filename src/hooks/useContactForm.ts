@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import type { FormEvent } from 'react'
 import type { ContactFormValues, FormErrors, FormStatus } from '../types/forms'
-import { submitContactForm } from '../utils/mockFormApi'
+import { submitContactForm } from '../utils/formApi'
 import { validateContactForm } from '../utils/validation'
 import { useToast } from './useToast'
 

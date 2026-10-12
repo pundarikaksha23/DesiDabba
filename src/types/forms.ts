@@ -14,6 +14,6 @@ export type NewsletterFormValues = {
   email: string
 }
 
-export type MockFormResponse = {
+export type FormResponse = {
   message: string
 }

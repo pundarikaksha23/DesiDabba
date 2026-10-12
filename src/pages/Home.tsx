@@ -9,12 +9,12 @@ import {
 import { routes } from '../config/routes'
 import { site } from '../config/site'
 
-const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters', 'Tallinn · Estonia']
+const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters Tallinn', 'Tallinn · Estonia']
 
 const serviceCards = [
   {
     title: 'Weekly Meals',
-    copy: 'Home-style tiffin, rotating each week. Nourishing lunches and dinners, delivered on your schedule.',
+    copy: 'Home-style tiffin, rotating each week. Nourishing Meals plan, Fresh weekly meals, delivered Monday to Friday in Tallinn.',
     href: routes.weeklyMeals,
     icon: 'dot',
   },
@@ -31,7 +31,7 @@ const serviceCards = [
     icon: 'line-y',
   },
   {
-    title: 'Grazing Platters',
+    title: 'Grazing Platters Tallinn',
     copy: 'Effortless hosting. Abundant platters of chaat, kebabs and sweets, styled and ready to share.',
     href: routes.services,
     icon: 'line-x',
@@ -223,7 +223,7 @@ export default function Home() {
               <MessageCircle className="size-[18px]" aria-hidden />
               Message us on WhatsApp
             </a>
-            <a href={`mailto:${site.email}`} className="rounded-full border border-[#F6EFE2]/50 px-6 py-4 text-center text-[15.5px] font-semibold text-[#F6EFE2] no-underline">
+            <a href={routes.contact} className="rounded-full border border-[#F6EFE2]/50 px-6 py-4 text-center text-[15.5px] font-semibold text-[#F6EFE2] no-underline">
               {site.email}
             </a>
           </div>

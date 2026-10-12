@@ -6,6 +6,7 @@ import { Container } from '../components/Container'
 import { InputField, SelectField, TextareaField } from '../components/FormField'
 import { Section } from '../components/Section'
 import { FaqSection } from '../components/sections/FaqSection'
+import { routes } from '../config/routes'
 import { contactFaq, openingHours } from '../data/contact'
 import { useContactForm } from '../hooks/useContactForm'
 import { site } from '../config/site'
@@ -29,7 +30,7 @@ export default function Contact() {
                 <MessageCircle className="size-4" aria-hidden />
                 WhatsApp
               </Button>
-              <Button to={`mailto:${site.email}`} variant="secondary">
+              <Button to={routes.contact} variant="secondary">
                 Email Us
               </Button>
             </div>
@@ -52,7 +53,7 @@ export default function Contact() {
             <Card>
               <Mail className="size-7 text-gold" aria-hidden />
               <h2 className="heading-md mt-4 text-brown">Email</h2>
-              <a className="body-sm mt-2 block text-brown/70 hover:text-gold" href={`mailto:${site.email}`}>
+              <a className="body-sm mt-2 block text-brown/70 hover:text-gold" href={routes.contact}>
                 {site.email}
               </a>
             </Card>
@@ -119,7 +120,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <form className="card-padded bg-cream-50" onSubmit={handleSubmit} noValidate>
+          <form id="contact-form" className="card-padded bg-cream-50" onSubmit={handleSubmit} noValidate>
             <div className="grid gap-5 md:grid-cols-2">
               <InputField
                 label="Name"
@@ -201,7 +202,7 @@ export default function Contact() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button to={site.whatsapp}>WhatsApp Desi Dabba</Button>
-            <Button to={`mailto:${site.email}`} variant="ghost">
+            <Button to={routes.contact} variant="ghost">
               Email {site.email}
             </Button>
           </div>

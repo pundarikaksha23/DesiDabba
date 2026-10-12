@@ -6,6 +6,7 @@ import {
   privateChefGalleryImages,
   serviceImages,
 } from '../assets/images/selected-images'
+import { routes } from '../config/routes'
 import { site } from '../config/site'
 
 const heroAnchors = [
@@ -72,7 +73,7 @@ const services = [
     cta: 'Request a catering quote',
     secondaryCta: 'Send an email enquiry',
     href: `${site.whatsapp}?text=Hi%20Desi%20Dabba%2C%20I'd%20like%20a%20catering%20quote`,
-    secondaryHref: `mailto:${site.email}?subject=Catering%20enquiry`,
+    secondaryHref: routes.contact,
     image: cateringGalleryImages[0],
     imageAlt: 'Catering spread event photo',
     reverse: true,
@@ -348,7 +349,7 @@ export default function Services() {
               <Phone className="size-5" aria-hidden />
               Message on WhatsApp
             </a>
-            <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2.5 rounded-full border-[1.5px] border-[#FAF7F2]/50 px-[29px] py-3.5 text-[15.5px] font-semibold text-[#FAF7F2] no-underline">
+            <a href={routes.contact} className="inline-flex items-center gap-2.5 rounded-full border-[1.5px] border-[#FAF7F2]/50 px-[29px] py-3.5 text-[15.5px] font-semibold text-[#FAF7F2] no-underline">
               <Mail className="size-5" aria-hidden />
               Send us an email
             </a>
