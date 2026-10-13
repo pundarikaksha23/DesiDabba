@@ -1,4 +1,10 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from 'framer-motion'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import {
   homeInstagramImages,
@@ -41,6 +47,158 @@ const serviceCards = [
     icon: 'line-x',
   },
 ] as const
+
+type HomeService = (typeof serviceCards)[number]
+
+type HomeKitchenImageProps = {
+  src: string
+  alt: string
+  index: number
+}
+
+function HomeKitchenImage({ src, alt, index }: HomeKitchenImageProps) {
+  const reduceMotion = useReducedMotion()
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (reduceMotion || event.pointerType === 'touch') {
+      return
+    }
+
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - bounds.left) / bounds.width
+    const y = (event.clientY - bounds.top) / bounds.height
+
+    rotateX.set((0.5 - y) * 12)
+    rotateY.set((x - 0.5) * 12)
+  }
+
+  const resetTilt = () => {
+    rotateX.set(0)
+    rotateY.set(0)
+  }
+
+  return (
+    <motion.div
+      initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.96 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={reduceMotion ? undefined : { y: -7, scale: 1.025 }}
+      className="home-hover-card home-kitchen-card group aspect-square overflow-hidden rounded-xl [will-change:transform]"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+      style={{ rotateX, rotateY, transformPerspective: 1000 }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        width="1200"
+        height="1800"
+        className="h-full w-full rounded-xl object-cover shadow-[0_20px_40px_-26px_rgba(59,42,33,0.46)] transition-transform duration-700 ease-out group-hover:scale-110"
+        sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+        loading="lazy"
+        decoding="async"
+      />
+    </motion.div>
+  )
+}
+
+type HomeServiceCardProps = {
+  service: HomeService
+  index: number
+}
+
+function HomeServiceCard({ service, index }: HomeServiceCardProps) {
+  const reduceMotion = useReducedMotion()
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLAnchorElement>) => {
+    if (reduceMotion || event.pointerType === 'touch') {
+      return
+    }
+
+    const card = event.currentTarget
+    const bounds = card.getBoundingClientRect()
+    const x = (event.clientX - bounds.left) / bounds.width
+    const y = (event.clientY - bounds.top) / bounds.height
+
+    rotateX.set((0.5 - y) * 8)
+    rotateY.set((x - 0.5) * 8)
+    card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`)
+    card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`)
+    card.setAttribute('data-live', '')
+  }
+
+  const resetTilt = (event: ReactPointerEvent<HTMLAnchorElement>) => {
+    const card = event.currentTarget
+    card.removeAttribute('data-live')
+    rotateX.set(0)
+    rotateY.set(0)
+  }
+
+  return (
+    <MotionCardLink
+      to={service.href}
+      className="group/card home-service-card panel-card relative flex min-h-[290px] flex-col rounded-[18px] border border-brown/10 bg-cream-soft px-6 pb-[30px] pt-[26px] text-inherit no-underline transition-[border-color,background-color] duration-300 hover:border-gold/35"
+      aria-label={`Learn more about ${service.title}`}
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 24,
+              rotate: 0,
+            }
+      }
+      whileInView={
+        reduceMotion
+          ? undefined
+          : {
+              opacity: 1,
+              y: 0,
+              rotate: 0,
+            }
+      }
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.42,
+        delay: reduceMotion ? 0 : index * 0.06,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -8,
+              scale: 1.012,
+              boxShadow: '0 28px 54px rgba(59,42,33,0.18)',
+            }
+      }
+      whileTap={reduceMotion ? undefined : { scale: 0.99 }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+      style={{ rotateX, rotateY, transformPerspective: 1100 }}
+    >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.34),rgba(255,255,255,0)_42%)] opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-[-22%] top-0 z-[1] h-px -translate-x-full bg-[linear-gradient(90deg,rgba(206,154,58,0),rgba(206,154,58,0.95),rgba(206,154,58,0))] opacity-0 transition-[transform,opacity] duration-700 group-hover/card:translate-x-[85%] group-hover/card:opacity-100"
+      />
+      <HomeServiceIcon type={service.icon} />
+      <h3 className="mb-2 mt-[26px] font-serif text-[25px] font-semibold text-maroon">{service.title}</h3>
+      <p className="mb-4 text-[14.5px] leading-[1.6] text-brown/65">{service.copy}</p>
+      <span className="mt-auto text-[13.5px] font-semibold text-green">
+        Learn more →
+      </span>
+    </MotionCardLink>
+  )
+}
 
 function HomeServiceIcon({ type }: { type: (typeof serviceCards)[number]['icon'] }) {
   const reduceMotion = useReducedMotion()
@@ -115,7 +273,6 @@ function HomeHeroGraphics() {
 }
 
 export default function Home() {
-  const reduceMotion = useReducedMotion()
   const hasInstagramLink = Boolean(site.instagram && site.instagram !== '#')
 
   return (
@@ -207,62 +364,11 @@ export default function Home() {
         </div>
         <div className="grid gap-[22px] sm:grid-cols-2 lg:grid-cols-4">
           {serviceCards.map((service, index) => (
-            <MotionCardLink
+            <HomeServiceCard
               key={service.title}
-              to={service.href}
-              className="group/card panel-card relative flex min-h-[290px] flex-col rounded-[18px] border border-brown/10 bg-cream-soft px-6 pb-[30px] pt-[26px] text-inherit no-underline transition-[border-color,background-color] duration-300 hover:border-gold/35"
-              aria-label={`Learn more about ${service.title}`}
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 24,
-                      rotate: 0,
-                    }
-              }
-              whileInView={
-                reduceMotion
-                  ? undefined
-                  : {
-                      opacity: 1,
-                      y: 0,
-                      rotate: 0,
-                    }
-              }
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{
-                duration: reduceMotion ? 0 : 0.42,
-                delay: reduceMotion ? 0 : index * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              whileHover={
-                reduceMotion
-                  ? undefined
-                  : {
-                      y: -8,
-                      scale: 1.012,
-                      rotateY: 14,
-                      boxShadow: '0 28px 54px rgba(59,42,33,0.18)',
-                    }
-              }
-              whileTap={reduceMotion ? undefined : { scale: 0.99 }}
-            >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-0 z-[1] rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.34),rgba(255,255,255,0)_42%)] opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
-              />
-              <span
-                aria-hidden
-                className="pointer-events-none absolute inset-x-[-22%] top-0 z-[1] h-px -translate-x-full bg-[linear-gradient(90deg,rgba(206,154,58,0),rgba(206,154,58,0.95),rgba(206,154,58,0))] opacity-0 transition-[transform,opacity] duration-700 group-hover/card:translate-x-[85%] group-hover/card:opacity-100"
-              />
-              <HomeServiceIcon type={service.icon} />
-              <h3 className="mb-2 mt-[26px] font-serif text-[25px] font-semibold text-maroon">{service.title}</h3>
-              <p className="mb-4 text-[14.5px] leading-[1.6] text-brown/65">{service.copy}</p>
-              <span className="mt-auto text-[13.5px] font-semibold text-green">
-                Learn more →
-              </span>
-            </MotionCardLink>
+              service={service}
+              index={index}
+            />
           ))}
         </div>
       </section>
@@ -323,16 +429,11 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {[serviceImages.weeklyMeals, serviceImages.corporateCatering, serviceImages.fusionExperiences, serviceImages.premiumPlatters, ...homeInstagramImages.slice(0, 2)].map((image, index) => (
-            <img
+            <HomeKitchenImage
               key={`${image}-${index}`}
               src={image}
               alt={`Desi Dabba Instagram kitchen moment ${index + 1}`}
-              width="1200"
-              height="1800"
-              className="aspect-square rounded-xl object-cover"
-              sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-              loading="lazy"
-              decoding="async"
+              index={index}
             />
           ))}
         </div>

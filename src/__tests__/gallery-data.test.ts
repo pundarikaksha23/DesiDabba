@@ -6,7 +6,18 @@ describe('gallery data', () => {
     expect(galleryItems).toHaveLength(50)
     expect(new Set(galleryItems.map((item) => item.id)).size).toBe(galleryItems.length)
     expect(new Set(galleryItems.map((item) => item.imageSrc)).size).toBe(galleryItems.length)
-    expect(galleryItems.every((item) => item.imageSrc.startsWith('/images/'))).toBe(true)
+    expect(
+      galleryItems.every(
+        (item) =>
+          item.imageSrc.startsWith('/images/') ||
+          item.imageSrc.startsWith('/src/assets/images/'),
+      ),
+    ).toBe(true)
+    expect(
+      galleryItems
+        .filter((item) => item.id.startsWith('Weekly meal '))
+        .every((item) => item.imageSrc.startsWith('/src/assets/images/')),
+    ).toBe(true)
   })
 
   test('keeps a mix of event portraits and food forward selections', () => {

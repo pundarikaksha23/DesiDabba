@@ -1,3 +1,14 @@
+import riceDalImage from '../assets/images/catering/rice-sabzi-buffet-chafing-dishes-8f0a4310.jpg'
+import familyDinnerImage from '../assets/images/catering/guests-serving-buffet-8f0a4232.jpg'
+import chapatiMealImage from '../assets/images/catering/naan-roti-chafing-dish-8f0a4328.jpg'
+import riceRotiImage from '../assets/images/gallery/guest-appetizer-plate-detail-8f0a4353.jpg'
+import balancedThaliImage from '../assets/images/weekly-meals/plated-indian-meal-close-up-8f0a4364.jpg'
+import tomatoCurryImage from '../assets/images/weekly-meals/vegetable-curry-chafing-dish-8f0a4317.jpg'
+import comfortThaliImage from '../assets/images/weekly-meals/handheld-plated-indian-meal-8f0a4388.jpg'
+import blueBowlImage from '../assets/images/weekly-meals/plated-indian-meal-close-up-8f0a4370.jpg'
+import luxeMealImage from '../assets/images/weekly-meals/biryani-curry-tray-8f0a4223.jpg'
+import puriPakoraImage from '../assets/images/platters/canape-spoon-appetizer-row-8f0a4280.jpg'
+
 export const galleryCategories = ['All', 'Food', 'Buffets', 'Events', 'Platters', 'Kitchen'] as const
 
 export type GalleryCategory = (typeof galleryCategories)[number]
@@ -125,6 +136,19 @@ const curatedGallerySources: CuratedGallerySource[] = [
   { path: 'Catering/desi/8F0A4337.jpg', title: 'Layered Canape Line', category: 'Platters' },
 ]
 
+const availableGalleryImages: Record<string, string> = {
+  'Weekly meal /1.jpg': riceDalImage,
+  'Weekly meal /2.jpg': tomatoCurryImage,
+  'Weekly meal /3.jpg': chapatiMealImage,
+  'Weekly meal /7.jpg': comfortThaliImage,
+  'Weekly meal /c490ecf5-d1cb-43c6-8e40-bdf64af7f9c7.JPG': balancedThaliImage,
+  'Weekly meal /IMG_1440.PNG': familyDinnerImage,
+  'Weekly meal /IMG_3040.jpg': blueBowlImage,
+  'Weekly meal /IMG_3148 2.PNG': riceRotiImage,
+  'Weekly meal /IMG_4602.PNG': puriPakoraImage,
+  'Weekly meal /IMG_9078 2.JPG': luxeMealImage,
+}
+
 function toPublicImageSrc(path: string) {
   return encodeURI(`/images/${path}`)
 }
@@ -133,6 +157,6 @@ export const galleryItems: GalleryItem[] = curatedGallerySources.map(({ path, ti
   id: path,
   title,
   category,
-  imageSrc: toPublicImageSrc(path),
+  imageSrc: availableGalleryImages[path] ?? toPublicImageSrc(path),
   position,
 }))

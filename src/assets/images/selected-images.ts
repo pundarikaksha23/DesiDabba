@@ -1,3 +1,4 @@
+import aboutHero from './about/family-event-portrait-8f0a4221.jpg'
 import privateChefHero from './backgrounds/outdoor-dining-table-drinks-8f0a4381.jpg'
 import corporateCateringService from './catering/rice-sabzi-buffet-chafing-dishes-8f0a4310.jpg'
 import weddingCateringService from './catering/guests-serving-dessert-buffet-8f0a4358.jpg'
@@ -60,6 +61,7 @@ export const storytellingImages = {
   cateringMenu: cateringNaanService,
   privateChefTable: privateChefService,
   contactGathering: contactHero,
+  aboutPageFeature: aboutHero,
 } as const
 
 export const serviceImages = {
