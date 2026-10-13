@@ -64,6 +64,142 @@ img {
   height: auto;
 }
 
+.reference-home .kitchen-mosaic img {
+  height: 100%;
+}
+
+.reference-home .home-hover-card {
+  position: relative;
+  isolation: isolate;
+  border-radius: 22px;
+}
+
+.reference-home .kitchen-card img {
+  position: relative;
+  z-index: 0;
+  display: block;
+}
+
+.reference-home .service-card {
+  min-width: 0;
+  border-radius: 24px;
+  box-shadow: 0 18px 42px rgb(57 20 30 / 0.12);
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.2, 0.9, 0.3, 1.15), box-shadow 300ms ease;
+}
+
+.reference-home .service-card[data-live] {
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+.reference-home .service-card::before {
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(110deg, #8c3448, #ce9a3a 48%, #6f4b83);
+  content: "";
+  opacity: 0.16;
+  filter: blur(10px);
+  transition: opacity 300ms ease;
+}
+
+.reference-home .service-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 255 255 / 0.18),
+    transparent 65%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.reference-home .service-card:hover {
+  box-shadow: 0 22px 48px rgb(57 20 30 / 0.2);
+}
+
+.reference-home .service-card:hover::before {
+  opacity: 0.28;
+}
+
+.reference-home .service-card-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  transform: translateZ(10px);
+}
+
+.reference-home .service-card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  overflow: hidden;
+  padding: clamp(18px, 2vw, 28px);
+  border-radius: inherit;
+  transform: translateZ(25px);
+}
+
+.reference-home .service-card-content::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgb(57 20 30 / 0.28) 0%,
+    rgb(57 20 30 / 0.34) 30%,
+    rgb(57 20 30 / 0.68) 52%,
+    rgb(57 20 30 / 0.9) 76%,
+    rgb(57 20 30 / 0.96) 100%
+  );
+}
+
+.reference-home .service-card-content > * {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(1px);
+}
+
+.reference-home .service-card[data-live]::after {
+  opacity: 1;
+}
+
+.reference-home .service-card-content h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 2.5vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reference-home .service-card,
+  .reference-home .service-card::before {
+    transition: none;
+  }
+
+  .reference-home .service-card {
+    transform: none;
+  }
+
+  .reference-home .service-card::after {
+    display: none;
+  }
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;

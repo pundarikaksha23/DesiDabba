@@ -1,11 +1,93 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from 'framer-motion'
 import { X } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type PointerEvent as ReactPointerEvent } from 'react'
 import { Container } from '../components/Container'
 import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { galleryCategories, galleryItems, type GalleryCategory, type GalleryItem } from '../data/gallery'
 import { fadeUp, viewportOnce } from '../utils/motion'
+
+type GalleryCardProps = {
+  item: GalleryItem
+  onSelect: (item: GalleryItem) => void
+}
+
+function GalleryCard({ item, onSelect }: GalleryCardProps) {
+  const reduceMotion = useReducedMotion()
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLElement>) => {
+    if (reduceMotion || event.pointerType === 'touch') {
+      return
+    }
+
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - bounds.left) / bounds.width
+    const y = (event.clientY - bounds.top) / bounds.height
+
+    rotateX.set((0.5 - y) * 8)
+    rotateY.set((x - 0.5) * 8)
+  }
+
+  const resetTilt = () => {
+    rotateX.set(0)
+    rotateY.set(0)
+  }
+
+  return (
+    <motion.figure
+      layout
+      variants={fadeUp}
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 0, scale: 0.96, y: 12 }}
+      viewport={viewportOnce}
+      transition={{ duration: 0.32, ease: 'easeOut' }}
+      whileHover={reduceMotion ? undefined : { y: -6 }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+      style={{ rotateX, rotateY, transformPerspective: 1000 }}
+      className="card group mb-5 break-inside-avoid overflow-hidden p-0"
+    >
+      <button
+        type="button"
+        className="block w-full text-left"
+        onClick={() => onSelect(item)}
+        aria-label={`Open ${item.title}`}
+      >
+        <div className={`relative overflow-hidden ${item.height}`}>
+          <img
+            src={item.imageSrc}
+            alt={item.title}
+            width="1200"
+            height="1800"
+            className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
+            style={{ objectPosition: item.position }}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brown/56 via-brown/6 to-transparent opacity-84 transition group-hover:opacity-70" />
+          <div className="absolute inset-x-0 bottom-0 p-5 text-cream-50">
+            <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-gold">
+              {item.category}
+            </p>
+            <figcaption className="mt-2 font-serif text-2xl font-semibold leading-snug">
+              {item.title}
+            </figcaption>
+          </div>
+        </div>
+      </button>
+    </motion.figure>
+  )
+}
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>('All')
@@ -74,47 +156,11 @@ export default function Gallery() {
           <motion.div layout className="columns-1 gap-5 sm:columns-2 lg:columns-3">
             <AnimatePresence mode="popLayout">
               {filteredItems.map((item) => (
-                <motion.figure
-                  layout
+                <GalleryCard
                   key={item.title}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate="visible"
-                  exit={{ opacity: 0, scale: 0.96, y: 12 }}
-                  viewport={viewportOnce}
-                  transition={{ duration: 0.32, ease: 'easeOut' }}
-                  className="card group mb-5 break-inside-avoid overflow-hidden p-0"
-                >
-                  <button
-                    type="button"
-                    className="block w-full text-left"
-                    onClick={() => setActiveItem(item)}
-                    aria-label={`Open ${item.title}`}
-                  >
-                    <div className={`relative overflow-hidden ${item.height}`}>
-                      <img
-                        src={item.imageSrc}
-                        alt={item.title}
-                        width="1200"
-                        height="1800"
-                        className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                        style={{ objectPosition: item.position }}
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-brown/56 via-brown/6 to-transparent opacity-84 transition group-hover:opacity-70" />
-                      <div className="absolute inset-x-0 bottom-0 p-5 text-cream-50">
-                        <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-gold">
-                          {item.category}
-                        </p>
-                        <figcaption className="mt-2 font-serif text-2xl font-semibold leading-snug">
-                          {item.title}
-                        </figcaption>
-                      </div>
-                    </div>
-                  </button>
-                </motion.figure>
+                  item={item}
+                  onSelect={setActiveItem}
+                />
               ))}
             </AnimatePresence>
           </motion.div>

@@ -1,7 +1,15 @@
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import {
   homeInstagramImages,
+  homeKitchenImages,
   pageHeroImages,
   serviceImages,
   storytellingImages,
@@ -11,43 +19,90 @@ import { site } from '../config/site'
 
 const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters Tallinn', 'Tallinn · Estonia']
 
+type KitchenImageProps = {
+  src: string
+  alt: string
+  className: string
+}
+
+function KitchenImage({ src, alt, className }: KitchenImageProps) {
+  const reduceMotion = useReducedMotion()
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (reduceMotion || event.pointerType === 'touch') {
+      return
+    }
+
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const x = (event.clientX - bounds.left) / bounds.width
+    const y = (event.clientY - bounds.top) / bounds.height
+
+    rotateX.set((0.5 - y) * 12)
+    rotateY.set((x - 0.5) * 12)
+  }
+
+  const resetTilt = () => {
+    rotateX.set(0)
+    rotateY.set(0)
+  }
+
+  return (
+    <motion.div
+      className={`home-hover-card kitchen-card ${className}`}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetTilt}
+      style={{ rotateX, rotateY, transformPerspective: 1000 }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        width="1200"
+        height="1800"
+        className="h-full w-full rounded-[22px] object-cover shadow-[0_20px_40px_-26px_rgba(59,42,33,0.46)]"
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        loading="lazy"
+        decoding="async"
+      />
+    </motion.div>
+  )
+}
+
 const serviceCards = [
   {
     title: 'Weekly Meals',
     copy: 'Home-style tiffin, rotating each week. Nourishing Meals plan, Fresh weekly meals, delivered Monday to Friday in Tallinn.',
     href: routes.weeklyMeals,
-    icon: 'dot',
+    image: serviceImages.weeklyMeals,
+    imageAlt: 'A freshly prepared Desi Dabba Indian meal',
+    className: 'sm:col-span-2 sm:min-h-[300px] lg:col-span-2 lg:row-span-2 lg:min-h-[516px]',
   },
   {
     title: 'Catering',
     copy: 'Generous, beautiful spreads for gatherings — from intimate dinners to celebrations of a hundred.',
     href: routes.catering,
-    icon: 'ring',
+    image: serviceImages.corporateCatering,
+    imageAlt: 'Catering dishes arranged for a Desi Dabba buffet',
+    className: 'sm:col-span-2 lg:col-span-2 lg:col-start-3 lg:row-start-1 lg:min-h-[250px]',
   },
   {
     title: 'Private Chef',
     copy: 'A chef in your kitchen for the evening. A slow, personal menu cooked and served in your home.',
     href: routes.privateChef,
-    icon: 'line-y',
+    image: storytellingImages.homePrivateChef,
+    imageAlt: 'A private chef dining experience set outdoors',
+    className: 'lg:col-start-3 lg:row-start-2 lg:min-h-[250px]',
   },
   {
     title: 'Grazing Platters Tallinn',
     copy: 'Effortless hosting. Abundant platters of chaat, kebabs and sweets, styled and ready to share.',
     href: routes.services,
-    icon: 'line-x',
+    image: serviceImages.premiumPlatters,
+    imageAlt: 'A colorful platter of Indian appetizers and kebabs',
+    className: 'lg:col-start-4 lg:row-start-2 lg:min-h-[250px]',
   },
 ] as const
-
-function HomeServiceIcon({ type }: { type: (typeof serviceCards)[number]['icon'] }) {
-  return (
-    <div className="relative mb-auto h-11 w-11 rounded-t-[22px] rounded-b-md border-[1.5px] border-[#5C1A2B]">
-      {type === 'dot' && <span className="absolute inset-0 m-auto size-1.5 rounded-full bg-[#CE9A3A]" />}
-      {type === 'ring' && <span className="absolute inset-0 m-auto size-3.5 rounded-full border-[1.5px] border-[#CE9A3A]" />}
-      {type === 'line-y' && <span className="absolute left-1/2 top-2.5 h-5 w-[1.5px] -translate-x-1/2 bg-[#CE9A3A]" />}
-      {type === 'line-x' && <span className="absolute inset-0 m-auto h-[1.5px] w-5 bg-[#CE9A3A]" />}
-    </div>
-  )
-}
 
 export default function Home() {
   return (
@@ -121,18 +176,45 @@ export default function Home() {
             All services →
           </Link>
         </div>
-        <div className="grid gap-[22px] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid auto-rows-[230px] gap-4 sm:grid-cols-2 lg:auto-rows-[250px] lg:grid-cols-4">
           {serviceCards.map((service) => (
             <article
               key={service.title}
-              className="flex min-h-[290px] flex-col rounded-[18px] border border-[#3B2A21]/10 bg-[#FBF6EC] px-6 pb-[30px] pt-[26px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(59,42,33,0.10)]"
+              className={`home-hover-card service-card ${service.className}`}
+              onPointerMove={(event) => {
+                if (
+                  !window.matchMedia('(hover: hover) and (pointer: fine)').matches ||
+                  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                ) {
+                  return
+                }
+
+                const card = event.currentTarget
+                const bounds = card.getBoundingClientRect()
+                const x = (event.clientX - bounds.left) / bounds.width
+                const y = (event.clientY - bounds.top) / bounds.height
+
+                card.style.setProperty('--rx', `${((0.5 - y) * 8).toFixed(2)}deg`)
+                card.style.setProperty('--ry', `${((x - 0.5) * 8).toFixed(2)}deg`)
+                card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`)
+                card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`)
+                card.setAttribute('data-live', '')
+              }}
+              onPointerLeave={(event) => {
+                const card = event.currentTarget
+                card.removeAttribute('data-live')
+                card.style.setProperty('--rx', '0deg')
+                card.style.setProperty('--ry', '0deg')
+              }}
             >
-              <HomeServiceIcon type={service.icon} />
-              <h3 className="mb-2 mt-[26px] font-serif text-[25px] font-semibold text-[#5C1A2B]">{service.title}</h3>
-              <p className="mb-4 text-[14.5px] leading-[1.6] text-[#3B2A21]/65">{service.copy}</p>
-              <Link to={service.href} className="mt-auto text-[13.5px] font-semibold text-[#5C6B47] no-underline">
-                Learn more →
-              </Link>
+              <img src={service.image} alt={service.imageAlt} className="service-card-image" loading="lazy" decoding="async" />
+              <div className="service-card-content">
+                <h3 className="font-serif text-[25px] font-semibold leading-tight text-[#F6EFE2]">{service.title}</h3>
+                <p className="max-w-[48ch] text-[14px] leading-[1.55] text-[#F6EFE2]/90">{service.copy}</p>
+                <Link to={service.href} className="text-[13.5px] font-semibold text-[#F3C66C] no-underline hover:underline">
+                  Learn more →
+                </Link>
+              </div>
             </article>
           ))}
         </div>
@@ -179,7 +261,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1220px] px-7 py-[clamp(48px,7vw,90px)]">
+      <section className="mx-auto max-w-[1060px] px-7 py-[clamp(48px,7vw,90px)]">
         <div className="mb-[30px] flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="mb-3 text-[12.5px] font-semibold uppercase tracking-[0.22em] text-[#5C6B47]">From the kitchen</div>
@@ -189,19 +271,17 @@ export default function Home() {
             Follow on Instagram →
           </a>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {[serviceImages.weeklyMeals, serviceImages.corporateCatering, serviceImages.fusionExperiences, serviceImages.premiumPlatters, ...homeInstagramImages.slice(0, 2)].map((image, index) => (
-            <img
-              key={`${image}-${index}`}
-              src={image}
-              alt={`Desi Dabba Instagram kitchen moment ${index + 1}`}
-              width="1200"
-              height="1800"
-              className="aspect-square rounded-xl object-cover"
-              sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-              loading="lazy"
-              decoding="async"
-            />
+
+        <div className="kitchen-mosaic grid grid-cols-2 gap-3 lg:auto-rows-[140px] lg:grid-cols-6 lg:gap-3">
+          {[
+            { src: homeInstagramImages[2], className: 'col-span-2 h-[220px] sm:h-[260px] lg:col-span-2 lg:row-span-2 lg:h-full', alt: 'Desi Dabba kitchen prep' },
+            { src: serviceImages.corporateCatering, className: 'h-[135px] sm:h-[155px] lg:col-start-3 lg:row-start-1 lg:h-full', alt: 'Desi Dabba buffet setup' },
+            { src: serviceImages.premiumPlatters, className: 'h-[135px] sm:h-[155px] lg:col-start-4 lg:row-start-1 lg:h-full', alt: 'Desi Dabba platter arrangement' },
+            { src: homeKitchenImages[0], className: 'col-span-2 h-[150px] sm:h-[180px] lg:col-span-2 lg:col-start-5 lg:row-start-1 lg:h-full', alt: 'Naan and roti in a buffet warmer' },
+            { src: homeKitchenImages[1], className: 'col-span-2 h-[150px] sm:h-[180px] lg:col-span-2 lg:col-start-3 lg:row-start-2 lg:h-full', alt: 'Curry served in a buffet warmer' },
+            { src: serviceImages.weeklyMeals, className: 'col-span-2 h-[150px] sm:h-[180px] lg:col-span-2 lg:col-start-5 lg:row-start-2 lg:h-full', alt: 'Desi Dabba weekly meal' },
+          ].map((image, index) => (
+            <KitchenImage key={`${image.src}-${index}`} {...image} />
           ))}
         </div>
       </section>

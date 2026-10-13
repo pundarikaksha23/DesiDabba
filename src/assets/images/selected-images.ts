@@ -114,3 +114,5 @@ export const homeInstagramImages = [
   homeInstagramCanape,
   homeInstagramGuest,
 ] as const
+
+export const homeKitchenImages = [cateringNaanService, cateringChafingDish] as const
