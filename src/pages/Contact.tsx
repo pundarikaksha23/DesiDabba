@@ -25,6 +25,8 @@ export default function Contact() {
         imageAlt="Guests gathered around a Desi Dabba event table"
         imagePosition="54% center"
         imageSrc={pageHeroImages.contact}
+        showImage={false}
+        contentClassName="mx-auto text-center"
       />
 
       <Section tone="cream">
@@ -52,28 +54,42 @@ export default function Contact() {
 
       <Section>
         <Container className="grid gap-5 md:grid-cols-2">
-          <Card className="h-full bg-maroon text-cream-50">
-            <Mail className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-6">Email</p>
-            <h2 className="heading-md mt-3 text-cream-50">For menus, dates, and detailed enquiries.</h2>
-            <p className="body-sm mt-4 text-cream-50/72">
-              Best when you want to share event notes, dietary details, venue context, or a more considered brief.
-            </p>
-            <a className="body-sm mt-6 block text-cream-50 hover:text-gold" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
+          <Card padded={false} className="contact-method-card h-full bg-maroon text-cream-50">
+            <div className="contact-method-card__inner">
+              <span aria-hidden className="contact-method-card__layer contact-method-card__layer--back" />
+              <span aria-hidden className="contact-method-card__layer contact-method-card__layer--front" />
+              <span aria-hidden className="contact-method-card__face contact-method-card__face--maroon" />
+              <div className="contact-method-card__content">
+                <Mail className="size-8 text-gold" aria-hidden />
+                <p className="eyebrow mt-6">Email</p>
+                <h2 className="heading-md mt-3 text-cream-50">For menus, dates, and detailed enquiries.</h2>
+                <p className="body-sm mt-4 text-cream-50/72">
+                  Best when you want to share event notes, dietary details, venue context, or a more considered brief.
+                </p>
+                <a className="body-sm mt-6 block text-cream-50 hover:text-gold" href={`mailto:${site.email}`}>
+                  {site.email}
+                </a>
+              </div>
+            </div>
           </Card>
 
-          <Card className="h-full bg-green text-cream-50">
-            <Phone className="size-8 text-gold" aria-hidden />
-            <p className="eyebrow mt-6">Phone & WhatsApp</p>
-            <h2 className="heading-md mt-3 text-cream-50">For quick confirmations and faster back-and-forth.</h2>
-            <p className="body-sm mt-4 text-cream-50/72">
-              Best for weekly meal questions, availability checks, delivery clarifications, or urgent event timing.
-            </p>
-            <a className="body-sm mt-6 block text-cream-50 hover:text-gold" href={`tel:${site.phone}`}>
-              {site.phone}
-            </a>
+          <Card padded={false} className="contact-method-card h-full bg-green text-cream-50">
+            <div className="contact-method-card__inner">
+              <span aria-hidden className="contact-method-card__layer contact-method-card__layer--back" />
+              <span aria-hidden className="contact-method-card__layer contact-method-card__layer--front" />
+              <span aria-hidden className="contact-method-card__face contact-method-card__face--green" />
+              <div className="contact-method-card__content">
+                <Phone className="size-8 text-gold" aria-hidden />
+                <p className="eyebrow mt-6">Phone & WhatsApp</p>
+                <h2 className="heading-md mt-3 text-cream-50">For quick confirmations and faster back-and-forth.</h2>
+                <p className="body-sm mt-4 text-cream-50/72">
+                  Best for weekly meal questions, availability checks, delivery clarifications, or urgent event timing.
+                </p>
+                <a className="body-sm mt-6 block text-cream-50 hover:text-gold" href={`tel:${site.phone}`}>
+                  {site.phone}
+                </a>
+              </div>
+            </div>
           </Card>
         </Container>
       </Section>

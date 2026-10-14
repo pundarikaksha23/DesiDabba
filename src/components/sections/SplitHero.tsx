@@ -17,6 +17,8 @@ type SplitHeroProps = {
   imageSizes?: string
   imageWidth?: number
   imageHeight?: number
+  showImage?: boolean
+  contentClassName?: string
 }
 
 /**
@@ -37,10 +39,14 @@ export function SplitHero({
   imageSizes = '(min-width: 1024px) 48vw, 100vw',
   imageWidth = 1200,
   imageHeight = 1800,
+  showImage = true,
+  contentClassName = '',
 }: SplitHeroProps) {
   return (
     <Section className="page-offset overflow-hidden" spacing="tight">
-      <Container className={`relative grid items-center gap-10 lg:gap-14 xl:gap-16 ${columnsClass}`}>
+      <Container
+        className={`relative grid items-center gap-10 lg:gap-14 xl:gap-16 ${showImage ? columnsClass : 'lg:grid-cols-1'}`}
+      >
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <motion.div
             className="absolute left-[-3rem] top-[12%] hidden h-28 w-28 rounded-full border border-gold/35 md:block"
@@ -59,7 +65,7 @@ export function SplitHero({
           />
         </div>
         <motion.div
-          className="relative z-[1] max-w-[36rem]"
+          className={`relative z-[1] max-w-[36rem] ${contentClassName}`}
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -70,31 +76,33 @@ export function SplitHero({
           {actions ? <div className="mt-8">{actions}</div> : null}
         </motion.div>
 
-        <motion.figure
-          className="relative z-[1] overflow-hidden rounded-[28px] rounded-t-[180px] border border-brown/8 bg-cream-50/75 p-0 shadow-[0_30px_60px_-34px_rgba(59,42,33,0.5)]"
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.65, ease: 'easeOut', delay: 0.08 }}
-        >
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-[-18%] top-[-16%] z-[1] h-[34%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.28),rgba(255,255,255,0)_72%)] blur-2xl"
-            animate={{ x: ['-6%', '8%', '-6%'] }}
-            transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
-          />
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            width={imageWidth}
-            height={imageHeight}
-            className={`${imageHeightClass} relative z-0`}
-            style={{ objectPosition: imagePosition }}
-            sizes={imageSizes}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </motion.figure>
+        {showImage ? (
+          <motion.figure
+            className="relative z-[1] overflow-hidden rounded-[28px] rounded-t-[180px] border border-brown/8 bg-cream-50/75 p-0 shadow-[0_30px_60px_-34px_rgba(59,42,33,0.5)]"
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.08 }}
+          >
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-[-18%] top-[-16%] z-[1] h-[34%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.28),rgba(255,255,255,0)_72%)] blur-2xl"
+              animate={{ x: ['-6%', '8%', '-6%'] }}
+              transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+            />
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              width={imageWidth}
+              height={imageHeight}
+              className={`${imageHeightClass} relative z-0`}
+              style={{ objectPosition: imagePosition }}
+              sizes={imageSizes}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+          </motion.figure>
+        ) : null}
       </Container>
     </Section>
   )

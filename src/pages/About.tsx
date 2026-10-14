@@ -51,24 +51,31 @@ export default function About() {
       </Section>
 
       <Section>
-        <Container className="grid gap-5 md:grid-cols-2">
+        <Container className="grid grid-rows-[repeat(2,minmax(0,1fr))] items-stretch gap-5 md:grid-cols-2 md:grid-rows-1">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
             transition={{ duration: 0.45, ease: 'easeOut' }}
           >
-            <Card className="h-full bg-maroon text-cream-50">
-              <FlameKindling className="size-8 text-gold" aria-hidden />
-              <p className="eyebrow mt-6">Mission</p>
-              <h2 className="heading-md mt-3 text-cream-50">
-                To create warm, thoughtful food experiences for everyday meals, gatherings and celebrations in Tallinn.
-              </h2>
-              <p className="body-sm mt-4 text-cream-50/72">
-                Desi Dabba brings Indian warmth, Asian flavours and global food experiences to homes, offices and
-                events. We prepare weekly meals, catering menus, private chef experiences and grazing platters with
-                care, balance and quality.
-              </p>
+            <Card padded={false} className="contact-method-card mission-vision-card h-full bg-maroon text-cream-50">
+              <div className="contact-method-card__inner">
+                <span aria-hidden className="contact-method-card__layer contact-method-card__layer--back" />
+                <span aria-hidden className="contact-method-card__layer contact-method-card__layer--front" />
+                <span aria-hidden className="contact-method-card__face contact-method-card__face--maroon" />
+                <div className="contact-method-card__content">
+                  <FlameKindling className="size-8 text-gold" aria-hidden />
+                  <p className="eyebrow mt-6">Mission</p>
+                  <h2 className="heading-md mt-3 text-cream-50">
+                    To create warm, thoughtful food experiences for everyday meals, gatherings and celebrations in Tallinn.
+                  </h2>
+                  <p className="body-sm mt-4 text-cream-50/72">
+                    Desi Dabba brings Indian warmth, Asian flavours and global food experiences to homes, offices and
+                    events. We prepare weekly meals, catering menus, private chef experiences and grazing platters with
+                    care, balance and quality.
+                  </p>
+                </div>
+              </div>
             </Card>
           </motion.div>
 
@@ -78,18 +85,25 @@ export default function About() {
             viewport={viewportOnce}
             transition={{ duration: 0.45, ease: 'easeOut', delay: 0.06 }}
           >
-            <Card className="h-full bg-green text-cream-50">
-              <UtensilsCrossed className="size-8 text-gold" aria-hidden />
-              <p className="eyebrow mt-6">Vision</p>
-              <h2 className="heading-md mt-3 text-cream-50">
-                To become a trusted food experience brand in Tallinn, known for warm hospitality, fresh menus and
-                thoughtful service.
-              </h2>
-              <p className="body-sm mt-4 text-cream-50/72">
-                We want Desi Dabba to grow as a reliable and personal food brand for everyday meals and special
-                occasions. Our focus is simple: good food, clear communication, careful planning and food experiences
-                people remember.
-              </p>
+            <Card padded={false} className="contact-method-card mission-vision-card h-full bg-green text-cream-50">
+              <div className="contact-method-card__inner">
+                <span aria-hidden className="contact-method-card__layer contact-method-card__layer--back" />
+                <span aria-hidden className="contact-method-card__layer contact-method-card__layer--front" />
+                <span aria-hidden className="contact-method-card__face contact-method-card__face--green" />
+                <div className="contact-method-card__content">
+                  <UtensilsCrossed className="size-8 text-gold" aria-hidden />
+                  <p className="eyebrow mt-6">Vision</p>
+                  <h2 className="heading-md mt-3 text-cream-50">
+                    To become a trusted food experience brand in Tallinn, known for warm hospitality, fresh menus and
+                    thoughtful service.
+                  </h2>
+                  <p className="body-sm mt-4 text-cream-50/72">
+                    We want Desi Dabba to grow as a reliable and personal food brand for everyday meals and special
+                    occasions. Our focus is simple: good food, clear communication, careful planning and food
+                    experiences people remember.
+                  </p>
+                </div>
+              </div>
             </Card>
           </motion.div>
         </Container>

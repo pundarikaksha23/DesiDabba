@@ -8,6 +8,7 @@ import type { PointerEvent as ReactPointerEvent } from 'react'
 import { Link } from 'react-router-dom'
 import {
   homeInstagramImages,
+  homeStoryImage,
   pageHeroImages,
   serviceImages,
 } from '../assets/images/selected-images'
@@ -355,8 +356,8 @@ export default function Home() {
             >
               <figure className="home-story-card__portrait">
                 <img
-                  src={pageHeroImages.about}
-                  alt="Portrait of the Desi Dabba founder holding a plated dish"
+                  src={homeStoryImage}
+                  alt="Desi Dabba founder in her apron holding a freshly prepared meal"
                   width="1200"
                   height="1800"
                   className="h-full w-full object-cover object-[50%_22%]"
