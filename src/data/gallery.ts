@@ -1,15 +1,13 @@
 import riceDalImage from '../assets/images/catering/rice-sabzi-buffet-chafing-dishes-8f0a4310.jpg'
-import familyDinnerImage from '../assets/images/catering/guests-serving-buffet-8f0a4232.jpg'
 import chapatiMealImage from '../assets/images/catering/naan-roti-chafing-dish-8f0a4328.jpg'
 import riceRotiImage from '../assets/images/gallery/guest-appetizer-plate-detail-8f0a4353.jpg'
 import balancedThaliImage from '../assets/images/weekly-meals/plated-indian-meal-close-up-8f0a4364.jpg'
 import tomatoCurryImage from '../assets/images/weekly-meals/vegetable-curry-chafing-dish-8f0a4317.jpg'
-import comfortThaliImage from '../assets/images/weekly-meals/handheld-plated-indian-meal-8f0a4388.jpg'
 import blueBowlImage from '../assets/images/weekly-meals/plated-indian-meal-close-up-8f0a4370.jpg'
 import luxeMealImage from '../assets/images/weekly-meals/biryani-curry-tray-8f0a4223.jpg'
 import puriPakoraImage from '../assets/images/platters/canape-spoon-appetizer-row-8f0a4280.jpg'
 
-export const galleryCategories = ['All', 'Food', 'Buffets', 'Events', 'Platters', 'Kitchen'] as const
+export const galleryCategories = ['All', 'Food', 'Buffets', 'Platters', 'Kitchen'] as const
 
 export type GalleryCategory = (typeof galleryCategories)[number]
 
@@ -29,24 +27,10 @@ type CuratedGallerySource = {
 }
 
 const curatedGallerySources: CuratedGallerySource[] = [
-  {
-    path: 'drive-download-20260825T172700Z-1-001/Our Story_.jpg',
-    title: 'Sunny Outdoor Portrait',
-    category: 'Events',
-    position: '50% 20%',
-  },
-  {
-    path: 'drive-download-20260825T172700Z-1-001/Our Story.png',
-    title: 'Chef With Fresh Appetizers',
-    category: 'Events',
-    position: '50% 18%',
-  },
   { path: 'Weekly meal /1.jpg', title: 'Rice Dal and Sabzi Set', category: 'Food' },
   { path: 'Weekly meal /2.jpg', title: 'Tomato Curry Bowls', category: 'Food' },
   { path: 'Weekly meal /3.jpg', title: 'Chapati Meal Trio', category: 'Food' },
-  { path: 'Weekly meal /7.jpg', title: 'Comfort Thali Tray', category: 'Food' },
   { path: 'Weekly meal /c490ecf5-d1cb-43c6-8e40-bdf64af7f9c7.JPG', title: 'Balanced Weekly Thali', category: 'Food' },
-  { path: 'Weekly meal /IMG_1440.PNG', title: 'Family Style Dinner Spread', category: 'Food' },
   { path: 'Weekly meal /IMG_3040.jpg', title: 'Blue Bowl Dinner Plate', category: 'Food' },
   { path: 'Weekly meal /IMG_3148 2.PNG', title: 'Rice and Roti Plate', category: 'Food' },
   { path: 'Weekly meal /IMG_4602.PNG', title: 'Puri and Pakora Platter', category: 'Food' },
@@ -70,60 +54,6 @@ const curatedGallerySources: CuratedGallerySource[] = [
   { path: 'Catering 2/2(3).jpg', title: 'Boxed Tasting Plates', category: 'Food' },
   { path: 'Catering 2/3.jpg', title: 'Buffet Line Overview', category: 'Buffets' },
   { path: 'Catering 2/8.jpg', title: 'Crispy Rolls With Dips', category: 'Platters' },
-  {
-    path: 'Catering/desi/8F0A4211.jpg',
-    title: 'Couple Portrait by the Marquee',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4216.jpg',
-    title: 'Family Portrait at the Event',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4224.jpg',
-    title: 'Buffet Service Moment',
-    category: 'Events',
-    position: '50% 24%',
-  },
-  {
-    path: 'Catering/desi/8F0A4236.jpg',
-    title: 'Saffron Dress Buffet Candid',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4265.jpg',
-    title: 'Garden Guest Portrait',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4270.jpg',
-    title: 'Green Lehenga Portrait',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4342.jpg',
-    title: 'Garlanded Guest With Plate',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4372.jpg',
-    title: 'Guest by the Buffet',
-    category: 'Events',
-    position: '50% 18%',
-  },
-  {
-    path: 'Catering/desi/8F0A4389.jpg',
-    title: 'Smiling Guest Portrait',
-    category: 'Events',
-    position: '50% 18%',
-  },
   { path: 'Catering/desi/8F0A4207.jpg', title: 'Snack Table Spread', category: 'Platters' },
   { path: 'Catering/desi/8F0A4222.jpg', title: 'Biryani and Samosa Trays', category: 'Buffets' },
   { path: 'Catering/desi/8F0A4277.jpg', title: 'Canape Cone Arrangement', category: 'Platters' },
@@ -140,9 +70,7 @@ const availableGalleryImages: Record<string, string> = {
   'Weekly meal /1.jpg': riceDalImage,
   'Weekly meal /2.jpg': tomatoCurryImage,
   'Weekly meal /3.jpg': chapatiMealImage,
-  'Weekly meal /7.jpg': comfortThaliImage,
   'Weekly meal /c490ecf5-d1cb-43c6-8e40-bdf64af7f9c7.JPG': balancedThaliImage,
-  'Weekly meal /IMG_1440.PNG': familyDinnerImage,
   'Weekly meal /IMG_3040.jpg': blueBowlImage,
   'Weekly meal /IMG_3148 2.PNG': riceRotiImage,
   'Weekly meal /IMG_4602.PNG': puriPakoraImage,

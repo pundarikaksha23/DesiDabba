@@ -101,11 +101,11 @@ export const routeConfig = {
   },
   glazingPlatters: {
     path: '/glazing-platters',
-    pageTitle: 'Grazing Platters',
+    pageTitle: 'Grazing Platters Tallinn',
     metaDescription:
       'Explore Desi Dabba grazing platters for celebrations, office gatherings, host-ready sharing menus, and custom South Asian platter styling.',
     canonicalUrl: getCanonicalUrl('/glazing-platters'),
-    navigationLabel: 'Grazing Platters',
+    navigationLabel: 'Grazing Platters Tallinn',
     footerVisibility: 'hidden',
   },
   gallery: {

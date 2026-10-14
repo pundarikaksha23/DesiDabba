@@ -30,7 +30,7 @@ export const cateringFormats = [
     description: 'Beautiful food arranged for relaxed gatherings, family-style meals and private celebrations.',
   },
   {
-    name: 'Grazing Platters',
+    name: 'Grazing Platters Tallinn',
     description: 'Styled platters with snacks, bites, sweets and sharing food for effortless hosting.',
   },
   {

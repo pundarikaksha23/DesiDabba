@@ -150,7 +150,7 @@ export const detailedServices: DetailedService[] = [
   {
     id: 'platters',
     number: '04',
-    eyebrow: 'Grazing Platters',
+    eyebrow: 'Grazing Platters Tallinn',
     title: 'Beautiful platters, made to be shared.',
     lead: 'Styled sharing platters for gatherings, office events, celebrations and private hosting.',
     body: [

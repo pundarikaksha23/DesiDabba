@@ -154,7 +154,7 @@ export default function Contact() {
                 name="interest"
                 value={values.interest}
                 error={errors.interest}
-                options={['Weekly Meals', 'Corporate Catering', 'Wedding Catering', 'Private Chef', 'Grazing Platters']}
+                options={['Weekly Meals', 'Corporate Catering', 'Wedding Catering', 'Private Chef', 'Grazing Platters Tallinn']}
                 onChange={(event) => updateValue('interest', event.target.value)}
               />
             </div>

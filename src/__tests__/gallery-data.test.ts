@@ -2,8 +2,8 @@ import { describe, expect, test } from 'vitest'
 import { galleryItems } from '../data/gallery'
 
 describe('gallery data', () => {
-  test('curates 50 distinct food and people images from the images folders', () => {
-    expect(galleryItems).toHaveLength(50)
+  test('curates distinct food-only images from the images folders', () => {
+    expect(galleryItems).toHaveLength(37)
     expect(new Set(galleryItems.map((item) => item.id)).size).toBe(galleryItems.length)
     expect(new Set(galleryItems.map((item) => item.imageSrc)).size).toBe(galleryItems.length)
     expect(
@@ -20,9 +20,11 @@ describe('gallery data', () => {
     ).toBe(true)
   })
 
-  test('keeps a mix of event portraits and food forward selections', () => {
-    expect(galleryItems.some((item) => item.category === 'Events')).toBe(true)
+  test('excludes portrait and people-focused selections', () => {
     expect(galleryItems.some((item) => item.category === 'Food')).toBe(true)
     expect(galleryItems.some((item) => item.category === 'Buffets' || item.category === 'Platters')).toBe(true)
+    expect(galleryItems.some((item) => item.id.includes('Our Story'))).toBe(false)
+    expect(galleryItems.some((item) => item.id === 'Weekly meal /7.jpg')).toBe(false)
+    expect(galleryItems.some((item) => item.id === 'Weekly meal /IMG_1440.PNG')).toBe(false)
   })
 })

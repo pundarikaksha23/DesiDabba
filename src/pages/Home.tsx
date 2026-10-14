@@ -10,7 +10,6 @@ import {
   homeInstagramImages,
   pageHeroImages,
   serviceImages,
-  storytellingImages,
 } from '../assets/images/selected-images'
 import { routes } from '../config/routes'
 import { site } from '../config/site'
@@ -18,13 +17,13 @@ import { WhatsappIcon } from '../components/WhatsappIcon'
 
 const MotionCardLink = motion.create(Link)
 
-const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters']
+const marqueeItems = ['Weekly Meals', 'Catering', 'Private Chef', 'Grazing Platters Tallinn']
 const scrollingMarqueeItems = [...marqueeItems, ...marqueeItems]
 
 const serviceCards = [
   {
     title: 'Weekly Meals',
-    copy: 'Home-style tiffin, rotating each week. Nourishing lunches and dinners, delivered on your schedule.',
+    copy: 'Home-style tiffin, rotating each week. Nourishing Meals plan, Fresh weekly meals, delivered Monday to Friday in Tallinn.',
     href: routes.weeklyMeals,
     icon: 'dot',
   },
@@ -41,7 +40,7 @@ const serviceCards = [
     icon: 'line-y',
   },
   {
-    title: 'Grazing Platters',
+    title: 'Grazing Platters Tallinn',
     copy: 'Effortless hosting. Abundant platters of chaat, kebabs and sweets, styled and ready to share.',
     href: routes.glazingPlatters,
     icon: 'line-x',
@@ -112,37 +111,11 @@ type HomeServiceCardProps = {
 
 function HomeServiceCard({ service, index }: HomeServiceCardProps) {
   const reduceMotion = useReducedMotion()
-  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
-  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 24 })
-
-  const handlePointerMove = (event: ReactPointerEvent<HTMLAnchorElement>) => {
-    if (reduceMotion || event.pointerType === 'touch') {
-      return
-    }
-
-    const card = event.currentTarget
-    const bounds = card.getBoundingClientRect()
-    const x = (event.clientX - bounds.left) / bounds.width
-    const y = (event.clientY - bounds.top) / bounds.height
-
-    rotateX.set((0.5 - y) * 8)
-    rotateY.set((x - 0.5) * 8)
-    card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`)
-    card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`)
-    card.setAttribute('data-live', '')
-  }
-
-  const resetTilt = (event: ReactPointerEvent<HTMLAnchorElement>) => {
-    const card = event.currentTarget
-    card.removeAttribute('data-live')
-    rotateX.set(0)
-    rotateY.set(0)
-  }
 
   return (
     <MotionCardLink
       to={service.href}
-      className="group/card home-service-card panel-card relative flex min-h-[290px] flex-col rounded-[18px] border border-brown/10 bg-cream-soft px-6 pb-[30px] pt-[26px] text-inherit no-underline transition-[border-color,background-color] duration-300 hover:border-gold/35"
+      className="group/card home-service-card relative flex min-h-[290px] flex-col rounded-[18px] px-6 pb-[30px] pt-[26px] text-inherit no-underline"
       aria-label={`Learn more about ${service.title}`}
       initial={
         reduceMotion
@@ -172,16 +145,14 @@ function HomeServiceCard({ service, index }: HomeServiceCardProps) {
         reduceMotion
           ? undefined
           : {
-              y: -8,
-              scale: 1.012,
-              boxShadow: '0 28px 54px rgba(59,42,33,0.18)',
+              y: -16,
             }
       }
       whileTap={reduceMotion ? undefined : { scale: 0.99 }}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={resetTilt}
-      style={{ rotateX, rotateY, transformPerspective: 1100 }}
     >
+      <span aria-hidden className="home-service-card__layer home-service-card__layer--back" />
+      <span aria-hidden className="home-service-card__layer home-service-card__layer--front" />
+      <span aria-hidden className="home-service-card__face panel-card" />
       <span
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1] rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.34),rgba(255,255,255,0)_42%)] opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
@@ -376,18 +347,36 @@ export default function Home() {
       <section className="bg-maroon text-cream-200">
         <div className="mx-auto grid max-w-[1220px] items-center gap-[clamp(28px,5vw,72px)] px-7 py-[clamp(48px,7vw,96px)] md:grid-cols-[0.9fr_1.1fr]">
           <div className="relative">
-            <figure className="aspect-[4/4.7] overflow-hidden rounded-t-[20px] rounded-b-[160px] bg-maroon-600 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)]">
-              <img
-                src={storytellingImages.contactGathering}
-                alt="Warm Desi Dabba founder and guest moment"
-                width="1200"
-                height="1800"
-                className="h-full w-full object-cover object-[50%_45%]"
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
+            <div
+              className="home-story-card"
+              role="group"
+              aria-label="Meet the Desi Dabba founder and team"
+              tabIndex={0}
+            >
+              <figure className="home-story-card__portrait">
+                <img
+                  src={pageHeroImages.about}
+                  alt="Portrait of the Desi Dabba founder holding a plated dish"
+                  width="1200"
+                  height="1800"
+                  className="h-full w-full object-cover object-[50%_22%]"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div className="home-story-card__panel">
+                <div className="home-story-card__content">
+                  <span className="mb-2 block text-[12px] font-semibold uppercase tracking-[0.2em] text-gold">
+                    Our Story
+                  </span>
+                  <span className="block font-serif text-2xl font-semibold text-cream">Pooja and Team</span>
+                  <span className="mt-2 block text-sm leading-[1.6] text-cream-200/85">
+                    Sharing the warmth of Indian hospitality through thoughtful food, made with care in Tallinn.
+                  </span>
+                </div>
+              </div>
+            </div>
             <div className="absolute bottom-10 right-[-10px] h-24 w-24 rounded-full border border-gold/60" />
           </div>
           <div>
@@ -428,11 +417,17 @@ export default function Home() {
           )}
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {[serviceImages.weeklyMeals, serviceImages.corporateCatering, serviceImages.fusionExperiences, serviceImages.premiumPlatters, ...homeInstagramImages.slice(0, 2)].map((image, index) => (
+          {[serviceImages.weeklyMeals, serviceImages.corporateCatering, homeInstagramImages[2], serviceImages.premiumPlatters, ...homeInstagramImages.slice(0, 2)].map((image, index) => (
             <HomeKitchenImage
               key={`${image}-${index}`}
               src={image}
-              alt={`Desi Dabba Instagram kitchen moment ${index + 1}`}
+              alt={
+                image === homeInstagramImages[1]
+                  ? 'Assorted breads displayed in a warming tray'
+                  : image === homeInstagramImages[2]
+                    ? 'Indian appetizers served in tasting spoons'
+                    : `Desi Dabba Instagram kitchen moment ${index + 1}`
+              }
               index={index}
             />
           ))}

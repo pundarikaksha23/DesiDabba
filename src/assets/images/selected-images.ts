@@ -40,7 +40,8 @@ import homeInstagramBread from './catering/naan-roti-chafing-dish-8f0a4328.jpg'
 import homeInstagramCanape from './platters/canape-spoon-appetizer-row-8f0a4280.jpg'
 import homeInstagramGuest from './team/guest-dining-with-drinks-8f0a4384.jpg'
 
-const founderPortrait = encodeURI('/images/drive-download-20260825T172700Z-1-001/Our Story.png')
+const founderPortrait = encodeURI('/images/drive-download-20260825T172700Z-1-001/Our Story_.jpg')
+export const homeStoryImage = encodeURI('/images/drive-download-20260825T172700Z-1-001/Our Story.png')
 
 export const pageHeroImages = {
   home: homePageHero,

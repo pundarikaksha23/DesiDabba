@@ -27,7 +27,7 @@ export default function GlazingPlatters() {
   return (
     <>
       <SplitHero
-        eyebrow="Grazing Platters"
+        eyebrow="Grazing Platters Tallinn"
         title="Host-ready grazing platters for gatherings, celebrations and easy sharing."
         description="Our grazing platters are created for easy hosting, beautiful presentation and generous sharing. Each platter can include savoury bites, sweets, snacks, fusion finger food, vegetarian and vegan options, and seasonal additions."
         imageAlt="Desi Dabba grazing platter with colorful appetizers and garnishes"

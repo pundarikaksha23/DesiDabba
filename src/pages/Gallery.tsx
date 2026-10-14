@@ -100,8 +100,8 @@ export default function Gallery() {
         <Container>
           <SectionHeader
             eyebrow="Gallery"
-            title="Food, tables, and kitchen moments with quiet detail."
-            description="A visual collection of dabbas, buffets, events, platters, and the behind-the-scenes rhythm that shapes the Desi Dabba experience."
+            title="A closer look at the food we make."
+            description="A visual collection of weekly meals, catering buffets, and handcrafted platters from Desi Dabba."
             titleAs="h1"
           />
         </Container>
@@ -131,7 +131,7 @@ export default function Gallery() {
             exit={{ opacity: 0 }}
             role="dialog"
             aria-modal="true"
-            aria-label={activeItem.title}
+            aria-label="Gallery image"
             onClick={() => setActiveItem(null)}
           >
             <motion.div
@@ -162,10 +162,6 @@ export default function Gallery() {
                 sizes="min(100vw, 64rem)"
                 decoding="async"
               />
-              <div className="p-5 md:p-6">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{activeItem.category}</p>
-                <h2 className="heading-md mt-2 text-brown">{activeItem.title}</h2>
-              </div>
             </motion.div>
           </motion.div>
         )}
